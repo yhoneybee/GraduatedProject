@@ -1,0 +1,7 @@
+﻿게임 실행시 첫번째로 시작하는 Scene인 Loading Scene은
+Addressable을 사용하여 서버에서 원격으로 파일을 내려받는다
+내려받을때에 현재의 버전, hash를 비교하여 새로운 버전 혹은 누락된 파일이 있다면 Loading을 함
+
+저장되는 예시 : { Version : 0.01, Hash : hashed, Serialize : serialized }
+
+아직 무엇을 Addressable을 사용해서 관리해야할지 몰라서 비워둠
