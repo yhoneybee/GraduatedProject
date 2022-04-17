@@ -13,3 +13,9 @@ public enum eERROR_CAUSE
 {
     End,
 }
+
+public enum eCURD_TYPE
+{
+    Firebase,
+    End,
+}

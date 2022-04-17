@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Action able to
@@ -9,6 +10,8 @@ using UnityEngine;
 /// </summary>
 public interface ICURDable
 {
+    public bool Initialize();
+
     #region Create
 
     #region Sign
@@ -19,7 +22,7 @@ public interface ICURDable
     /// <param name="userName">게임에서 사용할 유저이름</param>
     /// <param name="password">로그인에 사용될 비밀번호</param>
     /// <returns>회원가입의 성공여부</returns>
-    public bool Sign(string userId, string userName, string password);
+    public bool Sign(string userId, string userName, string userPassword, string confirmUserPassword);
     #endregion
 
     #region Game
@@ -63,6 +66,23 @@ public interface ICURDable
     /// </summary>
     /// <returns>매칭 시작의 성공여부</returns>
     public bool StartMatch();
+    /// <summary>
+    /// 매칭이 잡힌 후 게임 진행을 수락하는 함수
+    /// </summary>
+    /// <param name="userId">게임을 진행할 유저의 아이디</param>
+    /// <returns>게임 진행 수락 여부</returns>
+    public bool ReadyMatch(string userId);
+    /// <summary>
+    /// 매칭이 잡힌 후 게임 진행을 수락하는 함수
+    /// </summary>
+    /// <param name="userInfo">게임을 진행할 유저의 정보</param>
+    /// <returns>게임 진행 수락 여부</returns>
+    public bool ReadyMatch(UserInfo userInfo);
+    /// <summary>
+    /// 매칭이 잡힌 후 게임 진행을 수락하는 함수
+    /// </summary>
+    /// <returns>게임 진행 수락 여부</returns>
+    public bool ReadyMatch();
     /// <summary>
     /// 유저(userName)의 매칭을 종료하는 함수
     /// </summary>

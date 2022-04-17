@@ -19,14 +19,16 @@ public struct UserRecordInfo
 [Serializable]
 public class UserInfo
 {
-    public UserInfo(string id, string name)
+    public UserInfo(string id, string name, string password)
     {
         this.id = id;
         this.name = name;
+        this.password = password;
     }
 
     public string id;
     public string name;
+    public string password;
 
     public UserRecordInfo userRecordInfo;
 

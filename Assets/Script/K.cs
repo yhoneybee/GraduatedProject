@@ -8,6 +8,10 @@ using System.Text;
 
 public static class K
 {
+    public static eCURD_TYPE selectCURDType = eCURD_TYPE.Firebase;
+
+    public static UserInfo loginedUser;
+
     public static string SHA256(string data)
     {
         SHA256 sha = new SHA256Managed();
