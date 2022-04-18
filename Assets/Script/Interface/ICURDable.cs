@@ -25,23 +25,21 @@ public interface ICURDable
     public bool Sign(string userId, string userName, string userPassword, string confirmUserPassword);
     #endregion
 
+    #region Matching
+    /// <summary>
+    /// 로그인 되어있는 유저의 매칭을 시작하는 함수
+    /// </summary>
+    /// <returns>매칭 시작의 성공여부</returns>
+    public bool StartMatch();
+    #endregion
+
     #region Game
     /// <summary>
     /// 게임을 시작하는 함수
     /// </summary>
     /// <param name="mapType">게임을 시작할 맵</param>
-    /// <param name="user1Id">게임을 시작할 유저1의 아이디</param>
-    /// <param name="user2Id">게임을 시작할 유저2의 아이디</param>
     /// <returns>게임시작의 성공여부</returns>
-    public bool StartGame(eMAP_TYPE mapType, string user1Id, string user2Id);
-    /// <summary>
-    /// 게임을 시작하는 함수
-    /// </summary>
-    /// <param name="mapType">게임을 시작할 맵</param>
-    /// <param name="user1Info">게임을 시작할 유저1의 정보</param>
-    /// <param name="user2Info">게임을 시작할 유저2의 정보</param>
-    /// <returns>게임시작의 성공여부</returns>
-    public bool StartGame(eMAP_TYPE mapType, UserInfo user1Info, UserInfo user2Info);
+    public bool StartGame(eMAP_TYPE mapType);
     #endregion
 
     #endregion
@@ -50,56 +48,10 @@ public interface ICURDable
 
     #region Matching
     /// <summary>
-    /// 유저(userName)의 매칭을 시작하는 함수
-    /// </summary>
-    /// <param name="userId">매칭을 시작할 유저의 이름</param>
-    /// <returns>매칭 시작의 성공여부</returns>
-    public bool StartMatch(string userId);
-    /// <summary>
-    /// 유저의 매칭을 시작하는 함수
-    /// </summary>
-    /// <param name="userInfo">매칭을 시작할 유저의 정보</param>
-    /// <returns>매칭 시작의 성공여부</returns>
-    public bool StartMatch(UserInfo userInfo);
-    /// <summary>
-    /// 로그인 되어있는 유저의 매칭을 시작하는 함수
-    /// </summary>
-    /// <returns>매칭 시작의 성공여부</returns>
-    public bool StartMatch();
-    /// <summary>
-    /// 매칭이 잡힌 후 게임 진행을 수락하는 함수
-    /// </summary>
-    /// <param name="userId">게임을 진행할 유저의 아이디</param>
-    /// <returns>게임 진행 수락 여부</returns>
-    public bool ReadyMatch(string userId);
-    /// <summary>
-    /// 매칭이 잡힌 후 게임 진행을 수락하는 함수
-    /// </summary>
-    /// <param name="userInfo">게임을 진행할 유저의 정보</param>
-    /// <returns>게임 진행 수락 여부</returns>
-    public bool ReadyMatch(UserInfo userInfo);
-    /// <summary>
-    /// 매칭이 잡힌 후 게임 진행을 수락하는 함수
+    /// 로그인 된 유저가 매칭이 잡힌 후 게임 진행을 수락하는 함수
     /// </summary>
     /// <returns>게임 진행 수락 여부</returns>
     public bool ReadyMatch();
-    /// <summary>
-    /// 유저(userName)의 매칭을 종료하는 함수
-    /// </summary>
-    /// <param name="userId">매칭을 종료할 유저의 이름</param>
-    /// <returns>매칭 종료의 성공여부</returns>
-    public bool StopMatch(string userId);
-    /// <summary>
-    /// 유저의 매칭을 종료하는 함수
-    /// </summary>
-    /// <param name="userInfo">매칭을 종료할 유저의 정보</param>
-    /// <returns>매칭 종료의 성공여부</returns>
-    public bool StopMatch(UserInfo userInfo);
-    /// <summary>
-    /// 로그인된 유저의 매칭을 종료하는 함수
-    /// </summary>
-    /// <returns>매칭 종료의 성공여부</returns>
-    public bool StopMatch();
     #endregion
 
     #region Before Game
@@ -144,6 +96,14 @@ public interface ICURDable
     #endregion
 
     #region Delete
+
+    #region Matching
+    /// <summary>
+    /// 로그인된 유저의 매칭을 종료하는 함수
+    /// </summary>
+    /// <returns>매칭 종료의 성공여부</returns>
+    public bool StopMatch();
+    #endregion
 
     #region Game
     /// <summary>

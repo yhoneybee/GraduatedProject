@@ -53,19 +53,9 @@ public class SFirebase : ICURDable
         return true;
     }
 
-    public bool ReadyMatch(string userId)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public bool ReadyMatch(UserInfo userInfo)
-    {
-        return ReadyMatch(userInfo.id);
-    }
-
     public bool ReadyMatch()
     {
-        return ReadyMatch(K.loginedUser);
+        return true;
     }
 
     public bool SetBestOutOfCount(int count)
@@ -101,43 +91,18 @@ public class SFirebase : ICURDable
         return true;
     }
 
-    public bool StartGame(eMAP_TYPE mapType, string user1Id, string user2Id)
+    public bool StartGame(eMAP_TYPE mapType)
     {
-        throw new System.NotImplementedException();
-    }
-
-    public bool StartGame(eMAP_TYPE mapType, UserInfo user1Info, UserInfo user2Info)
-    {
-        return StartGame(mapType, user1Info.id, user2Info.id);
-    }
-
-    public bool StartMatch(string userId)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public bool StartMatch(UserInfo userInfo)
-    {
-        return StartMatch(userInfo.id);
+        return true;
     }
 
     public bool StartMatch()
     {
-        return StartMatch(K.loginedUser);
-    }
-
-    public bool StopMatch(string userId)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public bool StopMatch(UserInfo userInfo)
-    {
-        return StopMatch(userInfo.id);
+        return true;
     }
 
     public bool StopMatch()
     {
-        return StopMatch(K.loginedUser);
+        return true;
     }
 }

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/TestScenes/T_Title.unity
     guid: be3b22f5bbb2d3c409b8e4e1d1fc3f01
   - enabled: 1
+    path: Assets/TestScenes/T_Lobby.unity
+    guid: 45e4fbd2f184b36498d75b47af5cfc6e
+  - enabled: 1
     path: Assets/TestScenes/T_Ingame.unity
     guid: 7411d55c514b5bf4c9818f4e825f388b
   m_configObjects:

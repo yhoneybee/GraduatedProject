@@ -4787,16 +4787,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   signPanel:
-    parent: {fileID: 814341576}
-    id: {fileID: 1099006153}
-    name: {fileID: 1538883646}
-    pw: {fileID: 1657549209}
-    confirmPw: {fileID: 1157567056}
-    failText: {fileID: 1656497005}
+    goParent: {fileID: 814341576}
+    inputId: {fileID: 1099006153}
+    inputName: {fileID: 1538883646}
+    inputPw: {fileID: 1657549209}
+    inputConfirmPw: {fileID: 1157567056}
+    txtFailText: {fileID: 1656497005}
   loginPanel:
-    id: {fileID: 298227424}
-    pw: {fileID: 891190445}
-    failText: {fileID: 175399530}
+    inputId: {fileID: 298227424}
+    inputPw: {fileID: 891190445}
+    txtFailText: {fileID: 175399530}
 --- !u!1 &1607714751
 GameObject:
   m_ObjectHideFlags: 0

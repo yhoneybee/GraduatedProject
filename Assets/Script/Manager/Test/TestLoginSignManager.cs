@@ -8,20 +8,20 @@ using System;
 [Serializable]
 public struct SignPanel
 {
-    public GameObject parent;
-    public TMP_InputField id;
-    public TMP_InputField name;
-    public TMP_InputField pw;
-    public TMP_InputField confirmPw;
-    public TextMeshProUGUI failText;
+    public GameObject goParent;
+    public TMP_InputField inputId;
+    public TMP_InputField inputName;
+    public TMP_InputField inputPw;
+    public TMP_InputField inputConfirmPw;
+    public TextMeshProUGUI txtFailText;
 }
 
 [Serializable]
 public struct LoginPanel
 {
-    public TMP_InputField id;
-    public TMP_InputField pw;
-    public TextMeshProUGUI failText;
+    public TMP_InputField inputId;
+    public TMP_InputField inputPw;
+    public TextMeshProUGUI txtFailText;
 }
 
 public class TestLoginSignManager : MonoBehaviour
@@ -31,23 +31,23 @@ public class TestLoginSignManager : MonoBehaviour
 
     public void ResetText()
     {
-        signPanel.failText.text = "";
-        loginPanel.failText.text = "";
+        signPanel.txtFailText.text = "";
+        loginPanel.txtFailText.text = "";
     }
 
     public void Sign()
     {
         if (CURDFactory.GetCURDable(out var curd))
         {
-            if (curd.Sign(signPanel.id.text, signPanel.name.text, signPanel.pw.text, signPanel.confirmPw.text))
+            if (curd.Sign(signPanel.inputId.text, signPanel.inputName.text, signPanel.inputPw.text, signPanel.inputConfirmPw.text))
             {
-                signPanel.failText.color = Color.green;
-                signPanel.parent.SetActive(false);
+                signPanel.txtFailText.color = Color.green;
+                signPanel.goParent.SetActive(false);
             }
             else
             {
-                signPanel.failText.color = Color.red;
-                signPanel.failText.text = "회원가입에 실패했습니다";
+                signPanel.txtFailText.color = Color.red;
+                signPanel.txtFailText.text = "회원가입에 실패했습니다";
             }
         }
     }
@@ -56,7 +56,7 @@ public class TestLoginSignManager : MonoBehaviour
     {
         if (CURDFactory.GetCURDable(out var curd))
         {
-            curd.Login(loginPanel.id.text, loginPanel.pw.text);
+            curd.Login(loginPanel.inputId.text, loginPanel.inputPw.text);
         }
     }
 }
