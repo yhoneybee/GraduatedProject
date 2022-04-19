@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ICURDableÇü½ÄÀ» ¸¸µå´Â ÆÑÅä¸® Å¬·¡½º
+/// ICURDableí˜•ì‹ì„ ë§Œë“œëŠ” íŒ©í† ë¦¬ í´ë˜ìŠ¤
 /// </summary>
 public static class CURDFactory
 {

@@ -11,6 +11,7 @@ public static class K
     public static eCURD_TYPE selectCURDType = eCURD_TYPE.Firebase;
 
     public static UserInfo loginedUser;
+    public static GameInfo enteredGame;
 
     public static string SHA256(string data)
     {

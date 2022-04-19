@@ -24,7 +24,7 @@ public struct LoginPanel
     public TextMeshProUGUI txtFailText;
 }
 
-public class TestLoginSignManager : MonoBehaviour
+public class TestLoginSignManager : Singleton<TestLoginSignManager>
 {
     public SignPanel signPanel;
     public LoginPanel loginPanel;

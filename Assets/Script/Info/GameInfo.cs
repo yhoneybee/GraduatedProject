@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 
 /// <summary>
-/// ÀÎ°ÔÀÓ ÇÃ·¹ÀÌ¾î ½Â¸® È½¼ö Á¤º¸
+/// ì¸ê²Œì„ í”Œë ˆì´ì–´ ìŠ¹ë¦¬ íšŸìˆ˜ ì •ë³´
 /// </summary>
 [Serializable]
 public struct BestOfCount
@@ -15,29 +15,32 @@ public struct BestOfCount
 }
 
 /// <summary>
-/// ¸ÅÄª ÈÄ °ÔÀÓ¿¡ ´ëÇÑ Á¤º¸¸¦ °ü¸®ÇÏ´Â Å¬·¡½º
+/// ë§¤ì¹­ í›„ ê²Œì„ì— ëŒ€í•œ ì •ë³´ë¥¼ ê´€ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
 /// </summary>
 [Serializable]
 public class GameInfo
 {
     /// <summary>
-    /// °ÔÀÓÁ¤º¸¸¦ »ı¼ºÇÏ´Â »ı¼ºÀÚ
+    /// ê²Œì„ì •ë³´ë¥¼ ìƒì„±í•˜ëŠ” ìƒì„±ì
     /// </summary>
-    /// <param name="mapType">°ÔÀÓ¿¡¼­ ÁøÇàµÇ´Â ¸ÊÀÇ Å¸ÀÔ</param>
-    /// <param name="user1">°ÔÀÓÀ» ÇÃ·¹ÀÌÇÏ´Â À¯ÀúÀÇ Á¤º¸</param>
-    /// <param name="user2">»ó´ë À¯ÀúÀÇ Á¤º¸</param>
+    /// <param name="mapType">ê²Œì„ì—ì„œ ì§„í–‰ë˜ëŠ” ë§µì˜ íƒ€ì…</param>
+    /// <param name="user1">ê²Œì„ì„ í”Œë ˆì´í•˜ëŠ” ìœ ì €1ì˜ ì •ë³´</param>
+    /// <param name="user2">ê²Œì„ì„ í”Œë ˆì´í•˜ëŠ” ìœ ì €2ì˜ ì •ë³´</param>
     public GameInfo(eMAP_TYPE mapType, UserInfo user1, UserInfo user2)
     {
         this.mapType = mapType;
-        my = user1;
-        other = user2;
+        this.user1 = user1;
+        this.user2 = user2;
         id = K.SHA256($"{mapType}{user1.id}{user1.name}{user2.id}{user2.name}{DateTime.Now}");
     }
 
     public string id;
 
-    UserInfo my;
-    UserInfo other;
+    public UserInfo user1;
+    public UserInfo user2;
+
+    //public CharactorInfo charactor1;
+    //public CharactorInfo charactor2;
 
     public eMAP_TYPE mapType;
 }

@@ -21,14 +21,14 @@ public struct ReadyUI
     public Image imgReadyTimeRotate;
 }
 
-public class TestMatchManager : MonoBehaviour
+public class TestMatchManager : Singleton<TestMatchManager>
 {
     public MakeMatchUI makeMatchUI;
     public ReadyUI readyUI;
 
     private void Start()
     {
-        StartCoroutine(EDoingText("Matching"));
+        StartCoroutine(EDoingText("¸ÅÄª Ã£´Â Áß"));
     }
 
     public void Logout()
@@ -47,7 +47,7 @@ public class TestMatchManager : MonoBehaviour
                 if (curd.StartMatch())
                 {
                     makeMatchUI.txtMatching.gameObject.SetActive(true);
-                    makeMatchUI.txtMakeMatchBtn.text = $"Cancel Match";
+                    makeMatchUI.txtMakeMatchBtn.text = $"¸ÅÄª Áß´Ü";
                 }
             }
             else
@@ -55,7 +55,7 @@ public class TestMatchManager : MonoBehaviour
                 if (curd.StopMatch())
                 {
                     makeMatchUI.txtMatching.gameObject.SetActive(false);
-                    makeMatchUI.txtMakeMatchBtn.text = $"Make Match";
+                    makeMatchUI.txtMakeMatchBtn.text = $"¸ÅÄª Ã£±â";
                 }
             }
         }

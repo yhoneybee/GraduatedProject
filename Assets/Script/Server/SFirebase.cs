@@ -5,6 +5,7 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class SFirebase : ICURDable
 {
@@ -23,7 +24,15 @@ public class SFirebase : ICURDable
     public bool Initialize()
     {
         database = FirebaseDatabase.DefaultInstance.RootReference;
-        return database != null;
+
+        if (database == null) return false;
+
+        database.Child("matching").ChildAdded += (o, e) =>
+        {
+            Debug.Log($"MATCHING");
+        };
+
+        return true;
     }
 
     public bool Login(string userId, string password)
@@ -98,11 +107,21 @@ public class SFirebase : ICURDable
 
     public bool StartMatch()
     {
+        MakeMatchingUserInfo makeMatchingUserInfo = new MakeMatchingUserInfo(false);
+
+        string json = JsonUtility.ToJson(makeMatchingUserInfo, true);
+
+        Debug.Log($"to json result : {json}");
+
+        database.Child("matching").Child(K.loginedUser.id).SetRawJsonValueAsync(json);
+
         return true;
     }
 
     public bool StopMatch()
     {
+        database.Child("matching").Child(K.loginedUser.id).RemoveValueAsync();
+
         return true;
     }
 }
