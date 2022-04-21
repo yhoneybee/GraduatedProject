@@ -9,7 +9,7 @@ using System.Linq;
 
 public class SFirebase : ICURDable
 {
-    DatabaseReference database;
+    static DatabaseReference database;
 
     public bool EndGame(string gameId)
     {
@@ -23,16 +23,37 @@ public class SFirebase : ICURDable
 
     public bool Initialize()
     {
+        if (database != null) return true;
+
         database = FirebaseDatabase.DefaultInstance.RootReference;
 
         if (database == null) return false;
 
-        database.Child("matching").ChildAdded += (o, e) =>
-        {
-            Debug.Log($"MATCHING");
-        };
+        database.Child("matching").ChildAdded += SFirebase_ChildAdded;
 
         return true;
+    }
+
+    private void SFirebase_ChildAdded(object sender, ChildChangedEventArgs e)
+    {
+        Debug.Log("IN");
+        FirebaseDatabase.DefaultInstance.GetReference("matching").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
+            {
+                var ss = task.Result;
+                // 매칭을 잡는 유저가 2명이상일 경우
+                if (ss.ChildrenCount > 1)
+                {
+                    Debug.Log("IF IN");
+                    // 매칭을 시작한 순서대로 2개를 가져옴
+                    var users = ss.Children.Take(2).Select(x => x.Key);
+                    Debug.Log("TAKE SUCCESS");
+
+                    Debug.Log($"log : {users.ElementAt(0)} / {users.ElementAt(1)}");
+                }
+            }
+        });
     }
 
     public bool Login(string userId, string password)

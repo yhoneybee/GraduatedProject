@@ -37,7 +37,7 @@ public class TestLoginSignManager : Singleton<TestLoginSignManager>
 
     public void Sign()
     {
-        if (CURDFactory.GetCURDable(out var curd))
+        if (CURDGetter.GetCURDable(out var curd))
         {
             if (curd.Sign(signPanel.inputId.text, signPanel.inputName.text, signPanel.inputPw.text, signPanel.inputConfirmPw.text))
             {
@@ -54,7 +54,7 @@ public class TestLoginSignManager : Singleton<TestLoginSignManager>
 
     public void Login()
     {
-        if (CURDFactory.GetCURDable(out var curd))
+        if (CURDGetter.GetCURDable(out var curd))
         {
             curd.Login(loginPanel.inputId.text, loginPanel.inputPw.text);
         }

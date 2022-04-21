@@ -6,7 +6,7 @@ public class Test : MonoBehaviour
 {
     void Start()
     {
-        if (CURDFactory.GetCURDable(out var curd))
+        if (CURDGetter.GetCURDable(out var curd))
         {
             curd.Sign("Justbee", "Kkulbeol", "123", "123");
         }

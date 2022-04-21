@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// ICURDable형식을 만드는 팩토리 클래스
-/// </summary>
-public static class CURDFactory
+public static class CURDGetter
 {
     public static bool GetCURDable(eCURD_TYPE curdType, out ICURDable curd)
     {

@@ -38,7 +38,7 @@ public class TestMatchManager : Singleton<TestMatchManager>
 
     public void MakeMatch()
     {
-        if (CURDFactory.GetCURDable(out var curd))
+        if (CURDGetter.GetCURDable(out var curd))
         {
             makeMatchUI.isMatching = !makeMatchUI.isMatching;
 
