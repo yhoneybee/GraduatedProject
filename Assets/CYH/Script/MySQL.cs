@@ -8,11 +8,11 @@ namespace SERVER
 {
     public class MySQL : SQL
     {
-        readonly string server = "Server=localhost;";
+        readonly string server = "Server=119.196.245.41;";
         readonly string port = "Port=3306;";
         readonly string db = "Database=db;";
-        readonly string id = "Uid=root;";
-        readonly string pw = "Pwd=Rnfqjf2671!@#;";
+        readonly string id = "Uid=yhoney;";
+        readonly string pw = "Pwd=gjslb22;";
 
         MySqlConnection connection;
 
