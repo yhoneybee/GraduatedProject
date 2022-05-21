@@ -8,7 +8,7 @@ namespace SERVER
 {
     public class MySQL : SQL
     {
-        readonly string server = "Server=119.196.245.41;";
+        readonly string server = "Server=127.0.0.1;";
         readonly string port = "Port=3306;";
         readonly string db = "Database=db;";
         readonly string id = "Uid=yhoney;";
@@ -28,6 +28,27 @@ namespace SERVER
 
         public override SQL Initilize()
         {
+            onCreateRoomFail = () => { };
+            onCreateRoomSuccess = () => { };
+
+            onEnterRoomFail = () => { };
+            onEnterRoomSuccess = () => { };
+
+            onInitilizeFail = () => { };
+            onInitilizeSuccess = () => { };
+
+            onLoginFail = () => { };
+            onLoginSuccess = () => { };
+
+            onLogoutFail = () => { };
+            onLogoutSuccess = () => { };
+
+            onQuitRoomFail = () => { };
+            onQuitRoomSuccess = () => { };
+
+            onSignFail = () => { };
+            onSignSuccess = () => { };
+
             connection = new MySqlConnection($"{server}{port}{db}{id}{pw}");
             connection.Open();
             return this;
@@ -37,12 +58,13 @@ namespace SERVER
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand(new Query().Select(Query.OPTION.ALL, "id", "user", ""), connection);
+                MySqlCommand cmd = new MySqlCommand(new Query().Select(Query.OPTION.ALL, "id", "userinfo", $"id = '{id}' AND pw = sha2('{pw}', 256)"), connection);
                 if (cmd.ExecuteNonQuery() == 1) onLoginSuccess();
                 else onLoginFail();
             }
-            catch
+            catch (Exception e)
             {
+                Debug.LogException(e);
                 onLoginFail();
             }
             return this;
@@ -67,12 +89,13 @@ namespace SERVER
                     onSignFail();
                     return this;
                 }
-                MySqlCommand cmd = new MySqlCommand(new Query().Insert("userinfo", $"'{id}', md5('{pw}')"), connection);
+                MySqlCommand cmd = new MySqlCommand(new Query().Insert("userinfo", $"'{id}', sha2('{pw}', 256)"), connection);
                 if (cmd.ExecuteNonQuery() == 1) onSignSuccess();
                 else onSignFail();
             }
-            catch
+            catch (Exception e)
             {
+                Debug.LogException(e);
                 onSignFail();
             }
             return this;
