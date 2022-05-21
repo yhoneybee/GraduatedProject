@@ -29,28 +29,36 @@ namespace SERVER
 
     }
 
+    public enum CallbackType
+    {
+        CreateRoomFail,
+        CreateRoomSuccess,
+        EnterRoomFail,
+        EnterRoomSuccess,
+        InitilizeFail,
+        InitilizeSuccess,
+        LoginFail,
+        LoginSuccess,
+        LogoutFail,
+        LogoutSuccess,
+        QuitRoomFail,
+        QuitRoomSuccess,
+        SignFail,
+        SignSuccess,
+        End,
+    }
+
     public abstract class SQL : IAll
     {
-        public Action onCreateRoomFail;
-        public Action onCreateRoomSuccess;
+        Action[] callbacks = new Action[((int)CallbackType.End)];
 
-        public Action onEnterRoomFail;
-        public Action onEnterRoomSuccess;
+        public void Call(CallbackType callbackType) => callbacks[((int)callbackType)]();
 
-        public Action onInitilizeFail;
-        public Action onInitilizeSuccess;
-
-        public Action onLoginFail;
-        public Action onLoginSuccess;
-
-        public Action onLogoutFail;
-        public Action onLogoutSuccess;
-
-        public Action onQuitRoomFail;
-        public Action onQuitRoomSuccess;
-
-        public Action onSignFail;
-        public Action onSignSuccess;
+        public SQL SetListener(CallbackType callbackType, Action callback)
+        {
+            callbacks[((int)callbackType)] = callback;
+            return this;
+        }
 
         public abstract SQL CreateRoom();
         public abstract SQL EnterRoom();

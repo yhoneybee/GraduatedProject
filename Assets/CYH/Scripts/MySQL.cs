@@ -28,27 +28,6 @@ namespace SERVER
 
         public override SQL Initilize()
         {
-            onCreateRoomFail = () => { };
-            onCreateRoomSuccess = () => { };
-
-            onEnterRoomFail = () => { };
-            onEnterRoomSuccess = () => { };
-
-            onInitilizeFail = () => { };
-            onInitilizeSuccess = () => { };
-
-            onLoginFail = () => { };
-            onLoginSuccess = () => { };
-
-            onLogoutFail = () => { };
-            onLogoutSuccess = () => { };
-
-            onQuitRoomFail = () => { };
-            onQuitRoomSuccess = () => { };
-
-            onSignFail = () => { };
-            onSignSuccess = () => { };
-
             connection = new MySqlConnection($"{server}{port}{db}{id}{pw}");
             connection.Open();
             return this;
@@ -58,14 +37,14 @@ namespace SERVER
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand(new Query().Select(Query.OPTION.ALL, "id", "userinfo", $"id = '{id}' AND pw = sha2('{pw}', 256)"), connection);
-                if (cmd.ExecuteNonQuery() == 1) onLoginSuccess();
-                else onLoginFail();
+                MySqlCommand cmd = new MySqlCommand(new Query().Select("COUNT(id)", "userinfo", $"id = '{id}' AND pw = sha2('{pw}', 256)"), connection);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
             }
             catch (Exception e)
             {
                 Debug.LogException(e);
-                onLoginFail();
+                Call(CallbackType.LoginFail);
             }
             return this;
         }
@@ -86,17 +65,17 @@ namespace SERVER
             {
                 if (pw != pw2)
                 {
-                    onSignFail();
+                    Call(CallbackType.SignFail);
                     return this;
                 }
                 MySqlCommand cmd = new MySqlCommand(new Query().Insert("userinfo", $"'{id}', sha2('{pw}', 256)"), connection);
-                if (cmd.ExecuteNonQuery() == 1) onSignSuccess();
-                else onSignFail();
+                if (cmd.ExecuteNonQuery() == 1) Call(CallbackType.SignSuccess);
+                else Call(CallbackType.SignFail);
             }
             catch (Exception e)
             {
                 Debug.LogException(e);
-                onSignFail();
+                Call(CallbackType.SignFail);
             }
             return this;
         }
@@ -111,15 +90,14 @@ namespace SERVER
 
             public string query { get; private set; }
 
-            static readonly string selectQuery = "SELECT [OPTION] <COLUMNS> FROM <TABLES> [WHERE];";
+            static readonly string selectQuery = "SELECT <COLUMNS> FROM <TABLES> [WHERE];";
             static readonly string deleteQuery = "DELETE FROM <TABLES> [WHERE];";
             static readonly string updateQuery = "UPDATE <TABLES> SET [CHANGE] [WHERE];";
             static readonly string insertQuery = "INSERT INTO <TABLES> [COLUMNS] [VALUES];";
 
-            public string Select(OPTION option, string columns, string tables, string where = "")
+            public string Select(string columns, string tables, string where = "")
             {
                 query = selectQuery;
-                query = query.Replace("[OPTION]", option.ToString());
                 query = query.Replace("<COLUMNS>", columns);
                 query = query.Replace("<TABLES>", tables);
                 query = query.Replace("[WHERE]", $"WHERE {where}");
