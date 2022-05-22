@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace SERVER
 {
-    public class MySQL : SQL
+    public class MySQL : SQL, IDisposable
     {
         readonly string server = "Server=127.0.0.1;";
         readonly string port = "Port=3306;";
@@ -19,6 +19,13 @@ namespace SERVER
         public override SQL CreateRoom()
         {
             return this;
+        }
+
+        public void Dispose()
+        {
+            connection.Close();
+            connection.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public override SQL EnterRoom()
@@ -37,9 +44,11 @@ namespace SERVER
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand(new Query().Select("COUNT(id)", "userinfo", $"id = '{id}' AND pw = sha2('{pw}', 256)"), connection);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
+                MySqlCommand cmd = new MySqlCommand(new Query().Select("id", "userinfo", $"id = '{id}' AND pw = sha2('{pw}', 256)"), connection);
+                using MySqlDataReader table = cmd.ExecuteReader();
+                if (table.HasRows) Call(CallbackType.LoginSuccess);
+                else Call(CallbackType.LoginFail);
+                table.Close();
             }
             catch (Exception e)
             {
@@ -100,7 +109,10 @@ namespace SERVER
                 query = selectQuery;
                 query = query.Replace("<COLUMNS>", columns);
                 query = query.Replace("<TABLES>", tables);
-                query = query.Replace("[WHERE]", $"WHERE {where}");
+
+                if (where == "") query = query.Replace("[WHERE]", $"");
+                else query = query.Replace("[WHERE]", $"WHERE {where}");
+
                 return query;
             }
 
@@ -108,7 +120,10 @@ namespace SERVER
             {
                 query = deleteQuery;
                 query = query.Replace("<TABLES>", tables);
-                query = query.Replace("[WHERE]", $"WHERE {where}");
+
+                if (where == "") query = query.Replace("[WHERE]", $"");
+                else query = query.Replace("[WHERE]", $"WHERE {where}");
+
                 return query;
             }
 
@@ -117,7 +132,10 @@ namespace SERVER
                 query = updateQuery;
                 query = query.Replace("<TABLES>", tables);
                 query = query.Replace("[CHANGE]", change);
-                query = query.Replace("[WHERE]", $"WHERE {where}");
+
+                if (where == "") query = query.Replace("[WHERE]", $"");
+                else query = query.Replace("[WHERE]", $"WHERE {where}");
+
                 return query;
             }
 

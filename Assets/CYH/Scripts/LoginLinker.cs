@@ -19,6 +19,8 @@ public class LoginLinker : MonoBehaviour
     public Toggle toggleRemember;
     public Button btnLogin;
 
+    readonly string saveFileName = "Remember.json";
+
     private void Start()
     {
         btnLogin.onClick.AddListener(Login);
@@ -26,9 +28,9 @@ public class LoginLinker : MonoBehaviour
         inputID.text = "";
         inputPW.text = "";
 
-        if (Json.HasFile("Remember"))
+        if (Json.HasFile(saveFileName))
         {
-            LoginInfo info = Json.Read<LoginInfo>("Remember");
+            LoginInfo info = Json.Read<LoginInfo>(saveFileName);
             inputID.text = info.id;
             inputPW.text = info.pw;
         }
@@ -43,7 +45,7 @@ public class LoginLinker : MonoBehaviour
         {
             if (toggleRemember.isOn)
             {
-                Json.Write(new LoginInfo { id = inputID.text, pw = inputPW.text }, "Remember");
+                Json.Write(new LoginInfo { id = inputID.text, pw = inputPW.text }, saveFileName);
             }
             SceneManager.LoadScene("Main");
         }).Login(inputID.text, inputPW.text);
