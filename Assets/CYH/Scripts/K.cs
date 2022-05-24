@@ -19,6 +19,8 @@ public static class K
 
     public static SQL GetDB() => GetDB(selectDb);
 
+    public static string loginedId;
+
     static SQL GetDB(DB dbType)
     {
         if (db[((int)dbType)] == null)

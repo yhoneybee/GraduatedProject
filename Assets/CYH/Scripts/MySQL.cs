@@ -44,11 +44,16 @@ namespace SERVER
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand(new Query().Select("id", "userinfo", $"id = '{id}' AND pw = sha2('{pw}', 256)"), connection);
-                using MySqlDataReader table = cmd.ExecuteReader();
+                using MySqlCommand cmd1 = new MySqlCommand(new Query().Select("id", "useraccount", $"id = '{id}' AND pw = sha2('{pw}', 256)"), connection);
+                using MySqlDataReader table = cmd1.ExecuteReader();
                 if (table.HasRows) Call(CallbackType.LoginSuccess);
                 else Call(CallbackType.LoginFail);
                 table.Close();
+
+                using MySqlCommand cmd2 = new MySqlCommand(new Query().Insert("userinfo", $"'{id}'"), connection);
+                cmd2.ExecuteNonQuery();
+
+                K.loginedId = id;
             }
             catch (Exception e)
             {
@@ -77,7 +82,7 @@ namespace SERVER
                     Call(CallbackType.SignFail);
                     return this;
                 }
-                MySqlCommand cmd = new MySqlCommand(new Query().Insert("userinfo", $"'{id}', sha2('{pw}', 256)"), connection);
+                MySqlCommand cmd = new MySqlCommand(new Query().Insert("useraccount", $"'{id}', sha2('{pw}', 256)"), connection);
                 if (cmd.ExecuteNonQuery() == 1) Call(CallbackType.SignSuccess);
                 else Call(CallbackType.SignFail);
             }
