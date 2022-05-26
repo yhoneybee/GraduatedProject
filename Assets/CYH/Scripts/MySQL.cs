@@ -16,8 +16,35 @@ namespace SERVER
 
         MySqlConnection connection;
 
-        public override SQL CreateRoom()
+        public override SQL CreateRoom(string roomName = "")
         {
+            if (roomName == "")
+            {
+                using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("COUNT(*)", "roominfo"), connection);
+                roomName = $"{Convert.ToInt32(selectRoomInfo.ExecuteScalar()) + 1} Room by {K.loginedId}";
+            }
+            else
+            {
+                using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("id", "roominfo", $"roomName = {roomName}"), connection);
+                using MySqlDataReader roomInfoTable = selectRoomInfo.ExecuteReader();
+                if (roomInfoTable.HasRows)
+                {
+                    roomInfoTable.Close();
+                    Call(CallbackType.CreateRoomFail);
+                    return this;
+                }
+                roomInfoTable.Close();
+            }
+
+            using MySqlCommand insertRoomInfo = new MySqlCommand(new Query().Insert("roominfo", "id, roomName, player1", $"'{K.SHA256($"{roomName}{K.loginedId}")}', '{roomName}', '{K.loginedId}'"), connection);
+            if (insertRoomInfo.ExecuteNonQuery() != 1)
+            {
+                Call(CallbackType.CreateRoomFail);
+                return this;
+            }
+
+            Call(CallbackType.CreateRoomSuccess);
+
             return this;
         }
 
@@ -44,16 +71,19 @@ namespace SERVER
         {
             try
             {
-                using MySqlCommand cmd1 = new MySqlCommand(new Query().Select("id", "useraccount", $"id = '{id}' AND pw = sha2('{pw}', 256)"), connection);
-                using MySqlDataReader table = cmd1.ExecuteReader();
-                if (table.HasRows) Call(CallbackType.LoginSuccess);
-                else Call(CallbackType.LoginFail);
-                table.Close();
-
-                using MySqlCommand cmd2 = new MySqlCommand(new Query().Insert("userinfo", $"'{id}'"), connection);
-                cmd2.ExecuteNonQuery();
+                using MySqlCommand selectUserAccount = new MySqlCommand(new Query().Select("id", "useraccount", $"id = '{id}' AND pw = sha2('{pw}', 256)"), connection);
+                using MySqlDataReader userAccoutTable = selectUserAccount.ExecuteReader();
+                if (!userAccoutTable.HasRows)
+                {
+                    userAccoutTable.Close();
+                    Call(CallbackType.LoginFail);
+                    return this;
+                }
+                userAccoutTable.Close();
 
                 K.loginedId = id;
+
+                Call(CallbackType.LoginSuccess);
             }
             catch (Exception e)
             {
@@ -82,9 +112,20 @@ namespace SERVER
                     Call(CallbackType.SignFail);
                     return this;
                 }
-                MySqlCommand cmd = new MySqlCommand(new Query().Insert("useraccount", $"'{id}', sha2('{pw}', 256)"), connection);
-                if (cmd.ExecuteNonQuery() == 1) Call(CallbackType.SignSuccess);
-                else Call(CallbackType.SignFail);
+                MySqlCommand insertUserAccount = new MySqlCommand(new Query().Insert("useraccount", $"'{id}', sha2('{pw}', 256)"), connection);
+                if (insertUserAccount.ExecuteNonQuery() != 1) Call(CallbackType.SignFail);
+
+                using MySqlCommand selectUserInfo = new MySqlCommand(new Query().Select("id", "userinfo", $"id = '{id}'"), connection);
+                using MySqlDataReader userInfoTable = selectUserInfo.ExecuteReader();
+                if (!userInfoTable.HasRows)
+                {
+                    userInfoTable.Close();
+                    using MySqlCommand insertUserInfo = new MySqlCommand(new Query().Insert("userinfo", $"'{id}', 0"), connection);
+                    insertUserInfo.ExecuteNonQuery();
+                }
+                userInfoTable.Close();
+
+                Call(CallbackType.SignSuccess);
             }
             catch (Exception e)
             {

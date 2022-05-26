@@ -10,6 +10,7 @@ public struct LoginInfo
 {
     public string id;
     public string pw;
+    public bool remember;
 }
 
 public class LoginLinker : MonoBehaviour
@@ -33,19 +34,24 @@ public class LoginLinker : MonoBehaviour
             LoginInfo info = Json.Read<LoginInfo>(saveFileName);
             inputID.text = info.id;
             inputPW.text = info.pw;
+            toggleRemember.isOn = info.remember;
         }
     }
 
     public void Login()
     {
-        K.GetDB().SetListener(SERVER.CallbackType.LoginFail, () => 
+        K.GetDB().SetListener(SERVER.CallbackType.LoginFail, () =>
         {
             print("Fail");
         }).SetListener(SERVER.CallbackType.LoginSuccess, () =>
         {
             if (toggleRemember.isOn)
             {
-                Json.Write(new LoginInfo { id = inputID.text, pw = inputPW.text }, saveFileName);
+                Json.Write(new LoginInfo { id = inputID.text, pw = inputPW.text, remember = true }, saveFileName);
+            }
+            else
+            {
+                Json.Write(new LoginInfo { remember = false }, saveFileName);
             }
             SceneManager.LoadScene("Main");
         }).Login(inputID.text, inputPW.text);

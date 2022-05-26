@@ -19,7 +19,7 @@ namespace SERVER
 
     public interface ICreateEnterQuitRoomable
     {
-        public SQL CreateRoom();
+        public SQL CreateRoom(string roomName = "");
         public SQL EnterRoom();
         public SQL QuitRoom();
     }
@@ -60,7 +60,19 @@ namespace SERVER
             return this;
         }
 
-        public abstract SQL CreateRoom();
+        public SQL AddListener(CallbackType callbackType, Action callback)
+        {
+            callbacks[((int)callbackType)] += callback;
+            return this;
+        }
+
+        public SQL RemoveListener(CallbackType callbackType, Action callback)
+        {
+            callbacks[((int)callbackType)] -= callback;
+            return this;
+        }
+
+        public abstract SQL CreateRoom(string roomName = "");
         public abstract SQL EnterRoom();
         public abstract SQL Initilize();
         public abstract SQL Login(string id, string pw);
