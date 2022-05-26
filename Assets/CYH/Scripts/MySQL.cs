@@ -8,7 +8,7 @@ namespace SERVER
 {
     public class MySQL : SQL, IDisposable
     {
-        readonly string server = "Server=127.0.0.1;";
+        readonly string server = "Server=119.196.245.41;";
         readonly string port = "Port=3306;";
         readonly string db = "Database=db;";
         readonly string id = "Uid=yhoney;";
