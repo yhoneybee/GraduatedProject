@@ -120,7 +120,7 @@ namespace SERVER
                 if (!userInfoTable.HasRows)
                 {
                     userInfoTable.Close();
-                    using MySqlCommand insertUserInfo = new MySqlCommand(new Query().Insert("userinfo", $"'{id}', 0"), connection);
+                    using MySqlCommand insertUserInfo = new MySqlCommand(new Query().Insert("userinfo", $"'{id}', 0, 0, 0"), connection);
                     insertUserInfo.ExecuteNonQuery();
                 }
                 userInfoTable.Close();
