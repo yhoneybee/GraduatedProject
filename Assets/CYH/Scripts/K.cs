@@ -20,6 +20,7 @@ public static class K
     public static SQL GetDB() => GetDB(selectDb);
 
     public static string loginedId;
+    public static string enteredRoomName;
 
     static SQL GetDB(DB dbType)
     {

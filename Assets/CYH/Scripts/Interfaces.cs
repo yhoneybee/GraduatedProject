@@ -20,7 +20,7 @@ namespace SERVER
     public interface ICreateEnterQuitRoomable
     {
         public SQL CreateRoom(string roomName = "");
-        public SQL EnterRoom();
+        public SQL EnterRoom(string roomName);
         public SQL QuitRoom();
     }
 
@@ -73,7 +73,7 @@ namespace SERVER
         }
 
         public abstract SQL CreateRoom(string roomName = "");
-        public abstract SQL EnterRoom();
+        public abstract SQL EnterRoom(string roomName);
         public abstract SQL Initilize();
         public abstract SQL Login(string id, string pw);
         public abstract SQL Logout();

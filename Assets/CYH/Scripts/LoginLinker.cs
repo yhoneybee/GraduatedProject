@@ -45,6 +45,7 @@ public class LoginLinker : MonoBehaviour
             print("Fail");
         }).SetListener(SERVER.CallbackType.LoginSuccess, () =>
         {
+            K.loginedId = inputID.text;
             if (toggleRemember.isOn)
             {
                 Json.Write(new LoginInfo { id = inputID.text, pw = inputPW.text, remember = true }, saveFileName);
