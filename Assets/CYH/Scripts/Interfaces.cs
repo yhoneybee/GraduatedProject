@@ -21,7 +21,7 @@ namespace SERVER
     {
         public SQL CreateRoom(string roomName = "");
         public SQL EnterRoom(string roomName);
-        public SQL QuitRoom();
+        public SQL QuitRoom(string roomName);
     }
 
     public interface IAll : IInitilizerable, ILoginOutSignable, ICreateEnterQuitRoomable
@@ -77,7 +77,7 @@ namespace SERVER
         public abstract SQL Initilize();
         public abstract SQL Login(string id, string pw);
         public abstract SQL Logout();
-        public abstract SQL QuitRoom();
+        public abstract SQL QuitRoom(string roomName);
         public abstract SQL Sign(string id, string pw, string pw2);
     }
 }

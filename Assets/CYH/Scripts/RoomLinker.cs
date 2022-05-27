@@ -12,6 +12,6 @@ public class RoomLinker : MonoBehaviour
         }).SetListener(SERVER.CallbackType.QuitRoomFail, () => 
         {
 
-        }).QuitRoom();
+        }).QuitRoom(K.enteredRoomName);
     }
 }

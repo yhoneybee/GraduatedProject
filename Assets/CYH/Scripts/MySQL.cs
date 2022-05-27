@@ -152,7 +152,7 @@ namespace SERVER
             return this;
         }
 
-        public override SQL QuitRoom()
+        public override SQL QuitRoom(string roomName)
         {
             return this;
         }
