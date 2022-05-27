@@ -24,6 +24,13 @@ namespace SERVER
         public SQL QuitRoom(string roomName);
     }
 
+    public interface IReadyStartSurrenderGameable
+    {
+        public SQL Ready(string userId);
+        public SQL StartGame(string userId);
+        public SQL SurrenderGame(string userId);
+    }
+
     public interface IAll : IInitilizerable, ILoginOutSignable, ICreateEnterQuitRoomable
     {
 

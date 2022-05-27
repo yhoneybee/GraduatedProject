@@ -27,7 +27,7 @@ namespace SERVER
                 }
                 else
                 {
-                    using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("id, player1, player2", "roominfo", $"roomName = '{roomName}'"), connection);
+                    using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("name, player1, player2", "roominfo", $"name = '{roomName}'"), connection);
                     using MySqlDataReader roomInfoTable = selectRoomInfo.ExecuteReader();
                     if (roomInfoTable.HasRows)
                     {
@@ -38,7 +38,7 @@ namespace SERVER
                     roomInfoTable.Close();
                 }
 
-                using MySqlCommand insertRoomInfo = new MySqlCommand(new Query().Insert("roominfo", "id, roomName, player1", $"sha2('{roomName}{K.loginedId}', 256), '{roomName}', '{K.loginedId}'"), connection);
+                using MySqlCommand insertRoomInfo = new MySqlCommand(new Query().Insert("roominfo", "name, player1", $"'{roomName}', '{K.loginedId}'"), connection);
                 if (insertRoomInfo.ExecuteNonQuery() != 1)
                 {
                     Call(CallbackType.CreateRoomFail);
@@ -67,7 +67,7 @@ namespace SERVER
         {
             try
             {
-                using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("id, player1, player2", "roominfo", $"roomName = '{roomName}'"), connection);
+                using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("name, player1, player2", "roominfo", $"name = '{roomName}'"), connection);
                 using MySqlDataReader roomInfoTable = selectRoomInfo.ExecuteReader();
                 if (!roomInfoTable.HasRows)
                 {
@@ -98,7 +98,7 @@ namespace SERVER
                     return this;
                 }
 
-                using MySqlCommand updateRoomInfo = new MySqlCommand(new Query().Update("roominfo", $"{updatePlayerColumnsName} = {K.loginedId}", $"roomName = '{roomName}'"), connection);
+                using MySqlCommand updateRoomInfo = new MySqlCommand(new Query().Update("roominfo", $"{updatePlayerColumnsName} = {K.loginedId}", $"name = '{roomName}'"), connection);
                 if (updateRoomInfo.ExecuteNonQuery() != 1)
                 {
                     Call(CallbackType.EnterRoomFail);
@@ -154,6 +154,54 @@ namespace SERVER
 
         public override SQL QuitRoom(string roomName)
         {
+            try
+            {
+                using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("name, player1, player2", "roominfo", $"name = '{roomName}'"), connection);
+                using MySqlDataReader roomInfoTable = selectRoomInfo.ExecuteReader();
+                if (!roomInfoTable.HasRows)
+                {
+                    roomInfoTable.Close();
+                    Call(CallbackType.EnterRoomFail);
+                    return this;
+                }
+
+                roomInfoTable.Read();
+                string player1 = roomInfoTable["player1"].ToString();
+                string player2 = roomInfoTable["player2"].ToString();
+
+                roomInfoTable.Close();
+
+                string updatePlayerColumnsName = string.Empty;
+
+                if (player1 == K.loginedId)
+                {
+                    updatePlayerColumnsName = "player1";
+                }
+                else if (player2 == K.loginedId)
+                {
+                    updatePlayerColumnsName = "player2";
+                }
+                else
+                {
+                    Call(CallbackType.QuitRoomFail);
+                    return this;
+                }
+
+                using MySqlCommand updateRoomInfo = new MySqlCommand(new Query().Update("roominfo", $"{updatePlayerColumnsName} = NULL", $"name = '{roomName}'"), connection);
+                if (updateRoomInfo.ExecuteNonQuery() != 1)
+                {
+                    Call(CallbackType.EnterRoomFail);
+                    return this;
+                }
+
+                Call(CallbackType.QuitRoomSuccess);
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                Call(CallbackType.QuitRoomFail);
+            }
+
             return this;
         }
 
@@ -166,7 +214,7 @@ namespace SERVER
                     Call(CallbackType.SignFail);
                     return this;
                 }
-                MySqlCommand insertUserAccount = new MySqlCommand(new Query().Insert("useraccount", $"'{id}', sha2('{pw}', 256)"), connection);
+                using MySqlCommand insertUserAccount = new MySqlCommand(new Query().Insert("useraccount", $"'{id}', sha2('{pw}', 256)"), connection);
                 if (insertUserAccount.ExecuteNonQuery() != 1) Call(CallbackType.SignFail);
 
                 using MySqlCommand selectUserInfo = new MySqlCommand(new Query().Select("id", "userinfo", $"id = '{id}'"), connection);
