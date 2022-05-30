@@ -11,7 +11,7 @@ public enum FADE_STEP //페이드 클래스
     FADE_END,
 }
 
-public class Fade : MonoBehaviour //페이드 매니저
+public class Fade : Singleton<Fade> //페이드 매니저
 {
     public FADE_STEP fadeStep = FADE_STEP.FADE_END;
 
@@ -65,7 +65,6 @@ public class Fade : MonoBehaviour //페이드 매니저
     // Start is called before the first frame update
     private void Awake()
     {
-        V.Fade = this;
     }
     void Start()
     {

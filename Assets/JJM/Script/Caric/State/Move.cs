@@ -14,7 +14,7 @@ public class Move : State
     {
         h = V.GetAxisRaw("Horizontal");
 
-        Debug.Log("MOVE !!");
+        Debug.Log("MOVE !!");  
 
         if(h == 0) ai.ChangeState(gameObject.AddComponent<Idle>());
     }

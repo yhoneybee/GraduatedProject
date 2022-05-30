@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 {
-    public State state; 
+    public State state;
     // Start is called before the first frame update
     void Start()
     {   
@@ -14,8 +14,9 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     // Update is called once per frame
     void Update()
     {
-        // if(state != null)
-        //     state.Update();
+  
+       
+
     }
 
     public void ChangeState(State newState) //상태 변경

@@ -25,7 +25,7 @@ public abstract class SceneBase : MonoBehaviour //베이스 씬 클래스
     public void Start()
     {
         V.Start();
-        V.Fade.FadeOut(Color.black, 1f, 1f, 1); //씬 시작 페이드 아웃
+        Fade.Instance.FadeOut(Color.black, 1f, 1f, 1); //씬 시작 페이드 아웃
     }
 
     public void Update()
@@ -36,7 +36,7 @@ public abstract class SceneBase : MonoBehaviour //베이스 씬 클래스
         {
             case SCENE_STEP.FIRST_FRAME:
 
-                if(V.Fade.fadeStep == FADE_STEP.FADE_END_BEFORE)
+                if(Fade.Instance.fadeStep == FADE_STEP.FADE_END_BEFORE)
                 {
                     sceneStep = SCENE_STEP.START;
                 }
@@ -56,14 +56,14 @@ public abstract class SceneBase : MonoBehaviour //베이스 씬 클래스
                 break;
             case SCENE_STEP.END_BEFORE:
 
-                V.Fade.FadeIn(Color.black, 1f, 1f, 1);
+                Fade.Instance.FadeIn(Color.black, 1f, 1f, 1);
 
                 sceneStep = SCENE_STEP.END;
 
                 break;
             case SCENE_STEP.END:
 
-                if (V.Fade.fadeStep == FADE_STEP.FADE_END_BEFORE)
+                if (Fade.Instance.fadeStep == FADE_STEP.FADE_END_BEFORE)
                 {
                     SceneEnd();
                     sceneStep = SCENE_STEP.END_AFTER;

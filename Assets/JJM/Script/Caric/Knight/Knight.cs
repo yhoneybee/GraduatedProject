@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Knight : Caric
 {
+    [Header("=====Night Class=====")]
+    public string nowKey; //현재 입력한 키   
+
     public override void Start()
     {
         base.Start();
@@ -11,6 +14,6 @@ public class Knight : Caric
 
     void Update()
     {
-        
+        nowKey = Input.inputString;
     }
 }
