@@ -2,21 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MOVEDIR
+{
+    STAND = 0,
+    LEFT = -1,
+    RIGHT = 1,
+}
+
 public class Move : State
 {
-    float h;
     public override void Enter()
     {
-        GetInfo();
-        caric.anim.Play("Run");
+        StateInit("Run");
     }
     public override void Update()
     {
-        h = V.GetAxisRaw("Horizontal");
+        CaricMove();
+        
+        if(caric.moveDir == 0 || V.MoveKeyUp()) ai.ChangeState(gameObject.AddComponent<Idle>());
+        else if(V.GetKeyDown(KeyCode.W)) ai.ChangeState(gameObject.AddComponent<Jump>());
 
         Debug.Log("MOVE !!");  
-
-        if(h == 0) ai.ChangeState(gameObject.AddComponent<Idle>());
     }
     public override void Exit()
     {

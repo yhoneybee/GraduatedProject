@@ -17,7 +17,7 @@ public class Ingame : SceneBase //인게임 씬
 
     public override void ScenePlaying()
     {
-        CommandCheck();
+        //CommandCheck();
     }
 
     public override void SceneEnd()
@@ -39,7 +39,9 @@ public class Ingame : SceneBase //인게임 씬
 
         switch (nowInputKey) 
         {
-            
+            case "jk":
+                Debug.Log("화염탄!");
+                break;
         }
 
     }

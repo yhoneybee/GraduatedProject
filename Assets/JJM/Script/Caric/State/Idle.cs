@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class Idle : State //대기 상태
 {
-    float h; // 수평 값
+    private List<SpriteRenderer> sprites;
     public override void Enter()
     {
-        GetInfo();
-        caric.anim.Play("Idle");
+        StateInit("Idle");
+        sprites = V.Find_Child_Component_List<SpriteRenderer>(gameObject);
     }
     public override void Update()
     {
-        h = V.GetAxisRaw("Horizontal");
-
         Debug.Log("IDLE !!");
 
-        if(h != 0) ai.ChangeState(gameObject.AddComponent<Move>());
+        if(caric.moveDir != 0)
+        {
+            foreach(var sp in sprites) //스프라이트 플립
+            {
+                sp.flipX = (caric.moveDir == 1);
+            }    
+            ai.ChangeState(gameObject.AddComponent<Move>());
+        }
+        if(V.GetKeyDown(KeyCode.W)) //점프
+            ai.ChangeState(gameObject.AddComponent<Jump>());
     }
     public override void Exit()
     {

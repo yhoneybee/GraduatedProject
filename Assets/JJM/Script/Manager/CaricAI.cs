@@ -2,6 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CARIC_STATE
+{
+    IDEL,
+    CROUCH, // s
+    WALK, // a,d
+    RUN, // aa,dd
+    JUMP, // w
+    FALL, 
+    ATTACK, // j, k, command
+    DEFENCE, // l
+    HIT,
+    FLY,
+    DIE,
+}
+
 public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 {
     public State state;
@@ -15,7 +30,6 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     void Update()
     {
   
-       
 
     }
 
