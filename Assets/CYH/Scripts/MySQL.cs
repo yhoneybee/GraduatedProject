@@ -232,7 +232,7 @@ namespace SERVER
 
                 if (player1 == player2 && player1 == string.Empty)
                 {
-                    using MySqlCommand deleteRoomInfo = new MySqlCommand(new Query().Delete("roominfo", $"name = {roomName}"), connection);
+                    using MySqlCommand deleteRoomInfo = new MySqlCommand(new Query().Delete("roominfo", $"name = '{roomName}'"), connection);
                     if (deleteRoomInfo.ExecuteNonQuery() != 1)
                     {
                         Call(CallbackType.QuitRoomFail);
