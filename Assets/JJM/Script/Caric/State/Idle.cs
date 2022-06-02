@@ -16,14 +16,17 @@ public class Idle : State //대기 상태
 
         if(caric.moveDir != 0)
         {
-            foreach(var sp in sprites) //스프라이트 플립
-            {
-                sp.flipX = (caric.moveDir == 1);
-            }    
-            ai.ChangeState(gameObject.AddComponent<Move>());
+            caric.sprite.flipX = (caric.moveDir == -1);
+            ai.ChangeState(gameObject.AddComponent<Walk>());
         }
-        if(V.GetKeyDown(KeyCode.W)) //점프
+        if(V.GetKeyDown(V.JUMP_KEY)) //점프
+        {
             ai.ChangeState(gameObject.AddComponent<Jump>());
+        }   
+        else if(V.GetKeyDown(V.CROUCH_KEY)) //앉기
+        {
+            ai.ChangeState(gameObject.AddComponent<Crouch>());
+        }
     }
     public override void Exit()
     {

@@ -27,7 +27,7 @@ public partial class V : MonoBehaviour //공용 함수 클래스
 
     public static bool MoveKeyUp()
     {
-        if(V.GetKeyUp(KeyCode.A) || V.GetKeyUp(KeyCode.D)) return true;
+        if(V.GetKeyUp(V.LEFT_MOVE_KEY) || V.GetKeyUp(V.RIGHT_MOVE_KEY)) return true;
 
         return false;
     }

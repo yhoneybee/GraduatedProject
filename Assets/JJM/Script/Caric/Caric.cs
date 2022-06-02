@@ -10,8 +10,8 @@ public class Caric : MonoBehaviour
     public float jumpForce;
 
     [Header("Component")]
-    public Animation anim;
-    public SpriteRenderer spriterenderer;
+    public Animator anim;
+    public SpriteRenderer sprite;
     public Rigidbody2D rigid;
     public virtual void Start()
     {
@@ -27,14 +27,14 @@ public class Caric : MonoBehaviour
     public void Caric_Setting()
     {
         moveDir = 0;
-        moveSpeed = 10;
+        moveSpeed = 5;
         jumpForce = 6;
     }
 
     public void Caric_GetComponent()
     {
-        anim = GetComponent<Animation>();
-        spriterenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
     }
 }

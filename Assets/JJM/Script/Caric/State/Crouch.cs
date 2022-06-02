@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fall : State
+public class Crouch : State
 {
     public override void Enter()
     {
-        StateInit("Fall");
+        StateInit("Crouch");
     }
-
     public override void Update()
     {
-        if(caric.rigid.velocity.y == 0) ai.ChangeState(gameObject.AddComponent<Idle>());
-
-        Debug.Log("FALL !!");
+        if(V.GetKeyUp(V.CROUCH_KEY))
+        {
+            ai.ChangeState(gameObject.AddComponent<Idle>());
+        }
     }
-
     public override void Exit()
     {
+        
     }
 }
