@@ -16,6 +16,41 @@ namespace SERVER
 
         MySqlConnection connection;
 
+        public override SQL GetAllRoom(out List<RoomData> roomData)
+        {
+            roomData = null;
+
+            try
+            {
+                using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("*", "roominfo"), connection);
+                using MySqlDataReader roomInfoTable = selectRoomInfo.ExecuteReader();
+
+                if (roomInfoTable == null)
+                {
+                    Call(CallbackType.GetAllRoomFail);
+                    return this;
+                }
+
+                roomData = new List<RoomData>();
+
+                while (roomInfoTable.Read())
+                {
+                    roomData.Add(new RoomData { name = roomInfoTable["name"].ToString(), player1 = roomInfoTable["player1"].ToString(), player2 = roomInfoTable["player2"].ToString() });
+                }
+
+                roomInfoTable.Close();
+
+                Call(CallbackType.GetAllRoomSuccess);
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                Call(CallbackType.GetAllRoomFail);
+            }
+
+            return this;
+        }
+
         public override SQL CreateRoom(string roomName = "")
         {
             try
@@ -168,7 +203,6 @@ namespace SERVER
                 roomInfoTable.Read();
                 string player1 = roomInfoTable["player1"].ToString();
                 string player2 = roomInfoTable["player2"].ToString();
-
                 roomInfoTable.Close();
 
                 string updatePlayerColumnsName = string.Empty;
@@ -176,10 +210,12 @@ namespace SERVER
                 if (player1 == K.loginedId)
                 {
                     updatePlayerColumnsName = "player1";
+                    player1 = string.Empty;
                 }
                 else if (player2 == K.loginedId)
                 {
                     updatePlayerColumnsName = "player2";
+                    player2 = string.Empty;
                 }
                 else
                 {
@@ -190,8 +226,18 @@ namespace SERVER
                 using MySqlCommand updateRoomInfo = new MySqlCommand(new Query().Update("roominfo", $"{updatePlayerColumnsName} = NULL", $"name = '{roomName}'"), connection);
                 if (updateRoomInfo.ExecuteNonQuery() != 1)
                 {
-                    Call(CallbackType.EnterRoomFail);
+                    Call(CallbackType.QuitRoomFail);
                     return this;
+                }
+
+                if (player1 == player2 && player1 == string.Empty)
+                {
+                    using MySqlCommand deleteRoomInfo = new MySqlCommand(new Query().Delete("roominfo", $"name = '{roomName}'"), connection);
+                    if (deleteRoomInfo.ExecuteNonQuery() != 1)
+                    {
+                        Call(CallbackType.QuitRoomFail);
+                        return this;
+                    }
                 }
 
                 Call(CallbackType.QuitRoomSuccess);

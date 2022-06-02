@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class EnterRoomLinker : MonoBehaviour
 {
     public InputField inputRoomName;

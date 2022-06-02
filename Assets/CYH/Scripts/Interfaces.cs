@@ -22,6 +22,7 @@ namespace SERVER
         public SQL CreateRoom(string roomName = "");
         public SQL EnterRoom(string roomName);
         public SQL QuitRoom(string roomName);
+        public SQL GetAllRoom(out List<RoomData> roomData);
     }
 
     public interface IReadyStartSurrenderGameable
@@ -52,6 +53,8 @@ namespace SERVER
         QuitRoomSuccess,
         SignFail,
         SignSuccess,
+        GetAllRoomFail,
+        GetAllRoomSuccess,
         End,
     }
 
@@ -86,5 +89,6 @@ namespace SERVER
         public abstract SQL Logout();
         public abstract SQL QuitRoom(string roomName);
         public abstract SQL Sign(string id, string pw, string pw2);
+        public abstract SQL GetAllRoom(out List<RoomData> roomData);
     }
 }
