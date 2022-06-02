@@ -16,6 +16,41 @@ namespace SERVER
 
         MySqlConnection connection;
 
+        public override SQL GetAllRoom(out List<RoomData> roomData)
+        {
+            roomData = null;
+
+            try
+            {
+                using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("*", "roominfo"), connection);
+                using MySqlDataReader roomInfoTable = selectRoomInfo.ExecuteReader();
+
+                if (roomInfoTable == null)
+                {
+                    Call(CallbackType.GetAllRoomFail);
+                    return this;
+                }
+
+                roomData = new List<RoomData>();
+
+                while (roomInfoTable.Read())
+                {
+                    roomData.Add(new RoomData { name = roomInfoTable["name"].ToString(), player1 = roomInfoTable["player1"].ToString(), player2 = roomInfoTable["player2"].ToString() });
+                }
+
+                roomInfoTable.Close();
+
+                Call(CallbackType.GetAllRoomSuccess);
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                Call(CallbackType.GetAllRoomFail);
+            }
+
+            return this;
+        }
+
         public override SQL CreateRoom(string roomName = "")
         {
             try

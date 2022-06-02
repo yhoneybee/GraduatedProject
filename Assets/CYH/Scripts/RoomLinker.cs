@@ -10,7 +10,7 @@ public class RoomLinker : MonoBehaviour
 
     private void Start()
     {
-        txtRoomName.text = K.enteredRoomName;
+        txtRoomName.text = $"room : {K.enteredRoomName}";
     }
 
     private void OnApplicationQuit()
@@ -22,7 +22,7 @@ public class RoomLinker : MonoBehaviour
     {
         K.GetDB().SetListener(SERVER.CallbackType.QuitRoomSuccess, () =>
         {
-            SceneManager.LoadScene("Ingame");
+            SceneManager.LoadScene("Main");
         }).SetListener(SERVER.CallbackType.QuitRoomFail, () =>
         {
 
