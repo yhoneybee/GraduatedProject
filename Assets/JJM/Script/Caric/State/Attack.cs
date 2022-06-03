@@ -8,7 +8,7 @@ public class Attack : State
     {
 
     }
-    public override void Update()
+    public override void Tick()
     {
 
     }

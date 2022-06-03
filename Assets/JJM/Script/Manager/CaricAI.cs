@@ -29,8 +29,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     // Update is called once per frame
     void Update()
     {
-  
-
+        if(state != null) state.Tick();
     }
 
     public void ChangeState(State newState) //상태 변경

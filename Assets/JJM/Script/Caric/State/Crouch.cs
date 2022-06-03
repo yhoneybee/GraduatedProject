@@ -8,7 +8,7 @@ public class Crouch : State
     {
         StateInit("Crouch");
     }
-    public override void Update()
+    public override void Tick()
     {
         if(V.GetKeyUp(V.CROUCH_KEY))
         {

@@ -10,14 +10,14 @@ public class Idle : State //대기 상태
         StateInit("Idle");
         sprites = V.Find_Child_Component_List<SpriteRenderer>(gameObject);
     }
-    public override void Update()
+    public override void Tick()
     {
         Debug.Log("IDLE !!");
 
         if(caric.moveDir != 0)
         {
             caric.sprite.flipX = (caric.moveDir == -1);
-            ai.ChangeState(gameObject.AddComponent<Walk>());
+            ai.ChangeState(gameObject.AddComponent<Delay>());
         }
         if(V.GetKeyDown(V.JUMP_KEY)) //점프
         {

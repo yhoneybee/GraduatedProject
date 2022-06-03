@@ -10,7 +10,7 @@ public class Jump : State
         caric.rigid.AddForce(Vector2.up * caric.jumpForce, ForceMode2D.Impulse);
         caric.rigid.AddForce(Vector2.right * caric.moveDir * (caric.moveSpeed * 5), ForceMode2D.Force);
     }
-    public override void Update()
+    public override void Tick()
     {
         if(caric.rigid.velocity.y <= 0) ai.ChangeState(gameObject.AddComponent<Fall>());
         
