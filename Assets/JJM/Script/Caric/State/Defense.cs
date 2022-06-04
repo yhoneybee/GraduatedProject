@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crouch : State
+public class Defense : State
 {
     public override void Enter()
     {
-        StateInit("Crouch", CARIC_STATE.CROUCH);
+        StateInit("Defense", CARIC_STATE.DEFENSE);
     }
     public override void Tick()
     {
-        
+
     }
     public override void Exit()
     {

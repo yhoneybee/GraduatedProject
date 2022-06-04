@@ -7,8 +7,8 @@ public class Run : State
     float weight = 1.5f;
     public override void Enter()
     {
-        StateInit("Run");
-        caric.moveSpeed *= weight;
+        StateInit("Run", CARIC_STATE.STAND);
+        ai.caric.moveSpeed *= weight;
     }
     public override void Tick()
     {
@@ -21,6 +21,6 @@ public class Run : State
     }
     public override void Exit()
     {
-        caric.moveSpeed /= weight;
+        ai.caric.moveSpeed /= weight;
     }
 }
