@@ -87,19 +87,8 @@ public class Network : MonoBehaviour
     private void Start()
     {
         Init();
-        Connect("127.0.0.1", 6475);
-        ChatPacket chatPacket = new ChatPacket();
-        chatPacket.id = "kkulbeol";
-        chatPacket.chat = "fdsjfdsjfksdjfk";
-        chatPacket.chatType = ((short)ChatType.ALL);
-        var buffer = Data<ChatPacket>.Serialize(chatPacket);
-
-        ChatPacket temp = Data<ChatPacket>.Deserialize(buffer);
-
-        Packet packet = new Packet();
-        packet.type = (short)PacketType.CHAT_PACKET;
-        packet.SetData(buffer, buffer.Length);
-        Send(packet);
+        Connect("119.196.245.41", 6475);
+        StartReceive();
     }
 
     private void Update()
@@ -127,7 +116,18 @@ public class Network : MonoBehaviour
     {
         if (e.SocketError == SocketError.Success)
         {
+            ChatPacket chatPacket = new ChatPacket();
+            chatPacket.id = "kkulbeol";
+            chatPacket.chat = "fdsjfdsjfksdjfk";
+            chatPacket.chatType = ((short)ChatType.ALL);
+            var buffer = Data<ChatPacket>.Serialize(chatPacket);
 
+            ChatPacket temp = Data<ChatPacket>.Deserialize(buffer);
+
+            Packet packet = new Packet();
+            packet.type = (short)PacketType.CHAT_PACKET;
+            packet.SetData(buffer, buffer.Length);
+            Send(packet);
         }
         else
         {
@@ -143,31 +143,12 @@ public class Network : MonoBehaviour
         sendEventArgs.Completed += OnSendCompleted;
         sendEventArgs.UserToken = this;
 
-        byte[] sendData = GetSendBytesA(packet);
+        byte[] sendData = packet.GetSendBytes();
         sendEventArgs.SetBuffer(sendData, 0, sendData.Length);
 
         bool pending = socket.SendAsync(sendEventArgs);
         if (!pending)
             OnSendCompleted(null, sendEventArgs);
-    }
-
-    /// <summary>
-    /// TEMP
-    /// </summary>
-    /// <param name="packet"></param>
-    /// <returns></returns>
-    public byte[] GetSendBytesA(Packet packet)
-    {
-        byte[] type_bytes = BitConverter.GetBytes(packet.type);
-        int header_size = packet.data.Length;
-        byte[] header_bytes = BitConverter.GetBytes(header_size);
-        byte[] send_bytes = new byte[header_bytes.Length + type_bytes.Length + packet.data.Length];
-
-        Array.Copy(header_bytes, 0, send_bytes, 0, header_bytes.Length);
-        Array.Copy(type_bytes, 0, send_bytes, header_bytes.Length, type_bytes.Length);
-        Array.Copy(packet.data, 0, send_bytes, header_bytes.Length + type_bytes.Length, packet.data.Length);
-
-        return send_bytes;
     }
 
     void OnSendCompleted(object sender, SocketAsyncEventArgs e)
