@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour
+public abstract class Singleton<T> : MonoBehaviour
     where T : class
 {
     public static T Instance { get; private set; } = null;
 
     public virtual void OnEnable()
     {
-        Instance = GetComponent<T>();
+        if (Instance == null)
+        {
+            Instance = GetComponent<T>();
+            Init();
+        }
     }
 
     public virtual void OnDestroy()
     {
         Instance = null;
     }
+
+    public virtual void Init() { }
 }

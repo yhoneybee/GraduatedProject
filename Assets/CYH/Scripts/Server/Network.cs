@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Network : MonoBehaviour
+public class Network : Singleton<Network>
 {
     Socket socket;
     SocketAsyncEventArgs receiveEventArgs;
@@ -16,7 +17,9 @@ public class Network : MonoBehaviour
     byte[] receiveBuffer;
     object mutexReceivePacketList = new object();
 
-    public void Init()
+    bool isConnect = false;
+
+    public override void Init()
     {
         receviePacketList = new LinkedList<Packet>();
         receiveBuffer = new byte[Defines.SOCKET_BUFFER_SIZE];
@@ -29,6 +32,10 @@ public class Network : MonoBehaviour
         receiveEventArgs.Completed += OnReceiveCompleted;
         receiveEventArgs.UserToken = this;
         receiveEventArgs.SetBuffer(receiveBuffer, 0, 1024 * 4);
+
+        Connect("119.196.245.41", 6475);
+        StartReceive();
+        DontDestroyOnLoad(gameObject);
     }
 
 
@@ -61,7 +68,7 @@ public class Network : MonoBehaviour
 
     void PushPacket(Packet packet)
     {
-        lock(mutexReceivePacketList)
+        lock (mutexReceivePacketList)
         {
             receviePacketList.AddLast(packet);
         }
@@ -72,28 +79,24 @@ public class Network : MonoBehaviour
         lock (mutexReceivePacketList)
         {
             foreach (var packet in receviePacketList)
-            {
                 gamePackHandler.ParsePacket(packet);
-            }
             receviePacketList.Clear();
         }
     }
 
-    public Network()
-    {
-
-    }
-
     private void Start()
     {
-        Init();
-        Connect("119.196.245.41", 6475);
-        StartReceive();
+
     }
 
     private void Update()
     {
         ProcessPackets();
+        if (isConnect)
+        {
+            isConnect = false;
+            SceneManager.LoadScene("Title");
+        }
     }
 
     public void Connect(string address, int port)
@@ -116,18 +119,7 @@ public class Network : MonoBehaviour
     {
         if (e.SocketError == SocketError.Success)
         {
-            ChatPacket chatPacket = new ChatPacket();
-            chatPacket.id = "kkulbeol";
-            chatPacket.chat = "fdsjfdsjfksdjfk";
-            chatPacket.chatType = ((short)ChatType.ALL);
-            var buffer = Data<ChatPacket>.Serialize(chatPacket);
-
-            ChatPacket temp = Data<ChatPacket>.Deserialize(buffer);
-
-            Packet packet = new Packet();
-            packet.type = (short)PacketType.CHAT_PACKET;
-            packet.SetData(buffer, buffer.Length);
-            Send(packet);
+            isConnect = true;
         }
         else
         {

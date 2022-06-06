@@ -1,4 +1,5 @@
 using MyPacket;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
 public class GamePacketHandler
 {
     Network network;
+
+    public static Action<ChatPacket> onChatPacket;
 
     public void Init(Network network)
     {
@@ -16,17 +19,15 @@ public class GamePacketHandler
     {
         switch ((PacketType)packet.type)
         {
+            case PacketType.LOGIN_PACKET:
+                break;
             case PacketType.CHAT_PACKET:
-                ChatPacket(packet);
+                onChatPacket?.Invoke(Data<ChatPacket>.Deserialize(packet.data));
+                break;
+            case PacketType.CHARACTOR_PACKET:
                 break;
             case PacketType.END:
                 break;
         }
-    }
-
-
-    public void ChatPacket(Packet packet)
-    {
-        ChatPacket notify = Data<ChatPacket>.Deserialize(packet.data);
     }
 }
