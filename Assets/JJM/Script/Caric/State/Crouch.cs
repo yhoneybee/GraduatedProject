@@ -6,14 +6,11 @@ public class Crouch : State
 {
     public override void Enter()
     {
-        StateInit("Crouch");
+        StateInit("Crouch", CARIC_STATE.CROUCH);
     }
-    public override void Update()
+    public override void Tick()
     {
-        if(V.GetKeyUp(V.CROUCH_KEY))
-        {
-            ai.ChangeState(gameObject.AddComponent<Idle>());
-        }
+        
     }
     public override void Exit()
     {

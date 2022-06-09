@@ -9,7 +9,7 @@ public class Caric : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
 
-    [Header("Component")]
+    [Header("Components")]
     public Animator anim;
     public SpriteRenderer sprite;
     public Rigidbody2D rigid;

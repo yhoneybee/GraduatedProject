@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Fall : State
 {
+
     public override void Enter()
     {
-        StateInit("Fall");
+        StateInit("Fall", CARIC_STATE.FLY);
     }
 
-    public override void Update()
+    public override void Tick()
     {
-        if(caric.rigid.velocity.y == 0) ai.ChangeState(gameObject.AddComponent<Idle>());
+        if(ai.caric.rigid.velocity.y == 0) ai.ChangeState(gameObject.AddComponent<Idle>());
 
         Debug.Log("FALL !!");
     }

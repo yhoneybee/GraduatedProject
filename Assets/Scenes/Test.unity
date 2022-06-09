@@ -396,7 +396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
---- !u!1 &800523908
+--- !u!1 &764742019
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,21 +404,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 800523909}
+  - component: {fileID: 764742020}
+  - component: {fileID: 764742021}
   m_Layer: 0
-  m_Name: AI
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &800523909
+--- !u!4 &764742020
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800523908}
+  m_GameObject: {fileID: 764742019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -426,6 +427,20 @@ Transform:
   m_Father: {fileID: 876855436}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &764742021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764742019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821fc3668ebc95641bb65e6418e13435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restTime: 0
+  IsTimeCheck: 0
 --- !u!1 &865174851
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +601,7 @@ Transform:
   m_Children:
   - {fileID: 269541362}
   - {fileID: 1695169153}
-  - {fileID: 800523909}
+  - {fileID: 764742020}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -804,6 +819,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8905987217222004394, guid: 0f57b0de43c61c44ea3730579bdb00d9, type: 3}
+      propertyPath: m_Size.y
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8905987217222004395, guid: 0f57b0de43c61c44ea3730579bdb00d9, type: 3}
       propertyPath: m_RootOrder
       value: 6

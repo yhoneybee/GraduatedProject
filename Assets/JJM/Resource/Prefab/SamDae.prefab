@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8905987217222004395}
   - component: {fileID: 8905987217222004397}
   - component: {fileID: 8905987217222004391}
-  - component: {fileID: 8905987217222004392}
   - component: {fileID: 8905987217222004393}
   - component: {fileID: 8905987217222004394}
   - component: {fileID: 8905987217222004390}
+  - component: {fileID: 3959474404348463254}
   m_Layer: 0
   m_Name: SamDae
   m_TagString: Untagged
@@ -100,25 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
---- !u!114 &8905987217222004392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905987217222004398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d41f59af6b78494fb29041288aa6971, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDir: 0
-  moveSpeed: 0
-  jumpForce: 0
-  anim: {fileID: 0}
-  sprite: {fileID: 0}
-  rigid: {fileID: 0}
-  MyNameIsNight: 
+  caric: {fileID: 0}
+  cs: 0
 --- !u!50 &8905987217222004393
 Rigidbody2D:
   serializedVersion: 4
@@ -164,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 4}
+  m_Size: {x: 2, y: 3.5}
   m_EdgeRadius: 0
 --- !u!95 &8905987217222004390
 Animator:
@@ -185,3 +168,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3959474404348463254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905987217222004398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1570c8f35d88cf4d8c5fbd587fd9a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDir: 0
+  moveSpeed: 0
+  jumpForce: 0
+  anim: {fileID: 0}
+  sprite: {fileID: 0}
+  rigid: {fileID: 0}
+  MyNameIsSamDae: 
