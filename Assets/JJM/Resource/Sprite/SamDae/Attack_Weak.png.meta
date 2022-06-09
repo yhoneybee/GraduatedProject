@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: eb6aabc31f66a314090994a6b0c5f153
+guid: a3ed6b80a77af2343aece44af5061505
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4703859783714166221
-    second: Crouch_Attack_0
+      213: 3225524659508080779
+    second: Attack_Weak_0
   - first:
-      213: -353732461730026703
-    second: Crouch_Attack_1
+      213: -621883226090153930
+    second: Attack_Weak_1
   - first:
-      213: -1441714661733616884
-    second: Crouch_Attack_2
+      213: -383241004979971399
+    second: Attack_Weak_2
   - first:
-      213: 3522014533150530766
-    second: Crouch_Attack_3
+      213: 7452189588745592185
+    second: Attack_Weak_3
   - first:
-      213: -694162968284216560
-    second: Crouch_Attack_4
+      213: -1218123870733122882
+    second: Attack_Weak_4
+  - first:
+      213: 3031686843379527931
+    second: Attack_Weak_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -80,7 +83,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -92,7 +95,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -106,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Crouch_Attack_0
+      name: Attack_Weak_0
       rect:
         serializedVersion: 2
         x: 0
@@ -114,20 +117,20 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: 0.33, y: 0.27}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33aa876e27888beb0800000000000000
-      internalID: -4703859783714166221
+      spriteID: b80fd38969d53cc20800000000000000
+      internalID: 3225524659508080779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crouch_Attack_1
+      name: Attack_Weak_1
       rect:
         serializedVersion: 2
         x: 512
@@ -135,20 +138,20 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: 0.33, y: 0.27}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13bae01433a471bf0800000000000000
-      internalID: -353732461730026703
+      spriteID: 6385f113080ae57f0800000000000000
+      internalID: -621883226090153930
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crouch_Attack_2
+      name: Attack_Weak_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -156,20 +159,20 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: 0.33, y: 0.27}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0335e757200efbe0800000000000000
-      internalID: -1441714661733616884
+      spriteID: 9ba1ec226547eaaf0800000000000000
+      internalID: -383241004979971399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crouch_Attack_3
+      name: Attack_Weak_3
       rect:
         serializedVersion: 2
         x: 1536
@@ -177,20 +180,20 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: 0.33, y: 0.27}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ecc5336be85b0e030800000000000000
-      internalID: 3522014533150530766
+      spriteID: 97d9b0492fe7b6760800000000000000
+      internalID: 7452189588745592185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crouch_Attack_4
+      name: Attack_Weak_4
       rect:
         serializedVersion: 2
         x: 2048
@@ -198,14 +201,35 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: 0.33, y: 0.27}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 013403b4576dd56f0800000000000000
-      internalID: -694162968284216560
+      spriteID: eb247802bca581fe0800000000000000
+      internalID: -1218123870733122882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack_Weak_5
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 512
+        height: 512
+      alignment: 9
+      pivot: {x: 0.5, y: 0.06}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf0bcd91f17b21a20800000000000000
+      internalID: 3031686843379527931
       vertices: []
       indices: 
       edges: []

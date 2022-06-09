@@ -1,22 +1,13 @@
 fileFormatVersion: 2
-guid: eb6aabc31f66a314090994a6b0c5f153
+guid: cd8bc77a690aee54e962695c0450364d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4703859783714166221
-    second: Crouch_Attack_0
+      213: -2639320596094379974
+    second: Crouch_Hit_0
   - first:
-      213: -353732461730026703
-    second: Crouch_Attack_1
-  - first:
-      213: -1441714661733616884
-    second: Crouch_Attack_2
-  - first:
-      213: 3522014533150530766
-    second: Crouch_Attack_3
-  - first:
-      213: -694162968284216560
-    second: Crouch_Attack_4
+      213: -3566085804889711991
+    second: Crouch_Hit_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -80,7 +71,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -92,7 +83,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -106,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Crouch_Attack_0
+      name: Crouch_Hit_0
       rect:
         serializedVersion: 2
         x: 0
@@ -114,20 +105,20 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: 0.33, y: 0.27}
+      pivot: {x: 0.5, y: 0.21}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33aa876e27888beb0800000000000000
-      internalID: -4703859783714166221
+      spriteID: a381c6dc6ef3f5bd0800000000000000
+      internalID: -2639320596094379974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crouch_Attack_1
+      name: Crouch_Hit_1
       rect:
         serializedVersion: 2
         x: 512
@@ -135,77 +126,14 @@ TextureImporter:
         width: 512
         height: 512
       alignment: 9
-      pivot: {x: 0.33, y: 0.27}
+      pivot: {x: 0.5, y: 0.21}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13bae01433a471bf0800000000000000
-      internalID: -353732461730026703
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crouch_Attack_2
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 512
-        height: 512
-      alignment: 9
-      pivot: {x: 0.33, y: 0.27}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0335e757200efbe0800000000000000
-      internalID: -1441714661733616884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crouch_Attack_3
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 512
-        height: 512
-      alignment: 9
-      pivot: {x: 0.33, y: 0.27}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ecc5336be85b0e030800000000000000
-      internalID: 3522014533150530766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crouch_Attack_4
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 512
-        height: 512
-      alignment: 9
-      pivot: {x: 0.33, y: 0.27}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 013403b4576dd56f0800000000000000
-      internalID: -694162968284216560
+      spriteID: 98a5cf8bad7b28ec0800000000000000
+      internalID: -3566085804889711991
       vertices: []
       indices: 
       edges: []

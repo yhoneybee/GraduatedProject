@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8905987217222004394}
   - component: {fileID: 8905987217222004390}
   - component: {fileID: 3959474404348463254}
+  - component: {fileID: 959649328}
   m_Layer: 0
   m_Name: SamDae
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: {fileID: 0}
   caric: {fileID: 0}
+  caric_Command: {fileID: 0}
   cs: 0
 --- !u!50 &8905987217222004393
 Rigidbody2D:
@@ -117,12 +119,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8905987217222004394
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -183,7 +185,23 @@ MonoBehaviour:
   moveDir: 0
   moveSpeed: 0
   jumpForce: 0
+  Attack_Weak: {fileID: 0}
+  Attack_Strong: {fileID: 0}
   anim: {fileID: 0}
   sprite: {fileID: 0}
   rigid: {fileID: 0}
-  MyNameIsSamDae: 
+  caric_Command: {fileID: 0}
+--- !u!114 &959649328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905987217222004398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc7ba2ae429f3c4a9b5a48f6e97f0ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caric: {fileID: 0}
+  resetTimer: 0

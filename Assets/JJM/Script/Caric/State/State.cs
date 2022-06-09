@@ -38,4 +38,8 @@ public abstract class State : MonoBehaviour //상태 베이스
         ai.cs = cs;
     }
 
+    public void EndAnimation() 
+    {
+        
+    }
 }
