@@ -29,6 +29,8 @@ public class ChatLinker : MonoBehaviour
 
     private void SendChat()
     {
+        if (inputChat.text == string.Empty) return;
+
         ChatPacket chatPacket = new ChatPacket();
         chatPacket.chatType = ChatType.ALL;
         chatPacket.id = K.loginedId;

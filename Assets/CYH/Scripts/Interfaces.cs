@@ -25,11 +25,13 @@ namespace SERVER
         public SQL GetAllRoom(out List<RoomData> roomData);
     }
 
-    public interface IReadyStartSurrenderGameable
+    public interface IIngameable
     {
         public SQL Ready(string userId);
         public SQL StartGame(string userId);
         public SQL SurrenderGame(string userId);
+        public SQL WinGame();
+        public SQL LoseGame();
     }
 
     public interface IAll : IInitilizerable, ILoginOutSignable, ICreateEnterQuitRoomable
@@ -55,6 +57,14 @@ namespace SERVER
         SignSuccess,
         GetAllRoomFail,
         GetAllRoomSuccess,
+        ReadyFail,
+        ReadySuccess,
+        StartGameFail,
+        StartGameSuccess,
+        SurrenderGameFail,
+        SurrenderGameSuccess,
+        FinishedGameFail,
+        FinishedGameSuccess,
         End,
     }
 
