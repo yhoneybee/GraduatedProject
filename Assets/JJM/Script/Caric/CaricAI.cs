@@ -7,7 +7,6 @@ public enum CARIC_STATE
     STAND,
     FLY,
     CROUCH,
-    DEFENSE,
 }
 
 public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
@@ -34,28 +33,20 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 
                 if(V.MoveKeyDown())
                 {
-                    if(caric.moveDir == 0) ChangeState(gameObject.AddComponent<Idle>());
+                    if(caric.moveDir == 0)
+                    {
+                        ChangeState(gameObject.AddComponent<Idle>());
+                    } 
                     else 
                     {
-                        if(delayTime < V.worldTime)
-                        {
-                            ChangeState(gameObject.AddComponent<Walk>());
-                            backupDir = caric.moveDir;
-                            delayTime = V.worldTime + 0.25f;
-                        } 
-                        else
-                        {
-                            if(backupDir != caric.moveDir) return; //방향 전환 달리기 제어
-
-                            ChangeState(gameObject.AddComponent<Run>());
-                        }
+                        CaricMove();
                     }
                 }
                 else if(V.MoveKeyUp())
                 {
                     ChangeState(gameObject.AddComponent<Idle>());
                 }
-                else if(V.GetKeyDown(V.JUMP_KEY))
+                else if(V.GetKeyDown(V.JUMP_KEY)) //점프
                 {
                     ChangeState(gameObject.AddComponent<Jump>());
                 }
@@ -63,9 +54,13 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 {
                     ChangeState(gameObject.AddComponent<Crouch>());
                 }
-                else if(V.GetKeyDown(V.DEFENSE_KEY))
+                else if(V.GetKeyDown(V.DEFENSE_KEY)) //방어
                 {
                     ChangeState(gameObject.AddComponent<Defense>());
+                }
+                else if(V.GetKeyUp(V.DEFENSE_KEY))
+                {
+                    ChangeState(gameObject.AddComponent<Idle>());
                 }
 
                 break;
@@ -79,14 +74,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 }
 
                 break;
-            case CARIC_STATE.DEFENSE: //방어
-
-                if(V.GetKeyUp(V.DEFENSE_KEY))
-                {
-                    ChangeState(gameObject.AddComponent<Idle>());
-                }
-
-                break;
+            
         }
 
         if(state != null) state.Tick();
@@ -104,6 +92,21 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         state = newState;
         state.Enter(); //새로운 상태 시작
     }
+    
+    public void CaricMove()
+    {
+        if(delayTime < V.worldTime)
+        {
+            ChangeState(gameObject.AddComponent<Walk>());
+            backupDir = caric.moveDir;
+            delayTime = V.worldTime + 0.25f;
+        } 
+        else
+        {
+            if(backupDir != caric.moveDir) return; //방향 전환 달리기 제어
 
+            ChangeState(gameObject.AddComponent<Run>());
+        }
+    }
   
 }

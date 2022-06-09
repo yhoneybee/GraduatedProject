@@ -6,7 +6,7 @@ public class Defense : State
 {
     public override void Enter()
     {
-        StateInit("Defense", CARIC_STATE.DEFENSE);
+        StateInit("Defense", CARIC_STATE.STAND);
     }
     public override void Tick()
     {
