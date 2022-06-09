@@ -73,6 +73,8 @@ namespace SERVER
                     roomInfoTable.Close();
                 }
 
+                K.enteredRoomName = roomName;
+
                 using MySqlCommand insertRoomInfo = new MySqlCommand(new Query().Insert("roominfo", "name, player1", $"'{roomName}', '{K.loginedId}'"), connection);
                 if (insertRoomInfo.ExecuteNonQuery() != 1)
                 {
