@@ -40,6 +40,8 @@ public class ChatLinker : MonoBehaviour
         packet.type = ((short)PacketType.CHAT_PACKET);
         packet.SetData(buffer, buffer.Length);
 
+        inputChat.text = string.Empty;
+        scrollChat.verticalScrollbar.value = 0;
         Network.Instance.Send(packet);
     }
 }
