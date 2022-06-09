@@ -13,7 +13,7 @@ public class CreateRoomLinker : MonoBehaviour
         K.GetDB().SetListener(SERVER.CallbackType.CreateRoomSuccess, () =>
         {
             print("CREATE SUCCESS");
-            K.enteredRoomName = inputRoomName.text;
+            
             SceneManager.LoadScene("Room");
         }).SetListener(SERVER.CallbackType.CreateRoomFail, () =>
         {
