@@ -11,6 +11,22 @@ public enum DB
     End,
 }
 
+public struct RoomData
+{
+    public string name;
+    public string player1;
+    public string player2;
+    public bool player1Ready;
+    public bool player2Ready;
+}
+
+public struct UserData
+{
+    public string id;
+    public int win;
+    public int lose;
+}
+
 public static class K
 {
     static SQL[] db = new SQL[((int)DB.End)];
@@ -20,7 +36,7 @@ public static class K
     public static SQL GetDB() => GetDB(selectDb);
 
     public static string loginedId;
-    public static string enteredRoomName;
+    public static RoomData roomData;
 
     static SQL GetDB(DB dbType)
     {

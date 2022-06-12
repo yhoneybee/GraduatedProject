@@ -7,10 +7,23 @@ using UnityEngine.UI;
 public class RoomLinker : MonoBehaviour
 {
     public Text txtRoomName;
+    public Button btnReady;
 
     private void Start()
     {
-        txtRoomName.text = $"room : {K.enteredRoomName}";
+        txtRoomName.text = $"room : {K.roomData.name}";
+        btnReady.onClick.AddListener(Ready);
+    }
+
+    public void Ready()
+    {
+        K.GetDB().SetListener(SERVER.CallbackType.ReadySuccess, () =>
+        {
+            print("ready success");
+        }).SetListener(SERVER.CallbackType.ReadyFail, () =>
+        {
+            print("ready fail");
+        }).Ready(K.loginedId);
     }
 
     private void OnApplicationQuit()
@@ -26,6 +39,6 @@ public class RoomLinker : MonoBehaviour
         }).SetListener(SERVER.CallbackType.QuitRoomFail, () =>
         {
 
-        }).QuitRoom(K.enteredRoomName);
+        }).QuitRoom(K.roomData.name);
     }
 }

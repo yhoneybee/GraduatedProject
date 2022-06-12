@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace SERVER
 {
-    public class MySQL : SQL, IDisposable
+    public class MySQL : SQL
     {
         readonly string server = "Server=119.196.245.41;";
         readonly string port = "Port=3306;";
@@ -16,13 +16,13 @@ namespace SERVER
 
         MySqlConnection connection;
 
-        public override SQL GetAllRoom(out List<RoomData> roomData)
+        public override SQL GetAllRoom(out List<RoomData> roomData, string where = "")
         {
             roomData = null;
 
             try
             {
-                using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("*", "roominfo"), connection);
+                using MySqlCommand selectRoomInfo = new MySqlCommand(new Query().Select("*", "roominfo", where), connection);
                 using MySqlDataReader roomInfoTable = selectRoomInfo.ExecuteReader();
 
                 if (roomInfoTable == null)
@@ -35,7 +35,9 @@ namespace SERVER
 
                 while (roomInfoTable.Read())
                 {
-                    roomData.Add(new RoomData { name = roomInfoTable["name"].ToString(), player1 = roomInfoTable["player1"].ToString(), player2 = roomInfoTable["player2"].ToString() });
+                    int p1r = (byte)roomInfoTable["player1Ready"];
+                    int p2r = (byte)roomInfoTable["player2Ready"];
+                    roomData.Add(new RoomData { name = roomInfoTable["name"].ToString(), player1 = roomInfoTable["player1"].ToString(), player2 = roomInfoTable["player2"].ToString(), player1Ready = p1r == 1, player2Ready = p2r == 1 });
                 }
 
                 roomInfoTable.Close();
@@ -73,7 +75,8 @@ namespace SERVER
                     roomInfoTable.Close();
                 }
 
-                K.enteredRoomName = roomName;
+                K.roomData.name = roomName;
+                K.roomData.player1 = K.loginedId;
 
                 using MySqlCommand insertRoomInfo = new MySqlCommand(new Query().Insert("roominfo", "name, player1", $"'{roomName}', '{K.loginedId}'"), connection);
                 if (insertRoomInfo.ExecuteNonQuery() != 1)
@@ -93,7 +96,7 @@ namespace SERVER
             return this;
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             connection.Close();
             connection.Dispose();
@@ -141,6 +144,10 @@ namespace SERVER
                     Call(CallbackType.EnterRoomFail);
                     return this;
                 }
+
+                K.roomData.name = roomName;
+                K.roomData.player1 = player1;
+                K.roomData.player2 = player2;
 
                 Call(CallbackType.EnterRoomSuccess);
             }
@@ -282,6 +289,152 @@ namespace SERVER
                 Debug.LogException(e);
                 Call(CallbackType.SignFail);
             }
+
+            return this;
+        }
+
+        public override SQL Ready(string userId)
+        {
+            try
+            {
+                string columnsName = K.roomData.player1 == userId ? "player1Ready" : "player2Ready";
+                bool updateValue = false;
+
+                List<RoomData> rooms;
+                GetAllRoom(out rooms, $"name = '{K.roomData.name}'");
+                RoomData room;
+                if (rooms != null && rooms.Count == 1)
+                {
+                    room = rooms[0];
+                }
+                else
+                {
+                    Call(CallbackType.ReadyFail);
+                    return this;
+                }
+
+                if (K.roomData.player1 == userId)
+                {
+                    updateValue = !room.player1Ready;
+                    K.roomData.player1Ready = updateValue;
+                }
+                else
+                {
+                    updateValue = !room.player2Ready;
+                    K.roomData.player2Ready = updateValue;
+                }
+
+                using MySqlCommand updateRoomInfo = new MySqlCommand(new Query().Update("roominfo", $"{columnsName} = {updateValue}", $"name = '{K.roomData.name}'"), connection);
+                if (updateRoomInfo.ExecuteNonQuery() != 1)
+                {
+                    Call(CallbackType.ReadyFail);
+                    return this;
+                }
+
+                Call(CallbackType.ReadySuccess);
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                Call(CallbackType.ReadyFail);
+            }
+
+            return this;
+        }
+
+        public override SQL StartGame(string userId)
+        {
+            //Remove Room and Move Scene and Insert Match
+            try
+            {
+                List<RoomData> rooms;
+                GetAllRoom(out rooms, $"name = '{K.roomData.name}'");
+
+                if (rooms != null && rooms.Count == 1)
+                {
+                    var room = rooms[0];
+                    if (room.player1Ready == false || room.player2Ready == false)
+                    {
+                        Call(CallbackType.StartGameFail);
+                        return this;
+                    }
+                }
+
+                using MySqlCommand deleteRoomInfo = new MySqlCommand(new Query().Delete("roominfo", $"name = '{K.roomData.name}'"), connection);
+                deleteRoomInfo.ExecuteNonQuery();
+                if (deleteRoomInfo.ExecuteNonQuery() != 1)
+                {
+                    Call(CallbackType.StartGameFail);
+                    return this;
+                }
+
+                using MySqlCommand insertMatch = new MySqlCommand(new Query().Insert("match", $"{K.roomData.name},{K.roomData.player1},{K.roomData.player2},0"), connection);
+                insertMatch.ExecuteNonQuery();
+                if (insertMatch.ExecuteNonQuery() != 1)
+                {
+                    Call(CallbackType.StartGameFail);
+                    return this;
+                }
+
+                Call(CallbackType.StartGameSuccess);
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                Call(CallbackType.StartGameFail);
+            }
+
+            return this;
+        }
+
+        public override SQL SurrenderGame(string userId)
+        {
+            // OtherPlayerWinCount Plus
+            return this;
+        }
+
+        public override SQL WinGame()
+        {
+            return this;
+        }
+
+        public override SQL LoseGame()
+        {
+            return this;
+        }
+
+        public override SQL GetAllUser(out List<UserData> userData, string where = "")
+        {
+            userData = null;
+
+            try
+            {
+                using MySqlCommand selectUserInfo = new MySqlCommand(new Query().Select("*", "userinfo", where), connection);
+                using MySqlDataReader userInfoTable = selectUserInfo.ExecuteReader();
+
+                if (userInfoTable == null)
+                {
+                    Call(CallbackType.GetAllUserFail);
+                    return this;
+                }
+
+                userData = new List<UserData>();
+
+                while (userInfoTable.Read())
+                {
+                    userData.Add(new UserData { id = userInfoTable["id"].ToString(), win = (int)userInfoTable["win"], lose = (int)userInfoTable["lose"] });
+                }
+
+                userInfoTable.Close();
+
+                Call(CallbackType.GetAllUserSuccess);
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                Call(CallbackType.GetAllUserFail);
+            }
+
             return this;
         }
 

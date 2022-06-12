@@ -14,7 +14,7 @@ public class EnterRoomLinker : MonoBehaviour
         K.GetDB().SetListener(SERVER.CallbackType.EnterRoomSuccess, () =>
         {
             print("Enter Room Success");
-            K.enteredRoomName = inputRoomName.text;
+            K.roomData.name = inputRoomName.text;
             SceneManager.LoadScene("Room");
         }).SetListener(SERVER.CallbackType.EnterRoomFail, () => 
         {

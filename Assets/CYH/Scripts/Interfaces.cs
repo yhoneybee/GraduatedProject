@@ -5,40 +5,6 @@ using UnityEngine;
 
 namespace SERVER
 {
-    public interface IInitilizerable
-    {
-        public SQL Initilize();
-    }
-
-    public interface ILoginOutSignable
-    {
-        public SQL Login(string id, string pw);
-        public SQL Logout();
-        public SQL Sign(string id, string pw, string pw2);
-    }
-
-    public interface ICreateEnterQuitRoomable
-    {
-        public SQL CreateRoom(string roomName = "");
-        public SQL EnterRoom(string roomName);
-        public SQL QuitRoom(string roomName);
-        public SQL GetAllRoom(out List<RoomData> roomData);
-    }
-
-    public interface IIngameable
-    {
-        public SQL Ready(string userId);
-        public SQL StartGame(string userId);
-        public SQL SurrenderGame(string userId);
-        public SQL WinGame();
-        public SQL LoseGame();
-    }
-
-    public interface IAll : IInitilizerable, ILoginOutSignable, ICreateEnterQuitRoomable
-    {
-
-    }
-
     public enum CallbackType
     {
         CreateRoomFail,
@@ -57,18 +23,22 @@ namespace SERVER
         SignSuccess,
         GetAllRoomFail,
         GetAllRoomSuccess,
+        GetAllUserFail,
+        GetAllUserSuccess,
         ReadyFail,
         ReadySuccess,
         StartGameFail,
         StartGameSuccess,
         SurrenderGameFail,
         SurrenderGameSuccess,
-        FinishedGameFail,
-        FinishedGameSuccess,
+        WinFail,
+        WinSuccess,
+        LoseFail,
+        LoseSuccess,
         End,
     }
 
-    public abstract class SQL : IAll
+    public abstract class SQL : IDisposable
     {
         Action[] callbacks = new Action[((int)CallbackType.End)];
 
@@ -99,6 +69,13 @@ namespace SERVER
         public abstract SQL Logout();
         public abstract SQL QuitRoom(string roomName);
         public abstract SQL Sign(string id, string pw, string pw2);
-        public abstract SQL GetAllRoom(out List<RoomData> roomData);
+        public abstract SQL GetAllRoom(out List<RoomData> roomData, string where = "");
+        public abstract SQL GetAllUser(out List<UserData> userData, string where = "");
+        public abstract SQL Ready(string userId);
+        public abstract SQL StartGame(string userId);
+        public abstract SQL SurrenderGame(string userId);
+        public abstract SQL WinGame();
+        public abstract SQL LoseGame();
+        public abstract void Dispose();
     }
 }

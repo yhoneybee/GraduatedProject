@@ -4,13 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public struct RoomData
-{
-    public string name;
-    public string player1;
-    public string player2;
-}
-
 public class RoomViewer : MonoBehaviour
 {
     RoomData roomData;
@@ -41,7 +34,7 @@ public class RoomViewer : MonoBehaviour
         K.GetDB().SetListener(SERVER.CallbackType.EnterRoomSuccess, () =>
         {
             print("Enter Room Success");
-            K.enteredRoomName = roomData.name;
+            K.roomData.name = roomData.name;
             SceneManager.LoadScene("Room");
         }).SetListener(SERVER.CallbackType.EnterRoomFail, () =>
         {
