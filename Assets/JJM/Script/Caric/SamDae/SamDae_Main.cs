@@ -13,7 +13,6 @@ public class SamDae_Main : Caric
 
     void Update()
     {
-        moveDir = V.GetAxisRaw("Horizontal"); 
     }
 
     

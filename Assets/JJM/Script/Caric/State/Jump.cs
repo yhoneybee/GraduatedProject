@@ -8,7 +8,7 @@ public class Jump : State
     {
         StateInit("Jump", CARIC_STATE.FLY);
         ai.caric.rigid.AddForce(Vector2.up * ai.caric.jumpForce, ForceMode2D.Impulse);
-        ai.caric.rigid.AddForce(Vector2.right * ai.caric.moveDir * (ai.caric.moveSpeed), ForceMode2D.Impulse);
+        ai.caric.rigid.AddForce(Vector2.right * ai.moveDir * (ai.caric.moveSpeed), ForceMode2D.Impulse);
     }
     public override void Tick()
     {

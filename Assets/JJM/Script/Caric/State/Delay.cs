@@ -13,17 +13,7 @@ public class Delay : State
     }
     public override void Tick()
     {
-        if(delayTime < V.worldTime)
-        {
-            ai.ChangeState(gameObject.AddComponent<Walk>());
-        }
-        else
-        {
-            if(V.MoveKeyDown()) // 달리기 전환
-            {
-                ai.ChangeState(gameObject.AddComponent<Run>());
-            }
-        }
+        
     }
     public override void Exit()
     {

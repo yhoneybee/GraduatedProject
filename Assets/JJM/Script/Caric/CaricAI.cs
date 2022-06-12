@@ -18,6 +18,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     public CARIC_STATE cs = CARIC_STATE.STAND;
     private float delayTime;
     private float backupDir;
+    public float moveDir; //수평 값
     // Start is called before the first frame update
     void Start()
     {   
@@ -29,14 +30,15 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     // Update is called once per frame
     void Update()
     {
+        moveDir = V.GetAxisRaw("Horizontal");
 
-        switch(cs)
+        switch (cs)
         {
             case CARIC_STATE.STAND: //서 있는 상태
                 
                 if(V.MoveKeyDown())
                 {
-                    if(caric.moveDir == 0)
+                    if(moveDir == 0)
                     {
                         ChangeState(gameObject.AddComponent<Idle>());
                     } 
@@ -131,12 +133,12 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if(delayTime < V.worldTime)
         {
             ChangeState(gameObject.AddComponent<Walk>());
-            backupDir = caric.moveDir;
+            backupDir = moveDir;
             delayTime = V.worldTime + 0.25f;
         } 
         else
         {
-            if(backupDir != caric.moveDir) return; //방향 전환 달리기 제어
+            if(backupDir != moveDir) return; //방향 전환 달리기 제어
 
             ChangeState(gameObject.AddComponent<Run>());
         }

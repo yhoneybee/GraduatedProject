@@ -26,7 +26,7 @@ public abstract class State : MonoBehaviour //상태 베이스
     public abstract void Enter();
     public abstract void Tick();
     public abstract void Exit();
-    public void CaricMove() => transform.Translate(Vector3.right * ai.caric.moveDir * ai.caric.moveSpeed * Time.deltaTime);
+    public void CaricMove() => transform.Translate(Vector3.right * ai.moveDir * ai.caric.moveSpeed * Time.deltaTime);
 
     public void StateInit(string playeAnim, CARIC_STATE cs) //플레이어 정보 받아오기
     {

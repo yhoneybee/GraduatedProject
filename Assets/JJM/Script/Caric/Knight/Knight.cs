@@ -14,6 +14,6 @@ public class Knight : Caric
 
     void Update()
     {
-        moveDir = V.GetAxisRaw("Horizontal"); 
+        
     }
 }

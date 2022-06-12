@@ -5,7 +5,6 @@ using UnityEngine;
 public class Caric : MonoBehaviour
 {
     [Header("=====Base Caric Class=====")]
-    public float moveDir; //수평 값
     public float moveSpeed;
     public float jumpForce;
 
@@ -34,7 +33,6 @@ public class Caric : MonoBehaviour
 
     public void Caric_Setting() //캐릭터 기본 값 셋팅
     {
-        moveDir = 0;
         moveSpeed = 5;
         jumpForce = 6;
     }
