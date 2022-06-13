@@ -49,7 +49,7 @@ public class Caric_Command : MonoBehaviour
         }
     }
     //"ก็"
-    public void AddCommand(string command) 
+    private void AddCommand(string command) 
     {
         commadQueue.Enqueue(command);
         resetTimer = V.worldTime + commandTime;

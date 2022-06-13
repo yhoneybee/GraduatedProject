@@ -18,7 +18,7 @@ public class Caric : MonoBehaviour
     public Rigidbody2D rigid;
 
     [Header("Class")]
-    public Caric_Command caric_Command;
+    public Bone bone;
 
     public virtual void Start()
     {
@@ -29,6 +29,7 @@ public class Caric : MonoBehaviour
     {
         Caric_Setting();
         Caric_GetComponent();
+        Caric_GetClass();
     }
 
     public void Caric_Setting() //캐릭터 기본 값 셋팅
@@ -42,6 +43,11 @@ public class Caric : MonoBehaviour
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
+    }
+
+    public void Caric_GetClass() //클래스 get
+    {
+        bone = GetComponentInChildren<Bone>();
     }
 
     public void SetAttackState(string attackName, State newState) //공격 종류 설정

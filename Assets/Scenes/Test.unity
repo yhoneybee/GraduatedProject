@@ -894,6 +894,63 @@ MonoBehaviour:
   fadeSpeed: 0
   alphaValue: 0
   LoopCount: 0
+--- !u!1001 &3727739050644523037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721626, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727739051812721627, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+      propertyPath: m_Name
+      value: Dust_Jump
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
 --- !u!1001 &8905987218110492207
 PrefabInstance:
   m_ObjectHideFlags: 0
