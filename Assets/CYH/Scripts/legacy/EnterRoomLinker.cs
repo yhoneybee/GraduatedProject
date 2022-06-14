@@ -11,14 +11,14 @@ public class EnterRoomLinker : MonoBehaviour
 
     public void EnterRoom()
     {
-        K.GetDB().SetListener(SERVER.CallbackType.EnterRoomSuccess, () =>
-        {
-            print("Enter Room Success");
-            K.roomData.name = inputRoomName.text;
-            SceneManager.LoadScene("Room");
-        }).SetListener(SERVER.CallbackType.EnterRoomFail, () => 
-        {
-            print("Enter Room Fail");
-        }).EnterRoom(inputRoomName.text);
+        //K.GetDB().SetListener(SERVER.CallbackType.EnterRoomSuccess, () =>
+        //{
+        //    print("Enter Room Success");
+        //    K.roomData.name = inputRoomName.text;
+        //    SceneManager.LoadScene("Room");
+        //}).SetListener(SERVER.CallbackType.EnterRoomFail, () => 
+        //{
+        //    print("Enter Room Fail");
+        //}).EnterRoom(inputRoomName.text);
     }
 }

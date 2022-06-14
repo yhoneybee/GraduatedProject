@@ -11,19 +11,19 @@ public class RoomLinker : MonoBehaviour
 
     private void Start()
     {
-        txtRoomName.text = $"room : {K.roomData.name}";
+        //txtRoomName.text = $"room : {K.roomInfo.name}";
         btnReady.onClick.AddListener(Ready);
     }
 
     public void Ready()
     {
-        K.GetDB().SetListener(SERVER.CallbackType.ReadySuccess, () =>
-        {
-            print("ready success");
-        }).SetListener(SERVER.CallbackType.ReadyFail, () =>
-        {
-            print("ready fail");
-        }).Ready(K.loginedId);
+        //K.GetDB().SetListener(SERVER.CallbackType.ReadySuccess, () =>
+        //{
+        //    print("ready success");
+        //}).SetListener(SERVER.CallbackType.ReadyFail, () =>
+        //{
+        //    print("ready fail");
+        //}).Ready(K.loginedId);
     }
 
     private void OnApplicationQuit()
@@ -33,12 +33,12 @@ public class RoomLinker : MonoBehaviour
 
     public void QuitRoom()
     {
-        K.GetDB().SetListener(SERVER.CallbackType.QuitRoomSuccess, () =>
-        {
-            SceneManager.LoadScene("Main");
-        }).SetListener(SERVER.CallbackType.QuitRoomFail, () =>
-        {
+        //K.GetDB().SetListener(SERVER.CallbackType.QuitRoomSuccess, () =>
+        //{
+        //    SceneManager.LoadScene("Main");
+        //}).SetListener(SERVER.CallbackType.QuitRoomFail, () =>
+        //{
 
-        }).QuitRoom(K.roomData.name);
+        //}).QuitRoom(K.roomData.name);
     }
 }

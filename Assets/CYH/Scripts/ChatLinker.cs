@@ -18,32 +18,32 @@ public class ChatLinker : MonoBehaviour
     {
         btnSendChat.onClick.AddListener(SendChat);
 
-        GamePacketHandler.onChatPacket = OnChat;
+        //GamePacketHandler.onChatPacket = OnChat;
     }
 
-    private void OnChat(ChatPacket chat)
+    private void OnChat(REQ_RES_Chat chat)
     {
         var obj = Instantiate(txtChatOrigin, rtrnContent);
-        obj.text = $"[{chat.chatType}] {chat.id} : {chat.chat}";
+        //obj.text = $"[{chat.chatType}] {chat.id} : {chat.chat}";
     }
 
     private void SendChat()
     {
-        if (inputChat.text == string.Empty) return;
+        //if (inputChat.text == string.Empty) return;
 
-        ChatPacket chatPacket = new ChatPacket();
-        chatPacket.chatType = ChatType.ALL;
-        chatPacket.id = K.loginedId;
-        chatPacket.to = "";
-        chatPacket.chat = inputChat.text;
-        byte[] buffer = Data<ChatPacket>.Serialize(chatPacket);
+        //ChatPacket chatPacket = new ChatPacket();
+        //chatPacket.chatType = ChatType.ALL;
+        //chatPacket.id = K.loginedId;
+        //chatPacket.to = "";
+        //chatPacket.chat = inputChat.text;
+        //byte[] buffer = Data<ChatPacket>.Serialize(chatPacket);
 
-        Packet packet = new Packet();
-        packet.type = ((short)PacketType.CHAT_PACKET);
-        packet.SetData(buffer, buffer.Length);
+        //Packet packet = new Packet();
+        //packet.type = ((short)PacketType.CHAT_PACKET);
+        //packet.SetData(buffer, buffer.Length);
 
-        inputChat.text = string.Empty;
-        scrollChat.verticalScrollbar.value = 0;
-        Network.Instance.Send(packet);
+        //inputChat.text = string.Empty;
+        //scrollChat.verticalScrollbar.value = 0;
+        //Network.Instance.Send(packet);
     }
 }

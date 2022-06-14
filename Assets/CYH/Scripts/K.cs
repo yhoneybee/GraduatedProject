@@ -2,55 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Security.Cryptography;
-using SERVER;
 using System.Text;
-
-public enum DB
-{
-    MySQL,
-    End,
-}
-
-public struct RoomData
-{
-    public string name;
-    public string player1;
-    public string player2;
-    public bool player1Ready;
-    public bool player2Ready;
-}
-
-public struct UserData
-{
-    public string id;
-    public int win;
-    public int lose;
-}
+using MyPacket;
 
 public static class K
 {
-    static SQL[] db = new SQL[((int)DB.End)];
-
-    static DB selectDb = DB.MySQL;
-
-    public static SQL GetDB() => GetDB(selectDb);
-
-    public static string loginedId;
-    public static RoomData roomData;
-
-    static SQL GetDB(DB dbType)
-    {
-        if (db[((int)dbType)] == null)
-        {
-            db[((int)dbType)] = dbType switch
-            {
-                DB.MySQL => new MySQL(),
-                _ => null,
-            };
-            db[((int)dbType)].Initilize();
-        }
-        return db[((int)dbType)];
-    }
+    public static UserInfo userInfo;
+    public static RoomInfo roomInfo;
 
     public static string SHA256(string data)
     {

@@ -23,38 +23,38 @@ public class RequestRoomData : MonoBehaviour
     {
         leftTime = waitTime;
 
-        List<RoomData> list;
-        K.GetDB().SetListener(SERVER.CallbackType.GetAllRoomFail, () =>
-        {
-            print("Load Rooms Fail");
-        }).SetListener(SERVER.CallbackType.GetAllRoomSuccess, () =>
-        {
-            print("Load Rooms Success");
-        }).GetAllRoom(out list);
+        //List<RoomData> list;
+        //K.GetDB().SetListener(SERVER.CallbackType.GetAllRoomFail, () =>
+        //{
+        //    print("Load Rooms Fail");
+        //}).SetListener(SERVER.CallbackType.GetAllRoomSuccess, () =>
+        //{
+        //    print("Load Rooms Success");
+        //}).GetAllRoom(out list);
 
-        int minus = roomViewers.Count - list.Count;
+        //int minus = roomViewers.Count - list.Count;
 
-        for (int i = 0; i < minus; i++)
-        {
-            roomViewers[i + list.Count].gameObject.SetActive(false);
-        }
+        //for (int i = 0; i < minus; i++)
+        //{
+        //    roomViewers[i + list.Count].gameObject.SetActive(false);
+        //}
 
-        for (int i = 0; i < list.Count; i++)
-        {
-            RoomData roomData = new RoomData { name = list[i].name, player1 = list[i].player1, player2 = list[i].player2 };
+        //for (int i = 0; i < list.Count; i++)
+        //{
+        //    RoomData roomData = new RoomData { name = list[i].name, player1 = list[i].player1, player2 = list[i].player2 };
 
-            if (roomViewers.Count > i)
-            {
-                roomViewers[i].gameObject.SetActive(true);
-                roomViewers[i].RoomData = roomData;
-            }
-            else
-            {
-                var roomViewer = Instantiate(goRoomViewerOrigin, rtrnContent);
-                roomViewer.RoomData = roomData;
-                roomViewers.Add(roomViewer);
-            }
-        }
+        //    if (roomViewers.Count > i)
+        //    {
+        //        roomViewers[i].gameObject.SetActive(true);
+        //        roomViewers[i].RoomData = roomData;
+        //    }
+        //    else
+        //    {
+        //        var roomViewer = Instantiate(goRoomViewerOrigin, rtrnContent);
+        //        roomViewer.RoomData = roomData;
+        //        roomViewers.Add(roomViewer);
+        //    }
+        //}
     }
 
     public IEnumerator ERefresh()

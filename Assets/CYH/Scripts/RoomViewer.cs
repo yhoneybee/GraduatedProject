@@ -1,3 +1,4 @@
+using MyPacket;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,8 @@ using UnityEngine.UI;
 
 public class RoomViewer : MonoBehaviour
 {
-    RoomData roomData;
-    public RoomData RoomData
+    RoomInfo roomData;
+    public RoomInfo RoomData
     {
         get { return roomData; }
         set
@@ -31,14 +32,14 @@ public class RoomViewer : MonoBehaviour
 
     public void EnterRoom()
     {
-        K.GetDB().SetListener(SERVER.CallbackType.EnterRoomSuccess, () =>
-        {
-            print("Enter Room Success");
-            K.roomData.name = roomData.name;
-            SceneManager.LoadScene("Room");
-        }).SetListener(SERVER.CallbackType.EnterRoomFail, () =>
-        {
-            print("Enter Room Fail");
-        }).EnterRoom(roomData.name);
+        //K.GetDB().SetListener(SERVER.CallbackType.EnterRoomSuccess, () =>
+        //{
+        //    print("Enter Room Success");
+        //    K.roomData.name = roomData.name;
+        //    SceneManager.LoadScene("Room");
+        //}).SetListener(SERVER.CallbackType.EnterRoomFail, () =>
+        //{
+        //    print("Enter Room Fail");
+        //}).EnterRoom(roomData.name);
     }
 }

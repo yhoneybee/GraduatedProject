@@ -10,14 +10,14 @@ public class CreateRoomLinker : MonoBehaviour
 
     public void CreateRoom()
     {
-        K.GetDB().SetListener(SERVER.CallbackType.CreateRoomSuccess, () =>
-        {
-            print("CREATE SUCCESS");
+        //K.GetDB().SetListener(SERVER.CallbackType.CreateRoomSuccess, () =>
+        //{
+        //    print("CREATE SUCCESS");
             
-            SceneManager.LoadScene("Room");
-        }).SetListener(SERVER.CallbackType.CreateRoomFail, () =>
-        {
-            print("CREATE FAIL");
-        }).CreateRoom(inputRoomName.text);
+        //    SceneManager.LoadScene("Room");
+        //}).SetListener(SERVER.CallbackType.CreateRoomFail, () =>
+        //{
+        //    print("CREATE FAIL");
+        //}).CreateRoom(inputRoomName.text);
     }
 }
