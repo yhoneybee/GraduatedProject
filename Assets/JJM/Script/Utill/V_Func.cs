@@ -38,11 +38,6 @@ public partial class V : MonoBehaviour //공용 함수 클래스
         return false;
     }
 
-    public static void EffectCreate() 
-    {
-        //var obj = Instantiate();
-    }
-
     public static List<T> Find_Child_Component_List<T>(GameObject rootObj) where T : Component //자식 오브젝트 리스트<T> 리턴
     {
         if (rootObj == null) return null;

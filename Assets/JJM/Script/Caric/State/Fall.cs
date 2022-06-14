@@ -32,6 +32,7 @@ public class Fall : State
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            Effect.Instance.GetEffect("Dust_Jump", ai.caric.bone.foot.transform.position);
             IsGround = true;
         }
     }
