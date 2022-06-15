@@ -36,7 +36,7 @@ public class SignLinker : MonoBehaviour
         Network.Instance.gamePackHandler.RES_Signin = (packet) =>
         {
             var res = packet.GetPacket<RES>();
-            print(res.reason);
+            Debug.Log(res.reason);
             if (!res.completed) return;
 
             window.Close();

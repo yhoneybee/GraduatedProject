@@ -1,3 +1,4 @@
+using MyPacket;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +12,12 @@ public class EnterRoomLinker : MonoBehaviour
 
     public void EnterRoom()
     {
-        //K.GetDB().SetListener(SERVER.CallbackType.EnterRoomSuccess, () =>
-        //{
-        //    print("Enter Room Success");
-        //    K.roomData.name = inputRoomName.text;
-        //    SceneManager.LoadScene("Room");
-        //}).SetListener(SERVER.CallbackType.EnterRoomFail, () => 
-        //{
-        //    print("Enter Room Fail");
-        //}).EnterRoom(inputRoomName.text);
+        REQ_CreateEnterRoom req = new REQ_CreateEnterRoom();
+        req.roomName = inputRoomName.text;
+
+        Packet packet = new Packet();
+        packet.SetData(PacketType.REQ_ENTER_ROOM_PACKET, Data<REQ_CreateEnterRoom>.Serialize(req));
+
+        Network.Instance.Send(packet);
     }
 }

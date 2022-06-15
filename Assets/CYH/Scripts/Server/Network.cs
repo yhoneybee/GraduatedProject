@@ -156,16 +156,4 @@ public class Network : Singleton<Network>
         e.Completed -= OnSendCompleted;
         SocketAsyncEventArgsPool.Instance.Push(e);
     }
-
-    private void OnApplicationQuit()
-    {
-        REQ req = new REQ();
-        req.what = "Disconnected";
-        var data = Data<REQ>.Serialize(req);
-
-        Packet packet = new Packet();
-        packet.SetData(PacketType.DISCONNECTED, data, data.Length);
-
-        Send(packet);
-    }
 }

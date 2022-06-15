@@ -21,4 +21,16 @@ public static class K
         }
         return stringBuilder.ToString();
     }
+
+    public static void QuitGame()
+    {
+        REQ req = new REQ();
+        req.what = "Disconnected";
+        var data = Data<REQ>.Serialize(req);
+
+        Packet packet = new Packet();
+        packet.SetData(PacketType.DISCONNECTED, data, data.Length);
+
+        Network.Instance.Send(packet);
+    }
 }

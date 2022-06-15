@@ -53,7 +53,7 @@ public class LoginLinker : MonoBehaviour
         Network.Instance.gamePackHandler.RES_Login = (packet) =>
         {
             var res = packet.GetPacket<RES>();
-            print(res.reason);
+            Debug.Log(res.reason);
             if (!res.completed) return;
 
             if (toggleRemember.isOn)
