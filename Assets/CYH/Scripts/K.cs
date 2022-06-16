@@ -26,9 +26,13 @@ public static class K
     {
         REQ req = new REQ();
         req.what = "Disconnected";
-        var data = Data<REQ>.Serialize(req);
 
         Send(PacketType.DISCONNECTED, req);
+    }
+
+    public static void Update(REQ_RES_Charactor req)
+    {
+        Send(PacketType.REQ_CHARACTOR_PACKET, req);
     }
 
     public static void Send<T>(PacketType packetType, T req)

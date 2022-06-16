@@ -99,7 +99,7 @@ public class GamePacketHandler
 
     private void StartGame(Packet packet)
     {
-        throw new NotImplementedException();
+
     }
 
     private void OtherUserEnterRoom(Packet packet)
