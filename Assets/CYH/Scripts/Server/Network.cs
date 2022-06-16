@@ -152,4 +152,9 @@ public class Network : Singleton<Network>
         e.Completed -= OnSendCompleted;
         SocketAsyncEventArgsPool.Instance.Push(e);
     }
+
+    private void OnApplicationQuit()
+    {
+        K.LeaveRoom();
+    }
 }

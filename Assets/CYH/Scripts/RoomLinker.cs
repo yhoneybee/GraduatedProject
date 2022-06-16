@@ -40,10 +40,7 @@ public class RoomLinker : MonoBehaviour
 
     public void LeaveRoom()
     {
-        REQ req = new REQ();
-        req.what = "LeaveRoom";
-
-        K.Send(PacketType.REQ_LEAVE_ROOM_PACKET, req);
+        K.LeaveRoom();
 
         Network.Instance.gamePackHandler.RES_LeaveRoom = (packet) =>
         {
@@ -52,5 +49,10 @@ public class RoomLinker : MonoBehaviour
 
             SceneManager.LoadScene("Main");
         };
+    }
+
+    private void OnApplicationQuit()
+    {
+        LeaveRoom();
     }
 }

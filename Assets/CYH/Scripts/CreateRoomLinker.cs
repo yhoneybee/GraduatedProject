@@ -15,17 +15,5 @@ public class CreateRoomLinker : MonoBehaviour
         req.roomName = inputRoomName.text;
         
         K.Send(PacketType.REQ_CREATE_ROOM_PACKET, req);
-
-        Network.Instance.gamePackHandler.RES_CreateRoom = (packet) =>
-        {
-        };
-
-        Network.Instance.gamePackHandler.RES_EnterRoom = (packet) =>
-        {
-            var res = packet.GetPacket<RES_EnterRoom>();
-            if (!res.completed) return;
-
-            SceneManager.LoadScene("Room");
-        };
     }
 }

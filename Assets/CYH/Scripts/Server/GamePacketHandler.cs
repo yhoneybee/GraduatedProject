@@ -68,6 +68,7 @@ public class GamePacketHandler
                 RES_User?.Invoke(packet);
                 break;
             case PacketType.RES_READY_GAME_PACKET:
+                Ready(packet);
                 RES_ReadyGame?.Invoke(packet);
                 break;
             case PacketType.RES_START_GAME_PACKET:
@@ -97,9 +98,17 @@ public class GamePacketHandler
         }
     }
 
+    private void Ready(Packet packet)
+    {
+        REQ req = new REQ();
+        req.what = "게임 시작 조건 검사";
+
+        K.Send(PacketType.REQ_START_GAME_PACKET, req);
+    }
+
     private void StartGame(Packet packet)
     {
-
+        SceneManager.LoadScene("Ingame");
     }
 
     private void OtherUserEnterRoom(Packet packet)

@@ -42,4 +42,12 @@ public static class K
         packet.SetData(packetType, Data<T>.Serialize(req));
         Network.Instance.Send(packet);
     }
+
+    public static void LeaveRoom()
+    {
+        REQ req = new REQ();
+        req.what = "LeaveRoom";
+
+        K.Send(PacketType.REQ_LEAVE_ROOM_PACKET, req);
+    }
 }
