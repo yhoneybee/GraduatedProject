@@ -1,3 +1,4 @@
+using MyPacket;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,37 +9,48 @@ public class RoomLinker : MonoBehaviour
 {
     public Text txtRoomName;
     public Button btnReady;
+    public Text txtBtnReady;
 
     private void Start()
     {
-        //txtRoomName.text = $"room : {K.roomInfo.name}";
+        txtRoomName.text = $"room : {K.roomInfo.name}";
         btnReady.onClick.AddListener(Ready);
     }
 
     public void Ready()
     {
-        //K.GetDB().SetListener(SERVER.CallbackType.ReadySuccess, () =>
-        //{
-        //    print("ready success");
-        //}).SetListener(SERVER.CallbackType.ReadyFail, () =>
-        //{
-        //    print("ready fail");
-        //}).Ready(K.loginedId);
+        REQ req = new REQ();
+        req.what = "Ready";
+
+        K.Send(PacketType.REQ_READY_GAME_PACKET, req);
+
+        Network.Instance.gamePackHandler.RES_ReadyGame = (packet) =>
+        {
+            var res = packet.GetPacket<RES>();
+            if (!res.completed) return;
+
+            txtBtnReady.text = "On Ready";
+
+            if (res.reason == "ÁØºñ ¾ÈµÊ")
+            {
+                txtBtnReady.text = "To Ready";
+            }
+        };
     }
 
-    private void OnApplicationQuit()
+    public void LeaveRoom()
     {
-        QuitRoom();
-    }
+        REQ req = new REQ();
+        req.what = "LeaveRoom";
 
-    public void QuitRoom()
-    {
-        //K.GetDB().SetListener(SERVER.CallbackType.QuitRoomSuccess, () =>
-        //{
-        //    SceneManager.LoadScene("Main");
-        //}).SetListener(SERVER.CallbackType.QuitRoomFail, () =>
-        //{
+        K.Send(PacketType.REQ_LEAVE_ROOM_PACKET, req);
 
-        //}).QuitRoom(K.roomData.name);
+        Network.Instance.gamePackHandler.RES_LeaveRoom = (packet) =>
+        {
+            var res = packet.GetPacket<RES>();
+            if (!res.completed) return;
+
+            SceneManager.LoadScene("Main");
+        };
     }
 }

@@ -28,9 +28,14 @@ public static class K
         req.what = "Disconnected";
         var data = Data<REQ>.Serialize(req);
 
-        Packet packet = new Packet();
-        packet.SetData(PacketType.DISCONNECTED, data, data.Length);
+        Send(PacketType.DISCONNECTED, req);
+    }
 
+    public static void Send<T>(PacketType packetType, T req)
+        where T : new()
+    {
+        Packet packet = new Packet();
+        packet.SetData(packetType, Data<T>.Serialize(req));
         Network.Instance.Send(packet);
     }
 }

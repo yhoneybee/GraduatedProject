@@ -114,12 +114,8 @@ public class Network : Singleton<Network>
         {
             REQ req = new REQ();
             req.what = "Connected";
-            var data = Data<REQ>.Serialize(req);
 
-            Packet packet = new Packet();
-            packet.SetData(PacketType.CONNECTED, data, data.Length);
-
-            Send(packet);
+            K.Send(PacketType.CONNECTED, req);
         }
         else
         {

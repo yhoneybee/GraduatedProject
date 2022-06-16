@@ -18,32 +18,31 @@ public class ChatLinker : MonoBehaviour
     {
         btnSendChat.onClick.AddListener(SendChat);
 
-        //GamePacketHandler.onChatPacket = OnChat;
-    }
+        Network.Instance.gamePackHandler.RES_Chat = (packet) =>
+        {
+            var res = packet.GetPacket<REQ_RES_Chat>();
 
-    private void OnChat(REQ_RES_Chat chat)
-    {
-        var obj = Instantiate(txtChatOrigin, rtrnContent);
-        //obj.text = $"[{chat.chatType}] {chat.id} : {chat.chat}";
+            var obj = Instantiate(txtChatOrigin, rtrnContent);
+
+            if (res.to == "ALL") obj.color = Color.magenta;
+            else obj.color = Color.gray;
+
+            obj.text = $"{res.id} : {res.chat}";
+        };
     }
 
     private void SendChat()
     {
-        //if (inputChat.text == string.Empty) return;
+        if (inputChat.text == string.Empty) return;
 
-        //ChatPacket chatPacket = new ChatPacket();
-        //chatPacket.chatType = ChatType.ALL;
-        //chatPacket.id = K.loginedId;
-        //chatPacket.to = "";
-        //chatPacket.chat = inputChat.text;
-        //byte[] buffer = Data<ChatPacket>.Serialize(chatPacket);
+        REQ_RES_Chat req = new REQ_RES_Chat();
+        req.id = K.userInfo.id;
+        req.to = "ALL";
+        req.chat = inputChat.text;
 
-        //Packet packet = new Packet();
-        //packet.type = ((short)PacketType.CHAT_PACKET);
-        //packet.SetData(buffer, buffer.Length);
+        K.Send(PacketType.REQ_CHAT_PACKET, req);
 
-        //inputChat.text = string.Empty;
-        //scrollChat.verticalScrollbar.value = 0;
-        //Network.Instance.Send(packet);
+        inputChat.text = string.Empty;
+        scrollChat.verticalScrollbar.value = 0;
     }
 }

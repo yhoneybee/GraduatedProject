@@ -45,15 +45,11 @@ public class LoginLinker : MonoBehaviour
         req.id = inputID.text;
         req.pw = inputPW.text;
 
-        Packet packet = new Packet();
-        packet.SetData(PacketType.REQ_LOGIN_PACKET, Data<REQ_Login>.Serialize(req));
-
-        Network.Instance.Send(packet);
+        K.Send(PacketType.REQ_LOGIN_PACKET, req);
 
         Network.Instance.gamePackHandler.RES_Login = (packet) =>
         {
             var res = packet.GetPacket<RES>();
-            Debug.Log(res.reason);
             if (!res.completed) return;
 
             if (toggleRemember.isOn)

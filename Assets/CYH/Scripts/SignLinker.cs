@@ -28,15 +28,11 @@ public class SignLinker : MonoBehaviour
         req.pw = inputPW.text;
         req.pwAgain = inputPWAgain.text;
 
-        Packet packet = new Packet();
-        packet.SetData(PacketType.REQ_SIGNIN_PACKET, Data<REQ_Signin>.Serialize(req));
-
-        Network.Instance.Send(packet);
+        K.Send(PacketType.REQ_SIGNIN_PACKET, req);
 
         Network.Instance.gamePackHandler.RES_Signin = (packet) =>
         {
             var res = packet.GetPacket<RES>();
-            Debug.Log(res.reason);
             if (!res.completed) return;
 
             window.Close();

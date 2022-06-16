@@ -7,23 +7,23 @@ using UnityEngine.UI;
 
 public class RoomViewer : MonoBehaviour
 {
-    RoomInfo roomData;
-    public RoomInfo RoomData
+    RoomInfo roomInfo;
+    public RoomInfo RoomInfo
     {
-        get { return roomData; }
+        get { return roomInfo; }
         set
         {
-            roomData = value;
-            txtName.text = $"room : {roomData.name}";
-            if (roomData.player1 == string.Empty)
+            roomInfo = value;
+            txtName.text = $"room : {roomInfo.name}";
+            if (roomInfo.player1 == string.Empty)
             {
-                roomData.player1 = "...";
+                roomInfo.player1 = "...";
             }
-            if (roomData.player2 == string.Empty)
+            if (roomInfo.player2 == string.Empty)
             {
-                roomData.player2 = "...";
+                roomInfo.player2 = "...";
             }
-            txtPlayers.text = $"players : {roomData.player1}, {roomData.player2}";
+            txtPlayers.text = $"players : {roomInfo.player1}, {roomInfo.player2}";
         }
     }
 
@@ -32,14 +32,9 @@ public class RoomViewer : MonoBehaviour
 
     public void EnterRoom()
     {
-        //K.GetDB().SetListener(SERVER.CallbackType.EnterRoomSuccess, () =>
-        //{
-        //    print("Enter Room Success");
-        //    K.roomData.name = roomData.name;
-        //    SceneManager.LoadScene("Room");
-        //}).SetListener(SERVER.CallbackType.EnterRoomFail, () =>
-        //{
-        //    print("Enter Room Fail");
-        //}).EnterRoom(roomData.name);
+        REQ_CreateEnterRoom req = new REQ_CreateEnterRoom();
+        req.roomName = roomInfo.name;
+
+        K.Send(PacketType.REQ_ENTER_ROOM_PACKET, req);
     }
 }

@@ -12,10 +12,11 @@ public class GamePacketHandler
     public Action<Packet> RES_Login;
     public Action<Packet> RES_CreateRoom;
     public Action<Packet> RES_EnterRoom;
+    public Action<Packet> RES_OtherUserEnterRoom;
     public Action<Packet> RES_LeaveRoom;
     public Action<Packet> RES_Rooms;
     public Action<Packet> RES_User;
-    public Action<Packet> RES_ReadeyGame;
+    public Action<Packet> RES_ReadyGame;
     public Action<Packet> RES_StartGame;
     public Action<Packet> RES_GameWin;
     public Action<Packet> RES_GameLose;
@@ -52,6 +53,10 @@ public class GamePacketHandler
                 EnterRoom(packet);
                 RES_EnterRoom?.Invoke(packet);
                 break;
+            case PacketType.RES_OTHER_USER_ENTER_ROOM_PACKET:
+                OtherUserEnterRoom(packet);
+                RES_OtherUserEnterRoom?.Invoke(packet);
+                break;
             case PacketType.RES_LEAVE_ROOM_PACKET:
                 RES_LeaveRoom?.Invoke(packet);
                 break;
@@ -63,9 +68,10 @@ public class GamePacketHandler
                 RES_User?.Invoke(packet);
                 break;
             case PacketType.RES_READY_GAME_PACKET:
-                RES_ReadeyGame?.Invoke(packet);
+                RES_ReadyGame?.Invoke(packet);
                 break;
             case PacketType.RES_START_GAME_PACKET:
+                StartGame(packet);
                 RES_StartGame?.Invoke(packet);
                 break;
             case PacketType.RES_GAME_WIN_PACKET:
@@ -91,6 +97,16 @@ public class GamePacketHandler
         }
     }
 
+    private void StartGame(Packet packet)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OtherUserEnterRoom(Packet packet)
+    {
+
+    }
+
     private void EnterRoom(Packet packet)
     {
         var res = packet.GetPacket<RES_EnterRoom>();
@@ -107,10 +123,7 @@ public class GamePacketHandler
         REQ_CreateEnterRoom req = new REQ_CreateEnterRoom();
         req.roomName = res.roomName;
 
-        Packet packet1 = new Packet();
-        packet1.SetData(PacketType.REQ_ENTER_ROOM_PACKET, Data<REQ_CreateEnterRoom>.Serialize(req));
-
-        network.Send(packet1);
+        K.Send(PacketType.REQ_ENTER_ROOM_PACKET, req);
     }
 
     private void Disconnected(Packet packet)
@@ -137,10 +150,7 @@ public class GamePacketHandler
         REQ_User req = new REQ_User();
         req.id = K.userInfo.id;
 
-        Packet packet1 = new Packet();
-        packet1.SetData(PacketType.REQ_USER_PACKET, Data<REQ_User>.Serialize(req));
-
-        network.Send(packet1);
+        K.Send(PacketType.REQ_USER_PACKET, req);
     }
 
     private void Connected(Packet packet)
