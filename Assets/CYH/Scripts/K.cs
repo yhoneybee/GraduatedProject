@@ -2,39 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Security.Cryptography;
-using SERVER;
 using System.Text;
-
-public enum DB
-{
-    MySQL,
-    End,
-}
+using MyPacket;
 
 public static class K
 {
-    static SQL[] db = new SQL[((int)DB.End)];
-
-    static DB selectDb = DB.MySQL;
-
-    public static SQL GetDB() => GetDB(selectDb);
-
-    public static string loginedId;
-    public static string enteredRoomName;
-
-    static SQL GetDB(DB dbType)
-    {
-        if (db[((int)dbType)] == null)
-        {
-            db[((int)dbType)] = dbType switch
-            {
-                DB.MySQL => new MySQL(),
-                _ => null,
-            };
-            db[((int)dbType)].Initilize();
-        }
-        return db[((int)dbType)];
-    }
+    public static UserInfo userInfo;
+    public static RoomInfo roomInfo;
 
     public static string SHA256(string data)
     {
@@ -46,5 +20,34 @@ public static class K
             stringBuilder.AppendFormat("{0:x2}", b);
         }
         return stringBuilder.ToString();
+    }
+
+    public static void QuitGame()
+    {
+        REQ req = new REQ();
+        req.what = "Disconnected";
+
+        Send(PacketType.DISCONNECTED, req);
+    }
+
+    public static void Update(REQ_RES_Charactor req)
+    {
+        Send(PacketType.REQ_CHARACTOR_PACKET, req);
+    }
+
+    public static void Send<T>(PacketType packetType, T req)
+        where T : new()
+    {
+        Packet packet = new Packet();
+        packet.SetData(packetType, Data<T>.Serialize(req));
+        Network.Instance.Send(packet);
+    }
+
+    public static void LeaveRoom()
+    {
+        REQ req = new REQ();
+        req.what = "LeaveRoom";
+
+        K.Send(PacketType.REQ_LEAVE_ROOM_PACKET, req);
     }
 }

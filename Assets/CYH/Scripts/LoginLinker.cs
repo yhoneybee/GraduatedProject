@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using MyPacket;
 
 [Serializable]
 public struct LoginInfo
@@ -40,12 +41,17 @@ public class LoginLinker : MonoBehaviour
 
     public void Login()
     {
-        K.GetDB().SetListener(SERVER.CallbackType.LoginFail, () =>
+        REQ_Login req = new REQ_Login();
+        req.id = inputID.text;
+        req.pw = inputPW.text;
+
+        K.Send(PacketType.REQ_LOGIN_PACKET, req);
+
+        Network.Instance.gamePackHandler.RES_Login = (packet) =>
         {
-            print("Fail");
-        }).SetListener(SERVER.CallbackType.LoginSuccess, () =>
-        {
-            K.loginedId = inputID.text;
+            var res = packet.GetPacket<RES>();
+            if (!res.completed) return;
+
             if (toggleRemember.isOn)
             {
                 Json.Write(new LoginInfo { id = inputID.text, pw = inputPW.text, remember = true }, saveFileName);
@@ -54,7 +60,10 @@ public class LoginLinker : MonoBehaviour
             {
                 Json.Write(new LoginInfo { remember = false }, saveFileName);
             }
+
+            K.userInfo.id = inputID.text;
+
             SceneManager.LoadScene("Main");
-        }).Login(inputID.text, inputPW.text);
+        };
     }
 }

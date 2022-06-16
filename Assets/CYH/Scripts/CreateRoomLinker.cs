@@ -1,3 +1,4 @@
+using MyPacket;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,9 @@ public class CreateRoomLinker : MonoBehaviour
 
     public void CreateRoom()
     {
-        K.GetDB().SetListener(SERVER.CallbackType.CreateRoomSuccess, () =>
-        {
-            print("CREATE SUCCESS");
-            K.enteredRoomName = inputRoomName.text;
-            SceneManager.LoadScene("Room");
-        }).SetListener(SERVER.CallbackType.CreateRoomFail, () =>
-        {
-            print("CREATE FAIL");
-        }).CreateRoom(inputRoomName.text);
+        REQ_CreateEnterRoom req = new REQ_CreateEnterRoom();
+        req.roomName = inputRoomName.text;
+        
+        K.Send(PacketType.REQ_CREATE_ROOM_PACKET, req);
     }
 }

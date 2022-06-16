@@ -13,11 +13,9 @@ public class Network : Singleton<Network>
     SocketAsyncEventArgs receiveEventArgs;
     MessageResolver messageResolver;
     LinkedList<Packet> receviePacketList;
-    GamePacketHandler gamePackHandler;
+    public GamePacketHandler gamePackHandler;
     byte[] receiveBuffer;
     object mutexReceivePacketList = new object();
-
-    bool isConnect = false;
 
     public override void Init()
     {
@@ -92,11 +90,6 @@ public class Network : Singleton<Network>
     private void Update()
     {
         ProcessPackets();
-        if (isConnect)
-        {
-            isConnect = false;
-            SceneManager.LoadScene("Title");
-        }
     }
 
     public void Connect(string address, int port)
@@ -119,11 +112,13 @@ public class Network : Singleton<Network>
     {
         if (e.SocketError == SocketError.Success)
         {
-            isConnect = true;
+            REQ req = new REQ();
+            req.what = "Connected";
+
+            K.Send(PacketType.CONNECTED, req);
         }
         else
         {
-
         }
     }
 
@@ -156,5 +151,10 @@ public class Network : Singleton<Network>
 
         e.Completed -= OnSendCompleted;
         SocketAsyncEventArgsPool.Instance.Push(e);
+    }
+
+    private void OnApplicationQuit()
+    {
+        K.LeaveRoom();
     }
 }
