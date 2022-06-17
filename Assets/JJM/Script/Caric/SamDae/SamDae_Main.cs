@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SamDae_Main : Caric
 {
-    [Header("=====SamDae Class=====")]
-    public string MyNameIsSamDae;
+    //[Header("=====SamDae Class=====")]
     // Start is called before the first frame update
     public override void Start()
     {
@@ -14,6 +13,7 @@ public class SamDae_Main : Caric
 
     void Update()
     {
-        moveDir = V.GetAxisRaw("Horizontal"); 
     }
+
+    
 }

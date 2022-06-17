@@ -10,6 +10,7 @@ public class Ingame : SceneBase //인게임 씬
     public float maxInputTime; //타임 체크 변수
     private const float inputTime = 0.25f; //타임 벨류
     // Start is called before the first frame update
+
     public override void SceneStart()
     {
         maxInputTime = V.worldTime + inputTime;
