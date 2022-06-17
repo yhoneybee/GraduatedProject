@@ -5,7 +5,8 @@ using MyPacket;
 public enum CARIC_STATE
 {
     STAND,
-    FLY,
+    JUMP,
+    FALL,
     CROUCH,
     ATTACK,
 }
@@ -57,17 +58,17 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 }
                 else if(V.GetKeyDown(V.CROUCH_KEY)) //앉기
                 {
-                    ChangeState(gameObject.AddComponent<Crouch>());
+                    ChangeState(gameObject.AddComponent<Crouching>());
                 }
                 else if (V.GetKeyDown(V.ATTACK_WEAK_KEY)) 
                 {
                     caric_Command.CheckCommad("J");
-                    ChangeState(caric.Attack_Weak);
+                    ChangeState(caric.attackState);
                 }
                 else if (V.GetKeyDown(V.ATTACK_STRONG_KEY))
                 {
                     caric_Command.CheckCommad("K");
-                    ChangeState(caric.Attack_Strong);
+                    ChangeState(caric.attackState);
                 }
                 else if(V.GetKeyDown(V.DEFENSE_KEY)) //방어
                 {
@@ -80,7 +81,17 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
 
                 break;
-            case CARIC_STATE.FLY: //공중
+            case CARIC_STATE.JUMP: //공중
+
+                if (V.GetKeyDown(V.ATTACK_WEAK_KEY) || V.GetKeyDown(V.ATTACK_STRONG_KEY))
+                {
+                    caric_Command.CheckCommad("J↑");
+                    ChangeState(caric.attackState);
+                }
+
+                break;
+            case CARIC_STATE.FALL: //공중
+
                 break;
             case CARIC_STATE.CROUCH: //앉은 상태
 
@@ -88,9 +99,21 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 {
                     ChangeState(gameObject.AddComponent<Idle>());
                 }
+                else if (V.GetKeyDown(V.ATTACK_WEAK_KEY) || V.GetKeyDown(V.ATTACK_STRONG_KEY))
+                {
+                    caric_Command.CheckCommad("J↓");
+                    ChangeState(caric.attackState);
+                }
 
                 break;
             case CARIC_STATE.ATTACK:
+
+                if (AttackStateCheck())
+                {
+                    ChangeState(gameObject.AddComponent<Idle>());
+                    return;
+                }
+
                 break;
             
         }
@@ -104,7 +127,8 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
     public void ChangeState(State newState) //상태 변경
     {
-        
+        //Debug.Log("스테이트 변경");
+
         if(state != null)
         {
             state.Exit(); //현재 상태 종료
@@ -113,19 +137,6 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         
         state = newState;
         state.Enter(); //새로운 상태 시작
-    }
-
-    public void ChangeStateString(string newState) 
-    {
-        switch (newState) 
-        {
-            case "Idle":
-                ChangeState(gameObject.AddComponent<Idle>());
-                break;
-            case "Fall":
-                ChangeState(gameObject.AddComponent<Fall>());
-                break;
-        }
     }
     
     public void CaricMove()
@@ -142,8 +153,13 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
             ChangeState(gameObject.AddComponent<Run>());
         }
+    }
 
-        
+    public bool AttackStateCheck() 
+    {
+        var currentAnim = caric.anim.GetCurrentAnimatorStateInfo(0);
+
+        return currentAnim.IsName("Idle") || currentAnim.IsName("Fall");
     }
   
 }

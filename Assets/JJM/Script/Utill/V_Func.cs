@@ -27,15 +27,17 @@ public partial class V : MonoBehaviour //공용 함수 클래스
     
     public static bool MoveKeyDown()
     {
-        if(V.GetKeyDown(V.LEFT_MOVE_KEY) || V.GetKeyDown(V.RIGHT_MOVE_KEY)) return true;
-
+        if (V.GetKeyDown(V.LEFT_MOVE_KEY) || V.GetKeyDown(V.RIGHT_MOVE_KEY) || V.IsKeySafe)
+        {
+            V.IsKeySafe = false;
+            return true;
+        }
+        
         return false;
     }
     public static bool MoveKeyUp()
     {
-        if(V.GetKeyUp(V.LEFT_MOVE_KEY) || V.GetKeyUp(V.RIGHT_MOVE_KEY)) return true;
-
-        return false;
+        return V.GetKeyUp(V.LEFT_MOVE_KEY) || V.GetKeyUp(V.RIGHT_MOVE_KEY);
     }
 
     public static List<T> Find_Child_Component_List<T>(GameObject rootObj) where T : Component //자식 오브젝트 리스트<T> 리턴

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack_Strong : State
+public class Crouching : State
 {
     public override void Enter()
     {
-        StateInit("Attack_Strong", CARIC_STATE.ATTACK);
+        StateInit("Crouching", CARIC_STATE.CROUCH);
     }
     public override void Tick()
     {

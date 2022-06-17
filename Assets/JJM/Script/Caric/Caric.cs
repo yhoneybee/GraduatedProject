@@ -9,8 +9,7 @@ public class Caric : MonoBehaviour
     public float jumpForce;
 
     [Header("AttackCommands")]
-    public State Attack_Weak;
-    public State Attack_Strong;
+    public State attackState;
 
     [Header("Components")]
     public Animator anim;
@@ -50,17 +49,9 @@ public class Caric : MonoBehaviour
         bone = GetComponentInChildren<Bone>();
     }
 
-    public void SetAttackState(string attackName, State newState) //공격 종류 설정
-    {  
-       switch(attackName)
-       {
-            case "Weak":
-                Attack_Weak = newState;
-                break;
-            case "Strong":
-                Attack_Strong = newState;
-                break;
-       }
+    public void SetAttackState(State newState) //공격 종류 설정
+    {
+        attackState = newState;
     }
 
     
