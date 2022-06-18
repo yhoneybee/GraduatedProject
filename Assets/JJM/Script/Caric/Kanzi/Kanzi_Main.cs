@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SamDae_Main : Caric
+public class Kanzi_Main : Caric
 {
-    //[Header("=====SamDae Class=====")]
     // Start is called before the first frame update
-    public void Awake()
+    void Awake()
     {
-        C_Init("SamDae", 5f, 6f);
+        C_Init("Kanzi", 5f, 6f);
     }
 
+    // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public override void SetCommandState(ATTACK_STATE command)
     {
-        switch (command) 
+        switch (command)
         {
             case ATTACK_STATE.ATTACK_WEAK:
                 attackState = gameObject.AddComponent<Attack_Weak>();
@@ -40,5 +40,4 @@ public class SamDae_Main : Caric
                 break;
         }
     }
-
 }

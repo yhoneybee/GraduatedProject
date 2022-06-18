@@ -153,10 +153,10 @@ GameObject:
   - component: {fileID: 8905987217222004393}
   - component: {fileID: 8905987217222004394}
   - component: {fileID: 8905987217222004390}
-  - component: {fileID: 3959474404348463254}
   - component: {fileID: 959649328}
+  - component: {fileID: 3880550067471385281}
   m_Layer: 0
-  m_Name: SamDae
+  m_Name: Kanzi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,7 +217,7 @@ SpriteRenderer:
   m_SortingLayerID: 1088707327
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: b75be72af19bb354ea715518d994479b, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: 3d7e71562e4b9714a863407f99ebf34d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -273,7 +273,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8905987217222004398}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -282,7 +282,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.1}
+    pivot: {x: 0.5, y: 0.07}
     oldSize: {x: 5.12, y: 5.12}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
@@ -290,7 +290,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 3.5}
+  m_Size: {x: 1, y: 4}
   m_EdgeRadius: 0
 --- !u!95 &8905987217222004390
 Animator:
@@ -302,7 +302,7 @@ Animator:
   m_GameObject: {fileID: 8905987217222004398}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14a139fd903c1804f956279d6a5e9d8d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5fd2e273194b8f94a887539d5b80c00e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -311,28 +311,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3959474404348463254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905987217222004398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1570c8f35d88cf4d8c5fbd587fd9a69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  caricName: 
-  moveSpeed: 0
-  jumpForce: 0
-  attackState: {fileID: 0}
-  commandWeakState: {fileID: 0}
-  commandStrongState: {fileID: 0}
-  anim: {fileID: 0}
-  sprite: {fileID: 0}
-  rigid: {fileID: 0}
-  bone: {fileID: 0}
 --- !u!114 &959649328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,3 +325,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caric: {fileID: 0}
   resetTimer: 0
+--- !u!114 &3880550067471385281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905987217222004398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c1e8f2d813ac945a1ea8c8096fb942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caricName: 
+  moveSpeed: 0
+  jumpForce: 0
+  attackState: {fileID: 0}
+  commandWeakState: {fileID: 0}
+  commandStrongState: {fileID: 0}
+  anim: {fileID: 0}
+  sprite: {fileID: 0}
+  rigid: {fileID: 0}
+  bone: {fileID: 0}

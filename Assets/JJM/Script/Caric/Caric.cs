@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Caric : MonoBehaviour
+public abstract class Caric : MonoBehaviour
 {
     [Header("=====Base Caric Class=====")]
+    public string caricName;
     public float moveSpeed;
     public float jumpForce;
 
     [Header("AttackCommands")]
     public State attackState;
+    public State commandWeakState;
+    public State commandStrongState;
 
     [Header("Components")]
     public Animator anim;
@@ -19,22 +22,18 @@ public class Caric : MonoBehaviour
     [Header("Class")]
     public Bone bone;
 
-    public virtual void Start()
+    public void C_Init(string name, float movespeed, float jumpforce) //캐릭터 초기화
     {
-        C_Init();
-    }
-
-    public void C_Init() //캐릭터 초기화
-    {
-        Caric_Setting();
+        Caric_Setting(name, movespeed, jumpforce);
         Caric_GetComponent();
         Caric_GetClass();
     }
 
-    public void Caric_Setting() //캐릭터 기본 값 셋팅
+    public void Caric_Setting(string name, float movespeed, float jumpforce) //캐릭터 기본 값 셋팅
     {
-        moveSpeed = 5;
-        jumpForce = 6;
+        caricName = name;
+        moveSpeed = movespeed;
+        jumpForce = jumpforce;
     }
 
     public void Caric_GetComponent() // 컴포넌트 get
@@ -49,10 +48,6 @@ public class Caric : MonoBehaviour
         bone = GetComponentInChildren<Bone>();
     }
 
-    public void SetAttackState(State newState) //공격 종류 설정
-    {
-        attackState = newState;
-    }
-
+    public abstract void SetCommandState(ATTACK_STATE command);
     
 }
