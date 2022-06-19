@@ -19,4 +19,6 @@ public partial class V : MonoBehaviour
     public static readonly KeyCode RIGHT_MOVE_KEY = KeyCode.D;
     public static readonly KeyCode JUMP_KEY = KeyCode.W;
     public static readonly KeyCode CROUCH_KEY = KeyCode.S;
+
+    public static readonly float GROUND_MIN_Y = -4.5f;
 }

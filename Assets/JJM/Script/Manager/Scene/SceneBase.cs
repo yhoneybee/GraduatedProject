@@ -12,7 +12,7 @@ public enum SCENE_STEP //씬 스텝
     END_AFTER, //끝 (씬 변경)
 }
 
-public abstract class SceneBase : MonoBehaviour //베이스 씬 클래스
+public abstract class SceneBase<T> : Singleton<T> where T : class //베이스 씬 클래스
 {
     [Header("=====Base Scene Class=====")]
     public SCENE_STEP sceneStep = SCENE_STEP.FIRST_FRAME; 
@@ -20,12 +20,14 @@ public abstract class SceneBase : MonoBehaviour //베이스 씬 클래스
     public void Awake()
     {
         V.Awake();
+        SceneAwake();
     }
     
     public void Start()
     {
         V.Start();
         Fade.Instance.FadeOut(Color.black, 1f, 1f, 1); //씬 시작 페이드 아웃
+        SceneStart();
     }
 
     public void Update()
@@ -44,7 +46,7 @@ public abstract class SceneBase : MonoBehaviour //베이스 씬 클래스
                 break;
             case SCENE_STEP.START:
 
-                SceneStart();
+                SceneEnter();
 
                 sceneStep = SCENE_STEP.PLAYING;
 
@@ -85,7 +87,9 @@ public abstract class SceneBase : MonoBehaviour //베이스 씬 클래스
         sceneStep = SCENE_STEP.END_BEFORE;
     }
 
+    public abstract void SceneAwake();
     public abstract void SceneStart();
+    public abstract void SceneEnter();
     public abstract void ScenePlaying();
     public abstract void SceneEnd();
 

@@ -26,7 +26,11 @@ public abstract class State : MonoBehaviour //상태 베이스
     public abstract void Enter();
     public abstract void Tick();
     public abstract void Exit();
-    public void CaricMove() => transform.Translate(Vector3.right * ai.moveDir * ai.caric.moveSpeed * Time.deltaTime);
+    public void CaricMove()
+    {
+        if (!RayCastCheck())
+            transform.Translate(Vector3.right * ai.moveDir * ai.caric.moveSpeed * Time.deltaTime);
+    }
 
     public void StateInit(string playeAnim, CARIC_STATE cs) //플레이어 정보 받아오기
     {
@@ -38,8 +42,32 @@ public abstract class State : MonoBehaviour //상태 베이스
         ai.cs = cs;
     }
 
-    public void EndAnimation() 
+    public bool AABB_Box()
     {
-        
+        var obj = V.FindMyCaric(Ingame.Instance.playerNumber);
+        float minX, maxX;
+        float minY, maxY;
+
+        minX = obj.transform.position.x - (obj.transform.localScale.x / 2);
+        maxX = obj.transform.position.x + (obj.transform.localScale.x / 2);
+
+        minY = obj.transform.position.y - (obj.transform.localScale.y / 2);
+        maxY = obj.transform.position.y + (obj.transform.localScale.y / 2);
+
+        return (transform.position.x + (transform.localScale.x / 2) >= minX &&
+            transform.position.x - (transform.localScale.x / 2) <= maxX &&
+            transform.position.y + (transform.localScale.y / 2) >= minY &&
+            transform.position.y - (transform.localScale.y / 2) <= maxY);
+    }
+
+    public bool RayCastCheck() 
+    {
+        float distance = 1f;
+
+        Debug.DrawRay(transform.position + new Vector3(0, 1.5f, 0), Vector3.right * ai.moveDir * distance, new Color(0, 1, 0));
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, 1.5f, 0), Vector3.right * ai.moveDir, distance, LayerMask.GetMask("Enemy"));
+
+        return hit.collider;
     }
 }

@@ -65,24 +65,32 @@ public class Caric_Command : MonoBehaviour
 
         switch (skillname)
         {
-            case "J¡é":
-            case "K¡é":
-                break;
             case "J¡é¡æ":
             case "J¡é¡ç":
+                caric.SetCommandState(ATTACK_STATE.ATTACK_COMMAND_WEAK);
                 break;
             case "K¡é¡æ":
             case "K¡é¡ç":
+                caric.SetCommandState(ATTACK_STATE.ATTACK_COMMAND_STRONG);
                 break;
             default:
-                if(attackname == "J") 
+
+                switch (attackname) 
                 {
-                    caric.SetAttackState("Weak", gameObject.AddComponent<Attack_Weak>());
+                    case "J":
+                        caric.SetCommandState(ATTACK_STATE.ATTACK_WEAK);
+                        break;
+                    case "K":
+                        caric.SetCommandState(ATTACK_STATE.ATTACK_STRONG);
+                        break;
+                    case "J¡é":
+                        caric.SetCommandState(ATTACK_STATE.ATTACK_CROUCH);
+                        break;
+                    case "J¡è":
+                        caric.SetCommandState(ATTACK_STATE.ATTACK_JUMP);
+                        break;
                 }
-                else if(attackname == "K") 
-                {
-                    caric.SetAttackState("Strong", gameObject.AddComponent<Attack_Weak>());
-                }
+
                 break;
         }
     }

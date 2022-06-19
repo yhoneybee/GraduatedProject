@@ -7,24 +7,22 @@ public class Fall : State
     bool IsGround;
     public override void Enter()
     {
-        StateInit("Fall", CARIC_STATE.FLY);
+        StateInit("Fall", CARIC_STATE.FALL);
         IsGround = false;
     }
 
     public override void Tick()
     {
-        //ai.caric.rigid.velocity.y == 0 || 
-        if (IsGround)
-        {
-            ai.ChangeState(gameObject.AddComponent<Idle>());
-            IsGround = false;
-        }
+        if (RayCastCheck()) ai.caric.rigid.velocity = new Vector2(0, ai.caric.rigid.velocity.y);
+
+        if (IsGround) ai.ChangeState(gameObject.AddComponent<Idle>());
 
         Debug.Log("FALL !!");
     }
 
     public override void Exit()
     {
+        V.IsKeySafe = true;
         ai.caric.rigid.velocity = Vector2.zero;
     }
 
@@ -32,7 +30,6 @@ public class Fall : State
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Effect.Instance.GetEffect("Dust_Jump", ai.caric.bone.foot.transform.position);
             IsGround = true;
         }
     }

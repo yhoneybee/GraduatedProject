@@ -6,14 +6,15 @@ public class Game : Singleton<Game>
 {
     //Caric Player;
     // Start is called before the first frame update
-    void Start()
+    public Caric CreateCaric(Caric caric, string name, int caricnumber, Vector3 pos) 
     {
+        var obj = Instantiate(caric, pos, Quaternion.identity);
+        obj.name = name;
+        obj.caricName = name;
+        obj.caricNumber = caricnumber;
+        obj.gameObject.layer = (Ingame.Instance.playerNumber == obj.caricNumber) ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
+        obj.sprite.flipX = (obj.gameObject.layer == LayerMask.NameToLayer("Player")) ? false : true;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return obj;
     }
 }

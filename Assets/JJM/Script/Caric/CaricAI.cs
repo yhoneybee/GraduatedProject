@@ -5,9 +5,20 @@ using MyPacket;
 public enum CARIC_STATE
 {
     STAND,
-    FLY,
+    JUMP,
+    FALL,
     CROUCH,
     ATTACK,
+}
+
+public enum ATTACK_STATE 
+{
+    ATTACK_WEAK,
+    ATTACK_STRONG,
+    ATTACK_CROUCH,
+    ATTACK_JUMP,
+    ATTACK_COMMAND_WEAK,
+    ATTACK_COMMAND_STRONG,
 }
 
 public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
@@ -21,90 +32,146 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     public float moveDir; //수평 값
     // Start is called before the first frame update
     void Start()
-    {   
-        if(caric == null) caric = GetComponent<Caric>();
+    {
+        if (caric == null) caric = GetComponent<Caric>();
         if (caric_Command == null) caric_Command = GetComponent<Caric_Command>();
         if (state == null) ChangeState(gameObject.AddComponent<Idle>());
+
+        Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
     }   
 
     // Update is called once per frame
     void Update()
+    {
+        switch (LayerMask.LayerToName(gameObject.layer)) 
+        {
+            case "Player":
+                PlayerAI();
+                break;
+        }
+
+    }
+ 
+    private void FixedUpdate()
+    {
+        if (state != null) state.Tick(); 
+    }
+
+    public void PlayerAI() 
     {
         moveDir = V.GetAxisRaw("Horizontal");
 
         switch (cs)
         {
             case CARIC_STATE.STAND: //서 있는 상태
-                
-                if(V.MoveKeyDown())
+
+                if (V.MoveKeyDown())
                 {
-                    if(moveDir == 0)
+                    if (moveDir == 0)
                     {
                         ChangeState(gameObject.AddComponent<Idle>());
-                    } 
-                    else 
+                    }
+                    else
                     {
                         CaricMove();
                     }
                 }
-                else if(V.MoveKeyUp())
+                else if (V.MoveKeyUp())
                 {
                     ChangeState(gameObject.AddComponent<Idle>());
                 }
-                else if(V.GetKeyDown(V.JUMP_KEY)) //점프
+                else if (V.GetKeyDown(V.JUMP_KEY)) //점프
                 {
                     ChangeState(gameObject.AddComponent<Jump>());
                 }
-                else if(V.GetKeyDown(V.CROUCH_KEY)) //앉기
+                else if (V.GetKeyDown(V.CROUCH_KEY)) //앉기
                 {
-                    ChangeState(gameObject.AddComponent<Crouch>());
+                    ChangeState(gameObject.AddComponent<Crouching>());
                 }
-                else if (V.GetKeyDown(V.ATTACK_WEAK_KEY)) 
+                else if (V.GetKeyDown(V.ATTACK_WEAK_KEY))
                 {
                     caric_Command.CheckCommad("J");
-                    ChangeState(caric.Attack_Weak);
+                    ChangeState(caric.attackState);
                 }
                 else if (V.GetKeyDown(V.ATTACK_STRONG_KEY))
                 {
                     caric_Command.CheckCommad("K");
-                    ChangeState(caric.Attack_Strong);
+                    ChangeState(caric.attackState);
                 }
-                else if(V.GetKeyDown(V.DEFENSE_KEY)) //방어
+                else if (V.GetKeyDown(V.DEFENSE_KEY)) //방어
                 {
                     ChangeState(gameObject.AddComponent<Defense>());
                 }
-                else if(V.GetKeyUp(V.DEFENSE_KEY)) 
+                else if (V.GetKeyUp(V.DEFENSE_KEY))
                 {
                     ChangeState(gameObject.AddComponent<Idle>());
                 }
 
 
                 break;
-            case CARIC_STATE.FLY: //공중
+            case CARIC_STATE.JUMP: //공중
+
+                if (V.GetKeyDown(V.ATTACK_WEAK_KEY) || V.GetKeyDown(V.ATTACK_STRONG_KEY))
+                {
+                    caric_Command.CheckCommad("J↑");
+                    ChangeState(caric.attackState);
+                }
+
+                break;
+            case CARIC_STATE.FALL: //공중
+
                 break;
             case CARIC_STATE.CROUCH: //앉은 상태
 
-                if(V.GetKeyUp(V.CROUCH_KEY))
+                if (!V.GetKey(V.CROUCH_KEY))
                 {
                     ChangeState(gameObject.AddComponent<Idle>());
+                }
+                else if (V.GetKeyDown(V.ATTACK_WEAK_KEY) || V.GetKeyDown(V.ATTACK_STRONG_KEY))
+                {
+                    caric_Command.CheckCommad("J↓");
+                    ChangeState(caric.attackState);
                 }
 
                 break;
             case CARIC_STATE.ATTACK:
-                break;
-            
-        }
 
-        
+                if (AttackStateCheck())
+                {
+                    ChangeState(gameObject.AddComponent<Idle>());
+                    return;
+                }
+
+                break;
+
+        }
     }
-    private void FixedUpdate()
+
+    public void EnemyAI(Packet packet)
     {
-        if (state != null) state.Tick(); 
+        var obj = packet.GetPacket<REQ_RES_Charactor>();
+
+        moveDir = obj.dir;
+        gameObject.transform.position = new Vector2(obj.posX, obj.posY);
+        
+        CharactorState cs = obj.charactorState;
+
+        switch (cs) 
+        {
+            case CharactorState.IDLE:
+                ChangeState(gameObject.AddComponent<Idle>());
+                break;
+            case CharactorState.WALK:
+                ChangeState(gameObject.AddComponent<Walk>());
+                break;
+        }
     }
+
 
     public void ChangeState(State newState) //상태 변경
     {
-        
+        //Debug.Log("스테이트 변경");
+
         if(state != null)
         {
             state.Exit(); //현재 상태 종료
@@ -113,21 +180,33 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         
         state = newState;
         state.Enter(); //새로운 상태 시작
-    }
 
-    public void ChangeStateString(string newState) 
-    {
-        switch (newState) 
-        {
-            case "Idle":
-                ChangeState(gameObject.AddComponent<Idle>());
-                break;
-            case "Fall":
-                ChangeState(gameObject.AddComponent<Fall>());
-                break;
-        }
+        SendPacket(state);
+        //Debug.Log("Class Name :" + state.GetType().Name);
     }
     
+    public void SendPacket(State currentState) 
+    {
+        if (LayerMask.LayerToName(gameObject.layer) != "Player") return;
+
+        REQ_RES_Charactor req = new REQ_RES_Charactor();
+        req.dir = moveDir;
+        req.posX = gameObject.transform.position.x;
+        req.posY = gameObject.transform.position.y;
+
+        switch (currentState.GetType().Name) 
+        {
+            case "Idle":
+                req.charactorState = CharactorState.IDLE;
+                break;
+            case "Walk":
+                req.charactorState = CharactorState.WALK;
+                break;
+        }
+
+        K.Update(req);
+    }
+
     public void CaricMove()
     {
         if(delayTime < V.worldTime)
@@ -142,8 +221,13 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
             ChangeState(gameObject.AddComponent<Run>());
         }
+    }
 
-        
+    public bool AttackStateCheck() 
+    {
+        var currentAnim = caric.anim.GetCurrentAnimatorStateInfo(0);
+
+        return currentAnim.IsName("Idle") || currentAnim.IsName("Fall");
     }
   
 }

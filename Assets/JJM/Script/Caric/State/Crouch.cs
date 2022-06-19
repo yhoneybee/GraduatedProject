@@ -8,10 +8,12 @@ public class Crouch : State
     {
         StateInit("Crouch", CARIC_STATE.CROUCH);
     }
+    
     public override void Tick()
     {
         
     }
+
     public override void Exit()
     {
         
