@@ -14,6 +14,7 @@ public class GamePacketHandler
     public Action<Packet> RES_EnterRoom;
     public Action<Packet> RES_OtherUserEnterRoom;
     public Action<Packet> RES_LeaveRoom;
+    public Action<Packet> RES_OtherUserLeaveRoom;
     public Action<Packet> RES_Rooms;
     public Action<Packet> RES_User;
     public Action<Packet> RES_ReadyGame;
@@ -59,6 +60,9 @@ public class GamePacketHandler
                 break;
             case PacketType.RES_LEAVE_ROOM_PACKET:
                 RES_LeaveRoom?.Invoke(packet);
+                break;
+            case PacketType.RES_OTHER_USER_LEAVE_ROOM_PACKET:
+                RES_OtherUserLeaveRoom?.Invoke(packet);
                 break;
             case PacketType.RES_ROOMS_PACKET:
                 RES_Rooms?.Invoke(packet);
