@@ -22,6 +22,8 @@ public partial class V : MonoBehaviour //공용 변수 클래스
     public static void Start()
     {
         Debug.Log("V Start!");
+
+        Debug.Log("playerNumber : " + playerNumber);
     }
 
     // Update is called once per frame

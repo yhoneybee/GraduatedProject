@@ -37,7 +37,9 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (caric_Command == null) caric_Command = GetComponent<Caric_Command>();
         if (state == null) ChangeState(gameObject.AddComponent<Idle>());
 
-        Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
+
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
     }   
 
     // Update is called once per frame
@@ -54,7 +56,11 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
  
     private void FixedUpdate()
     {
-        if (state != null) state.Tick(); 
+        if (state != null)
+        {
+            state.Tick();
+            SendPacket(state);
+        }
     }
 
     public void PlayerAI() 
@@ -149,6 +155,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
     public void EnemyAI(Packet packet)
     {
+
         var obj = packet.GetPacket<REQ_RES_Charactor>();
 
         moveDir = obj.dir;
@@ -163,6 +170,9 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 break;
             case CharactorState.WALK:
                 ChangeState(gameObject.AddComponent<Walk>());
+                break;
+            case CharactorState.RUN:
+                ChangeState(gameObject.AddComponent<Run>());
                 break;
         }
     }
@@ -180,8 +190,6 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         
         state = newState;
         state.Enter(); //새로운 상태 시작
-
-        SendPacket(state);
         //Debug.Log("Class Name :" + state.GetType().Name);
     }
     
@@ -201,6 +209,9 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 break;
             case "Walk":
                 req.charactorState = CharactorState.WALK;
+                break;
+            case "Run":
+                req.charactorState = CharactorState.RUN;
                 break;
         }
 
