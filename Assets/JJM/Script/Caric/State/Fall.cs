@@ -13,12 +13,9 @@ public class Fall : State
 
     public override void Tick()
     {
-        //ai.caric.rigid.velocity.y == 0 || 
-        if (IsGround)
-        {
-            ai.ChangeState(gameObject.AddComponent<Idle>());
-            IsGround = false;
-        }
+        if (RayCastCheck()) ai.caric.rigid.velocity = new Vector2(0, ai.caric.rigid.velocity.y);
+
+        if (IsGround) ai.ChangeState(gameObject.AddComponent<Idle>());
 
         Debug.Log("FALL !!");
     }

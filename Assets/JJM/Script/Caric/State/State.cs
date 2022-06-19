@@ -44,7 +44,7 @@ public abstract class State : MonoBehaviour //상태 베이스
 
     public bool AABB_Box()
     {
-        var obj = Ingame.Instance.enemy;
+        var obj = V.FindMyCaric(Ingame.Instance.playerNumber);
         float minX, maxX;
         float minY, maxY;
 
@@ -66,7 +66,7 @@ public abstract class State : MonoBehaviour //상태 베이스
 
         Debug.DrawRay(transform.position + new Vector3(0, 1.5f, 0), Vector3.right * ai.moveDir * distance, new Color(0, 1, 0));
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, 1.5f, 0), Vector3.right * ai.moveDir, distance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, 1.5f, 0), Vector3.right * ai.moveDir, distance, LayerMask.GetMask("Enemy"));
 
         return hit.collider;
     }

@@ -40,6 +40,14 @@ public partial class V : MonoBehaviour //공용 함수 클래스
         return V.GetKeyUp(V.LEFT_MOVE_KEY) || V.GetKeyUp(V.RIGHT_MOVE_KEY);
     }
 
+    public static Caric FindMyCaric(int playernumber) 
+    {
+        var players = Ingame.Instance.players;
+
+        return players[playernumber];
+    }
+        
+
     public static List<T> Find_Child_Component_List<T>(GameObject rootObj) where T : Component //자식 오브젝트 리스트<T> 리턴
     {
         if (rootObj == null) return null;

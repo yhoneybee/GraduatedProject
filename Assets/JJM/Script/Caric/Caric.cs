@@ -6,6 +6,7 @@ public abstract class Caric : MonoBehaviour
 {
     [Header("=====Base Caric Class=====")]
     public string caricName;
+    public int caricNumber;
     public float moveSpeed;
     public float jumpForce;
 

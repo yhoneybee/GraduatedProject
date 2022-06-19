@@ -10,7 +10,7 @@ public class Attack_Jump : State
     }
     public override void Tick()
     {
-
+        if (RayCastCheck()) ai.caric.rigid.velocity = new Vector2(0, ai.caric.rigid.velocity.y);
     }
     public override void Exit()
     {

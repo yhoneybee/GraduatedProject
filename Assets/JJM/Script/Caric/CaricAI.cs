@@ -32,23 +32,24 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     public float moveDir; //수평 값
     // Start is called before the first frame update
     void Start()
-    {   
-        if(caric == null) caric = GetComponent<Caric>();
+    {
+        if (caric == null) caric = GetComponent<Caric>();
         if (caric_Command == null) caric_Command = GetComponent<Caric_Command>();
         if (state == null) ChangeState(gameObject.AddComponent<Idle>());
+
+        Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
     }   
 
     // Update is called once per frame
     void Update()
     {
-        if(caric == Ingame.Instance.player) 
+        switch (LayerMask.LayerToName(gameObject.layer)) 
         {
-            PlayerAI();
+            case "Player":
+                PlayerAI();
+                break;
         }
-        else if (caric == Ingame.Instance.enemy) 
-        {
-            EnemyAI();   
-        }
+
     }
  
     private void FixedUpdate()
@@ -146,9 +147,24 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         }
     }
 
-    public void EnemyAI()
+    public void EnemyAI(Packet packet)
     {
+        var obj = packet.GetPacket<REQ_RES_Charactor>();
 
+        moveDir = obj.dir;
+        gameObject.transform.position = new Vector2(obj.posX, obj.posY);
+        
+        CharactorState cs = obj.charactorState;
+
+        switch (cs) 
+        {
+            case CharactorState.IDLE:
+                ChangeState(gameObject.AddComponent<Idle>());
+                break;
+            case CharactorState.WALK:
+                ChangeState(gameObject.AddComponent<Walk>());
+                break;
+        }
     }
 
 
@@ -164,8 +180,33 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         
         state = newState;
         state.Enter(); //새로운 상태 시작
+
+        SendPacket(state);
+        //Debug.Log("Class Name :" + state.GetType().Name);
     }
     
+    public void SendPacket(State currentState) 
+    {
+        if (LayerMask.LayerToName(gameObject.layer) != "Player") return;
+
+        REQ_RES_Charactor req = new REQ_RES_Charactor();
+        req.dir = moveDir;
+        req.posX = gameObject.transform.position.x;
+        req.posY = gameObject.transform.position.y;
+
+        switch (currentState.GetType().Name) 
+        {
+            case "Idle":
+                req.charactorState = CharactorState.IDLE;
+                break;
+            case "Walk":
+                req.charactorState = CharactorState.WALK;
+                break;
+        }
+
+        K.Update(req);
+    }
+
     public void CaricMove()
     {
         if(delayTime < V.worldTime)

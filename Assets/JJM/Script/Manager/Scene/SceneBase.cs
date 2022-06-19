@@ -20,6 +20,7 @@ public abstract class SceneBase<T> : Singleton<T> where T : class //베이스 �
     public void Awake()
     {
         V.Awake();
+        SceneAwake();
     }
     
     public void Start()
@@ -86,6 +87,7 @@ public abstract class SceneBase<T> : Singleton<T> where T : class //베이스 �
         sceneStep = SCENE_STEP.END_BEFORE;
     }
 
+    public abstract void SceneAwake();
     public abstract void SceneStart();
     public abstract void SceneEnter();
     public abstract void ScenePlaying();
