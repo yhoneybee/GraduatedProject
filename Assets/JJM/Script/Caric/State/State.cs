@@ -44,7 +44,7 @@ public abstract class State : MonoBehaviour //상태 베이스
 
     public bool AABB_Box()
     {
-        var obj = V.FindMyCaric(Ingame.Instance.playerNumber);
+        var obj = V.FindMyCaric(V.playerNumber);
         float minX, maxX;
         float minY, maxY;
 

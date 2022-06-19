@@ -112,6 +112,7 @@ public class GamePacketHandler
 
     private void StartGame(Packet packet)
     {
+        V.playerNumber = packet.GetPacket<RES_StartGame>().playerNum;
         SceneManager.LoadScene("Ingame");
     }
 

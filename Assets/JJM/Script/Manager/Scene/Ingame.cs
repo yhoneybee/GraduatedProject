@@ -8,7 +8,6 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
 {
     [Header("=====Ingame Scene Class=====")]
     public Transform[] spawnPoints; //생성 포인트
-    public int playerNumber;
     public Caric[] players = new Caric[2];
 
     public override void SceneAwake()

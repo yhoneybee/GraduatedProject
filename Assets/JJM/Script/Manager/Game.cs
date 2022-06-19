@@ -12,7 +12,7 @@ public class Game : Singleton<Game>
         obj.name = name;
         obj.caricName = name;
         obj.caricNumber = caricnumber;
-        obj.gameObject.layer = (Ingame.Instance.playerNumber == obj.caricNumber) ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
+        obj.gameObject.layer = (V.playerNumber == obj.caricNumber) ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
         obj.sprite.flipX = (obj.gameObject.layer == LayerMask.NameToLayer("Player")) ? false : true;
         
         return obj;
