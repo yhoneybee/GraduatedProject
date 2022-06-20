@@ -23,6 +23,7 @@ public class Copy : State //복사 드가자~
 public abstract class State : MonoBehaviour //상태 베이스
 {
     protected CaricAI ai;
+    protected float dir;
     public abstract void Enter();
     public abstract void Tick();
     public abstract void Exit();
@@ -35,8 +36,9 @@ public abstract class State : MonoBehaviour //상태 베이스
     public void StateInit(string playeAnim, CARIC_STATE cs) //플레이어 정보 받아오기
     {
         ai = GetComponent<CaricAI>();
+        dir = (ai.caric.sprite.flipX) ? -1 : 1;
 
-        if(playeAnim == "") return;
+        if (playeAnim == "") return;
 
         ai.caric.anim.Play(playeAnim); //해당 애니메이션 실행
         ai.cs = cs;
@@ -64,9 +66,9 @@ public abstract class State : MonoBehaviour //상태 베이스
     {
         float distance = 1f;
 
-        Debug.DrawRay(transform.position + new Vector3(0, 1.5f, 0), Vector3.right * ai.moveDir * distance, new Color(0, 1, 0));
+        Debug.DrawRay(transform.position + new Vector3(0, 1.5f, 0), Vector3.right * dir * distance, new Color(0, 1, 0));
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, 1.5f, 0), Vector3.right * ai.moveDir, distance, LayerMask.GetMask("Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, 1.5f, 0), Vector3.right * dir, distance, LayerMask.GetMask("Enemy"));
 
         return hit.collider;
     }

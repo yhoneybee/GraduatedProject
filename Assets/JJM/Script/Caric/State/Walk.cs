@@ -7,7 +7,6 @@ public class Walk : State
     public override void Enter()
     {
         StateInit("Walk", CARIC_STATE.STAND);
-        ai.caric.sprite.flipX = (ai.moveDir == -1);
     }
     public override void Tick()
     {

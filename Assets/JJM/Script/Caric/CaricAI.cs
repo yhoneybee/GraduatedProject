@@ -38,20 +38,14 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (state == null) ChangeState(gameObject.AddComponent<Idle>());
 
 
-        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
-            Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
+        //if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        //    Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
     }   
 
     // Update is called once per frame
     void Update()
     {
-        switch (LayerMask.LayerToName(gameObject.layer)) 
-        {
-            case "Player":
-                PlayerAI();
-                break;
-        }
-
+        PlayerAI();
     }
  
     private void FixedUpdate()
@@ -59,12 +53,14 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (state != null)
         {
             state.Tick();
-            SendPacket(state);
+            //SendPacket(state);
         }
     }
 
     public void PlayerAI() 
     {
+        if (gameObject.layer != LayerMask.NameToLayer("Player")) return;
+
         moveDir = V.GetAxisRaw("Horizontal");
 
         switch (cs)
@@ -220,11 +216,13 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
     public void CaricMove()
     {
-        if(delayTime < V.worldTime)
+        caric.sprite.flipX = (moveDir == -1);
+
+        if (delayTime < V.worldTime)
         {
             ChangeState(gameObject.AddComponent<Walk>());
             backupDir = moveDir;
-            delayTime = V.worldTime + 0.25f;
+            delayTime = V.worldTime + V.COMMAND_DELAY_TIME;
         } 
         else
         {

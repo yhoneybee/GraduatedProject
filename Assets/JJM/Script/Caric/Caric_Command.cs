@@ -7,7 +7,6 @@ public class Caric_Command : MonoBehaviour
     public Caric caric;
 
     public float resetTimer;
-    private float commandTime = 0.25f;
 
     private Queue<string> commadQueue = new Queue<string>();
 
@@ -15,7 +14,7 @@ public class Caric_Command : MonoBehaviour
     void Start()
     {
         caric = GetComponent<Caric>();
-        resetTimer = V.worldTime + commandTime;
+        resetTimer = V.worldTime + V.COMMAND_DELAY_TIME;
     }
 
     // Update is called once per frame
@@ -45,14 +44,14 @@ public class Caric_Command : MonoBehaviour
         if (resetTimer <= V.worldTime)
         {
             commadQueue.Clear();
-            resetTimer = V.worldTime + commandTime;
+            resetTimer = V.worldTime + V.COMMAND_DELAY_TIME;
         }
     }
     //"ก็"
     private void AddCommand(string command) 
     {
         commadQueue.Enqueue(command);
-        resetTimer = V.worldTime + commandTime;
+        resetTimer = V.worldTime + V.COMMAND_DELAY_TIME;
     }
 
     public void CheckCommad(string attackname)
