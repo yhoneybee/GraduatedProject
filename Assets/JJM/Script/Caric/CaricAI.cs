@@ -216,7 +216,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
     public void CaricMove()
     {
-        caric.sprite.flipX = (moveDir == -1);
+        FlipSprite();
 
         if (delayTime < V.worldTime)
         {
@@ -238,5 +238,10 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
         return currentAnim.IsName("Idle") || currentAnim.IsName("Fall");
     }
-  
+    
+    public void FlipSprite() //좌우 반전
+    {
+        gameObject.transform.localScale = 
+            new Vector3(Mathf.Abs(gameObject.transform.localScale.x) * moveDir, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+    }
 }

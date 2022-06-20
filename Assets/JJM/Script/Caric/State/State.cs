@@ -36,7 +36,7 @@ public abstract class State : MonoBehaviour //상태 베이스
     public void StateInit(string playeAnim, CARIC_STATE cs) //플레이어 정보 받아오기
     {
         ai = GetComponent<CaricAI>();
-        dir = (ai.caric.sprite.flipX) ? -1 : 1;
+        dir = (gameObject.transform.localScale.x > 0) ? 1 : -1;
 
         if (playeAnim == "") return;
 
