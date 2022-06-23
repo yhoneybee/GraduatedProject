@@ -17,6 +17,8 @@ public class Network : Singleton<Network>
     byte[] receiveBuffer;
     object mutexReceivePacketList = new object();
 
+    public Action<bool> onConnect;
+
     public override void Init()
     {
         receviePacketList = new LinkedList<Packet>();
@@ -110,15 +112,14 @@ public class Network : Singleton<Network>
 
     void OnConnected(object sender, SocketAsyncEventArgs e)
     {
+        onConnect?.Invoke(e.SocketError == SocketError.Success);
         if (e.SocketError == SocketError.Success)
         {
-            REQ req = new REQ();
-            req.what = "Connected";
 
-            K.Send(PacketType.CONNECTED, req);
         }
         else
         {
+
         }
     }
 

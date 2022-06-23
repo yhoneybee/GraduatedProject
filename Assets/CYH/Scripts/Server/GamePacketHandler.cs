@@ -36,7 +36,7 @@ public class GamePacketHandler
     {
         switch ((PacketType)packet.type)
         {
-            case PacketType.CONNECTED:
+            case PacketType.RES_CONNECTED:
                 Connected(packet);
                 break;
             case PacketType.RES_SIGNIN_PACKET:
@@ -94,7 +94,7 @@ public class GamePacketHandler
             case PacketType.RES_LOGOUT_PACKET:
                 RES_Logout?.Invoke(packet);
                 break;
-            case PacketType.DISCONNECTED:
+            case PacketType.RES_DISCONNECTED:
                 Disconnected(packet);
                 break;
             case PacketType.END:

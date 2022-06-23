@@ -27,7 +27,7 @@ public static class K
         REQ req = new REQ();
         req.what = "Disconnected";
 
-        Send(PacketType.DISCONNECTED, req);
+        Send(PacketType.REQ_DISCONNECTED, req);
     }
 
     public static void Update(REQ_RES_Charactor req)
