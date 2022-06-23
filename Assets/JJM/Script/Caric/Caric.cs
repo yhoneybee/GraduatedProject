@@ -22,6 +22,7 @@ public abstract class Caric : MonoBehaviour
 
     [Header("Class")]
     public Bone bone;
+    public AttackBox attackBox;
 
     public void C_Init(string name, float movespeed, float jumpforce) //캐릭터 초기화
     {
@@ -47,7 +48,14 @@ public abstract class Caric : MonoBehaviour
     public void Caric_GetClass() //클래스 get
     {
         bone = GetComponentInChildren<Bone>();
+        attackBox = GetComponentInChildren<AttackBox>();
     }
+
+    public void SetAttackBox() //현재 실행중인 스테이트를 가져와서 그 스테이트의 데미지 값 만큼 데미지를 셋팅해주면 됨.
+    {
+        
+    }
+
 
     public abstract void SetCommandState(ATTACK_STATE command);
     

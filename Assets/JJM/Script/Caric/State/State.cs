@@ -27,7 +27,7 @@ public abstract class State : MonoBehaviour //상태 베이스
     public abstract void Enter();
     public abstract void Tick();
     public abstract void Exit();
-    public void CaricMove()
+    public void CaricMove() //캐릭터 움직임
     {
         if (!RayCastCheck())
             transform.Translate(Vector3.right * ai.moveDir * ai.caric.moveSpeed * Time.deltaTime);
@@ -44,7 +44,7 @@ public abstract class State : MonoBehaviour //상태 베이스
         ai.cs = cs;
     }
 
-    public bool AABB_Box()
+    public bool AABB_Box() //박스 충돌
     {
         var obj = V.FindMyCaric(V.playerNumber);
         float minX, maxX;
@@ -62,7 +62,7 @@ public abstract class State : MonoBehaviour //상태 베이스
             transform.position.y - (transform.localScale.y / 2) <= maxY);
     }
 
-    public bool RayCastCheck() 
+    public bool RayCastCheck() //플레이어 충돌 처리
     {
         float distance = 1f;
 

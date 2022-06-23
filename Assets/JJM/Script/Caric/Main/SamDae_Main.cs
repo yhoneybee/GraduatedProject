@@ -16,6 +16,15 @@ public class SamDae_Main : Caric
 
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("AttackBox")) 
+        {
+            AttackBox attackBox = other.GetComponent<AttackBox>();
+        }
+    }
+
+
     public override void SetCommandState(ATTACK_STATE command)
     {
         switch (command) 
@@ -33,10 +42,10 @@ public class SamDae_Main : Caric
                 attackState = gameObject.AddComponent<Attack_Jump>();
                 break;
             case ATTACK_STATE.ATTACK_COMMAND_WEAK:
-                attackState = gameObject.AddComponent<Jump>();
+                attackState = gameObject.AddComponent<SamDae_Command_Weak>();
                 break;
             case ATTACK_STATE.ATTACK_COMMAND_STRONG:
-                attackState = gameObject.AddComponent<Jump>();
+                attackState = gameObject.AddComponent<SamDae_Command_Strong>();
                 break;
         }
     }
