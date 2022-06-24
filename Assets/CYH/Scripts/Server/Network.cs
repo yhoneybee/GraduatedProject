@@ -17,7 +17,7 @@ public class Network : Singleton<Network>
     byte[] receiveBuffer;
     object mutexReceivePacketList = new object();
 
-    public Action<bool> onConnect;
+    public Action onConnect;
 
     public override void Init()
     {
@@ -33,7 +33,7 @@ public class Network : Singleton<Network>
         receiveEventArgs.UserToken = this;
         receiveEventArgs.SetBuffer(receiveBuffer, 0, 1024 * 4);
 
-        Connect("119.196.245.41", 6475);
+        Connect();
         StartReceive();
         DontDestroyOnLoad(gameObject);
     }
@@ -94,7 +94,9 @@ public class Network : Singleton<Network>
         ProcessPackets();
     }
 
-    public void Connect(string address, int port)
+    public void Connect() => Connect("119.196.245.41", 6475);
+
+    private void Connect(string address, int port)
     {
         socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         socket.NoDelay = true;
@@ -106,14 +108,14 @@ public class Network : Singleton<Network>
         eventArgs.RemoteEndPoint = endPoint;
 
         bool pending = socket.ConnectAsync(eventArgs);
+
         if (!pending)
             OnConnected(null, eventArgs);
     }
 
     void OnConnected(object sender, SocketAsyncEventArgs e)
     {
-        onConnect?.Invoke(e.SocketError == SocketError.Success);
-        if (e.SocketError == SocketError.Success)
+        if (socket.Connected && e.SocketError == SocketError.Success)
         {
 
         }
@@ -157,5 +159,7 @@ public class Network : Singleton<Network>
     private void OnApplicationQuit()
     {
         K.LeaveRoom();
+        K.Logout();
+        K.QuitGame();
     }
 }

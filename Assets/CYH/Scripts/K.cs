@@ -22,6 +22,14 @@ public static class K
         return stringBuilder.ToString();
     }
 
+    public static void Logout()
+    {
+        REQ req = new REQ();
+        req.what = "Logout";
+
+        Send(PacketType.REQ_LOGOUT_PACKET, req);
+    }
+
     public static void QuitGame()
     {
         REQ req = new REQ();

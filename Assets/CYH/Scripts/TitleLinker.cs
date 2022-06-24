@@ -11,7 +11,8 @@ public class TitleLinker : MonoBehaviour
     {
         btnQuit.onClick.AddListener(() => 
         { 
-            K.QuitGame();
+            //K.QuitGame();
+            K.Logout();
         });
     }
 }

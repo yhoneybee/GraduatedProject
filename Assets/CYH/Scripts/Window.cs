@@ -15,6 +15,12 @@ public class Window : MonoBehaviour
         btnClose.onClick.AddListener(Close);
     }
 
+    public virtual void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Close();
+    }
+
     public virtual void Open()
     {
         goRootWindow.SetActive(true);
