@@ -2115,7 +2115,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 232608517932367529, guid: b196a0bc56335494da0175e74784cc5b, type: 3}
       propertyPath: m_Text
-      value: Setting
+      value: "\uC124\uC815"
       objectReference: {fileID: 0}
     - target: {fileID: 5039340240076810528, guid: b196a0bc56335494da0175e74784cc5b, type: 3}
       propertyPath: openKeyCode

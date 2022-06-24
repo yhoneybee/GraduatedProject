@@ -92,6 +92,7 @@ public class GamePacketHandler
                 RES_Charactor?.Invoke(packet);
                 break;
             case PacketType.RES_LOGOUT_PACKET:
+                Logout(packet);
                 RES_Logout?.Invoke(packet);
                 break;
             case PacketType.RES_DISCONNECTED:
@@ -100,6 +101,14 @@ public class GamePacketHandler
             case PacketType.END:
                 break;
         }
+    }
+
+    private void Logout(Packet packet)
+    {
+        var res = packet.GetPacket<RES>();
+        if (res == null || !res.completed) return;
+
+        K.QuitGame();
     }
 
     private void Ready(Packet packet)

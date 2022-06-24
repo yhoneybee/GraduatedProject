@@ -159,5 +159,7 @@ public class Network : Singleton<Network>
     private void OnApplicationQuit()
     {
         K.LeaveRoom();
+        K.Logout();
+        K.QuitGame();
     }
 }

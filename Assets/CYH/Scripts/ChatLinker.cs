@@ -31,6 +31,14 @@ public class ChatLinker : MonoBehaviour
         };
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            btnSendChat.onClick.Invoke();
+        }
+    }
+
     private void SendChat()
     {
         if (inputChat.text == string.Empty) return;
