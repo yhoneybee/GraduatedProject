@@ -171,6 +171,6 @@ public class GamePacketHandler
     {
         var res = packet.GetPacket<RES>();
         if (res == null || !res.completed) return;
-        SceneManager.LoadScene("Title");
+        Network.Instance.onConnect?.Invoke();
     }
 }
