@@ -72,4 +72,6 @@ public abstract class State : MonoBehaviour //상태 베이스
 
         return hit.collider;
     }
+
+
 }

@@ -16,15 +16,6 @@ public class SamDae_Main : Caric
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.layer == LayerMask.NameToLayer("AttackBox")) 
-        {
-            AttackBox attackBox = other.GetComponent<AttackBox>();
-        }
-    }
-
-
     public override void SetCommandState(ATTACK_STATE command)
     {
         switch (command) 
@@ -50,4 +41,14 @@ public class SamDae_Main : Caric
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other != null) 
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("AttackBox"))
+            {
+                AttackBox attackBox = other.GetComponent<AttackBox>();
+            }
+        }
+    }
 }

@@ -62,6 +62,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (gameObject.layer != LayerMask.NameToLayer("Player")) return;
 
         moveDir = V.GetAxisRaw("Horizontal");
+        caric.dir = moveDir;
 
         switch (cs)
         {

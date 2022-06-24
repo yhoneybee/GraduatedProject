@@ -7,6 +7,7 @@ public abstract class Caric : MonoBehaviour
     [Header("=====Base Caric Class=====")]
     public string caricName;
     public int caricNumber;
+    public float dir;
     public float moveSpeed;
     public float jumpForce;
 
@@ -24,6 +25,8 @@ public abstract class Caric : MonoBehaviour
     public Bone bone;
     public AttackBox attackBox;
 
+
+    public abstract void SetCommandState(ATTACK_STATE command);
     public void C_Init(string name, float movespeed, float jumpforce) //캐릭터 초기화
     {
         Caric_Setting(name, movespeed, jumpforce);
@@ -56,7 +59,10 @@ public abstract class Caric : MonoBehaviour
         
     }
 
+    public void AddJumpingForce()
+    {
+        rigid.AddForce(Vector2.one * new Vector2(dir * (moveSpeed), jumpForce), ForceMode2D.Impulse);
+    }
 
-    public abstract void SetCommandState(ATTACK_STATE command);
-    
+
 }

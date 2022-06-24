@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f46da76d1f6e903499425e2e94ec552e
+guid: 8a89aea850c71cd4e871a5e427cd69ba
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -50,6 +50,9 @@ TextureImporter:
   - first:
       213: -9013868121363806195
     second: Command_Strong_15
+  - first:
+      213: -561009322113116043
+    second: Command_Strong_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -143,11 +146,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 960
-        width: 984
-        height: 960
+        y: 636
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +166,12 @@ TextureImporter:
       name: Command_Strong_1
       rect:
         serializedVersion: 2
-        x: 984
-        y: 960
-        width: 984
-        height: 960
+        x: 721
+        y: 636
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +187,12 @@ TextureImporter:
       name: Command_Strong_2
       rect:
         serializedVersion: 2
-        x: 1968
-        y: 960
-        width: 984
-        height: 960
+        x: 1442
+        y: 636
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +208,12 @@ TextureImporter:
       name: Command_Strong_3
       rect:
         serializedVersion: 2
-        x: 2952
-        y: 960
-        width: 984
-        height: 960
+        x: 2163
+        y: 636
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,12 +229,12 @@ TextureImporter:
       name: Command_Strong_4
       rect:
         serializedVersion: 2
-        x: 3936
-        y: 960
-        width: 984
-        height: 960
+        x: 2884
+        y: 636
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,12 +250,12 @@ TextureImporter:
       name: Command_Strong_5
       rect:
         serializedVersion: 2
-        x: 4920
-        y: 960
-        width: 984
-        height: 960
+        x: 3605
+        y: 636
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,12 +271,12 @@ TextureImporter:
       name: Command_Strong_6
       rect:
         serializedVersion: 2
-        x: 5904
-        y: 960
-        width: 984
-        height: 960
+        x: 4326
+        y: 636
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,12 +292,12 @@ TextureImporter:
       name: Command_Strong_7
       rect:
         serializedVersion: 2
-        x: 6888
-        y: 960
-        width: 984
-        height: 960
+        x: 5047
+        y: 636
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,12 +313,12 @@ TextureImporter:
       name: Command_Strong_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 984
-        height: 960
+        x: 5768
+        y: 636
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,12 +334,12 @@ TextureImporter:
       name: Command_Strong_9
       rect:
         serializedVersion: 2
-        x: 984
+        x: 0
         y: 0
-        width: 984
-        height: 960
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -352,12 +355,12 @@ TextureImporter:
       name: Command_Strong_10
       rect:
         serializedVersion: 2
-        x: 1970
+        x: 721
         y: 0
-        width: 984
-        height: 960
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -373,12 +376,12 @@ TextureImporter:
       name: Command_Strong_11
       rect:
         serializedVersion: 2
-        x: 2952
+        x: 1442
         y: 0
-        width: 984
-        height: 960
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -394,12 +397,12 @@ TextureImporter:
       name: Command_Strong_12
       rect:
         serializedVersion: 2
-        x: 3936
+        x: 2163
         y: 0
-        width: 984
-        height: 960
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -415,12 +418,12 @@ TextureImporter:
       name: Command_Strong_13
       rect:
         serializedVersion: 2
-        x: 4920
+        x: 2884
         y: 0
-        width: 984
-        height: 960
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -436,12 +439,12 @@ TextureImporter:
       name: Command_Strong_14
       rect:
         serializedVersion: 2
-        x: 5904
+        x: 3605
         y: 0
-        width: 984
-        height: 960
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -457,12 +460,12 @@ TextureImporter:
       name: Command_Strong_15
       rect:
         serializedVersion: 2
-        x: 6888
+        x: 4326
         y: 0
-        width: 984
-        height: 960
+        width: 721
+        height: 636
       alignment: 9
-      pivot: {x: 0.38, y: 0.04}
+      pivot: {x: 0.5, y: 0.06}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -470,6 +473,27 @@ TextureImporter:
       bones: []
       spriteID: d0884ed73be48e280800000000000000
       internalID: -9013868121363806195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Command_Strong_16
+      rect:
+        serializedVersion: 2
+        x: 5047
+        y: 0
+        width: 721
+        height: 636
+      alignment: 9
+      pivot: {x: 0.5, y: 0.06}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 578d3cf6ef4e638f0800000000000000
+      internalID: -561009322113116043
       vertices: []
       indices: 
       edges: []
