@@ -123,6 +123,7 @@ public class GamePacketHandler
 
     private void StartGame(Packet packet)
     {
+        Debug.Log("START GAME");
         V.playerNumber = packet.GetPacket<RES_StartGame>().playerNum;
         SceneManager.LoadScene("Ingame");
     }
