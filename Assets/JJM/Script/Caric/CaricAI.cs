@@ -200,28 +200,22 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 ChangeState(gameObject.AddComponent<Defense>());
                 break;
             case CharactorState.ATTACK_WEAK:
-                ChangeState(caric.attackState);
-                caric.dmg = caric.Weak_Attack_Dmg;
+                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_WEAK));
                 break;
             case CharactorState.ATTACK_STRONG:
-                ChangeState(caric.attackState);
-                caric.dmg = caric.Strong_Attack_Dmg;
+                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_STRONG));
                 break;
             case CharactorState.ATTACK_CROUCH:
-                ChangeState(caric.attackState);
-                caric.dmg = caric.Crouch_Attack_Dmg;
+                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_CROUCH));
                 break;
             case CharactorState.ATTACK_JUMP:
-                ChangeState(caric.attackState);
-                caric.dmg = caric.Jump_Attack_Dmg;
+                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_JUMP));
                 break;
             case CharactorState.ATTACK_COMMAND_WEAK:
-                ChangeState(caric.attackState);
-                caric.dmg = caric.Command_Weak_Dmg;
+                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_COMMAND_WEAK));
                 break;
             case CharactorState.ATTACK_COMMAND_STRONG:
-                ChangeState(caric.attackState);
-                caric.dmg = caric.Command_Strong_Dmg;
+                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_COMMAND_STRONG));
                 break;
             case CharactorState.HIT:
                 ChangeState(gameObject.AddComponent<Hit>());

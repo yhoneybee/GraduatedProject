@@ -49,7 +49,7 @@ public abstract class Caric : MonoBehaviour
     public AttackBox attackBox;
 
 
-    public abstract void SetCommandState(ATTACK_STATE command);
+    public abstract Attack SetCommandState(ATTACK_STATE command);
     public void C_Init(string name, float movespeed, float jumpforce) //캐릭터 초기화
     {
         Caric_Setting(name, movespeed, jumpforce);

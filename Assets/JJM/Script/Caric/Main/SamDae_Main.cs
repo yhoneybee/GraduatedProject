@@ -16,7 +16,7 @@ public class SamDae_Main : Caric
 
     }
 
-    public override void SetCommandState(ATTACK_STATE command)
+    public override Attack SetCommandState(ATTACK_STATE command)
     {
         switch (command) 
         {
@@ -51,5 +51,7 @@ public class SamDae_Main : Caric
                 dmg = Command_Strong_Dmg;
                 break;
         }
+
+        return attackState;
     }
 }
