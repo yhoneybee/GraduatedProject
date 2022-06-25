@@ -26,11 +26,11 @@ public class HpBarSlider : MonoBehaviour
         }
     }
 
-    public void OnDamage(float dmg) //데미지 함수
+    public void OnDamage(float value) //데미지 함수
     {
         StopAllCoroutines();
 
-        currentHp -= dmg;
+        currentHp = value;
         StartCoroutine(AddDamage(hpBar_Front, 0f));
         StartCoroutine(AddDamage(hpBar_Back, 0.3f));
     }

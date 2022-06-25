@@ -160,7 +160,8 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
         moveDir = obj.dir;
         gameObject.transform.position = new Vector2(obj.posX, obj.posY);
-        
+        UI.Instance.HpSliderValueChange(obj.hp, caric.caricNumber);
+
         CharactorState cs = obj.charactorState;
 
         switch (cs) 
@@ -193,7 +194,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 ChangeState(gameObject.AddComponent<Attack_Weak>());
                 break;
             case CharactorState.ATTACK_STRONG:
-                ChangeState(gameObject.AddComponent<Attack_Weak>());
+                ChangeState(gameObject.AddComponent<Attack_Strong>());
                 break;
             case CharactorState.ATTACK_CROUCH:
                 ChangeState(gameObject.AddComponent<Attack_Crouch>());
@@ -238,6 +239,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (LayerMask.LayerToName(gameObject.layer) != "Player") return;
 
         REQ_RES_Charactor req = new REQ_RES_Charactor();
+        req.hp = caric.Hp;
         req.dir = moveDir;
         req.posX = gameObject.transform.position.x;
         req.posY = gameObject.transform.position.y;
