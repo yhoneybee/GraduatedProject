@@ -38,7 +38,7 @@ public class Judgment : Singleton<Judgment> //판정 매니저
 
             defender.Hp -= attacker.dmg;
             UI.Instance.HpSliderValueChange(defender.Hp, defender.caricNumber);
-            SendStat(defender);
+            //SendStat(defender);
 
             CaricAI defenderAi = defender.GetComponent<CaricAI>();
 
