@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyPacket;
 
 public class Crouch : State
 {
     public override void Enter()
     {
-        StateInit("Crouch", CARIC_STATE.CROUCH);
+        StateInit("Crouch", CARIC_STATE.CROUCH, CharactorState.CROUCH);
     }
     
     public override void Tick()

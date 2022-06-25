@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyPacket;
 
 public class Walk : State
 {
     public override void Enter()
     {
-        StateInit("Walk", CARIC_STATE.STAND);
+        StateInit("Walk", CARIC_STATE.STAND, CharactorState.WALK);
     }
     public override void Tick()
     {

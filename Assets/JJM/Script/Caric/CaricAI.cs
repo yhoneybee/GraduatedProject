@@ -28,6 +28,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     public Caric caric;
     public Caric_Command caric_Command;
     public CARIC_STATE cs = CARIC_STATE.STAND;
+    public CharactorState charactorState = CharactorState.IDLE;
     private float delayTime;
     private float backupDir;
     public float moveDir; //수평 값
@@ -199,18 +200,28 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 ChangeState(gameObject.AddComponent<Defense>());
                 break;
             case CharactorState.ATTACK_WEAK:
-                ChangeState(gameObject.AddComponent<Attack_Weak>());
+                ChangeState(caric.attackState);
                 caric.dmg = caric.Weak_Attack_Dmg;
                 break;
             case CharactorState.ATTACK_STRONG:
-                ChangeState(gameObject.AddComponent<Attack_Strong>());
+                ChangeState(caric.attackState);
                 caric.dmg = caric.Strong_Attack_Dmg;
                 break;
             case CharactorState.ATTACK_CROUCH:
-                ChangeState(gameObject.AddComponent<Attack_Crouch>());
+                ChangeState(caric.attackState);
+                caric.dmg = caric.Crouch_Attack_Dmg;
                 break;
             case CharactorState.ATTACK_JUMP:
-                ChangeState(gameObject.AddComponent<Attack_Jump>());
+                ChangeState(caric.attackState);
+                caric.dmg = caric.Jump_Attack_Dmg;
+                break;
+            case CharactorState.ATTACK_COMMAND_WEAK:
+                ChangeState(caric.attackState);
+                caric.dmg = caric.Command_Weak_Dmg;
+                break;
+            case CharactorState.ATTACK_COMMAND_STRONG:
+                ChangeState(caric.attackState);
+                caric.dmg = caric.Command_Strong_Dmg;
                 break;
             case CharactorState.HIT:
                 ChangeState(gameObject.AddComponent<Hit>());
@@ -253,59 +264,8 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         req.dir = moveDir;
         req.posX = gameObject.transform.position.x;
         req.hp = caric.Hp;
-
-        switch (currentState.GetType().Name)
-        {
-            case "Idle":
-                req.charactorState = CharactorState.IDLE;
-                break;
-            case "Walk":
-                req.charactorState = CharactorState.WALK;
-                break;
-            case "Run":
-                req.charactorState = CharactorState.RUN;
-                break;
-            case "Jump":
-                req.charactorState = CharactorState.JUMP;
-                break;
-            case "Fall":
-                req.charactorState = CharactorState.FALL;
-                break;
-            case "Crouch":
-                req.charactorState = CharactorState.CROUCH;
-                break;
-            case "Crouching":
-                req.charactorState = CharactorState.CROUCHING;
-                break;
-            case "Defense":
-                req.charactorState = CharactorState.DEFENCE;
-                break;
-            case "Attack_Weak":
-                req.charactorState = CharactorState.ATTACK_WEAK;
-                break;
-            case "Attack_Strong":
-                req.charactorState = CharactorState.ATTACK_STRONG;
-                break;
-            case "Attack_Jump":
-                req.charactorState = CharactorState.ATTACK_JUMP;
-                break;
-            case "Attack_Crouch":
-                req.charactorState = CharactorState.ATTACK_CROUCH;
-                break;
-            case "Hit":
-                req.charactorState = CharactorState.HIT;
-                break;
-            case "Crouch_Hit":
-                req.charactorState = CharactorState.CROUCH_HIT;
-                break;
-            case "Fly":
-                req.charactorState = CharactorState.FLY;
-                break;
-            case "Die":
-                req.charactorState = CharactorState.DIE;
-                break;
-        }
-
+        req.charactorState = charactorState;
+        
         K.PositionUpdate(req);
     }
 
