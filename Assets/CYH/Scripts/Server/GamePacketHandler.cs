@@ -107,8 +107,6 @@ public class GamePacketHandler
     {
         var res = packet.GetPacket<RES>();
         if (res == null || !res.completed) return;
-
-        K.QuitGame();
     }
 
     private void Ready(Packet packet)

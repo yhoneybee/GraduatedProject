@@ -36,6 +36,7 @@ public class ChatLinker : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             btnSendChat.onClick.Invoke();
+            inputChat.Select();
         }
     }
 
