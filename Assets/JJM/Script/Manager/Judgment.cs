@@ -38,7 +38,6 @@ public class Judgment : Singleton<Judgment> //판정 매니저
 
             defender.Hp -= attacker.dmg;
             UI.Instance.HpSliderValueChange(defender.Hp, defender.caricNumber);
-            //SendStat(defender);
 
             CaricAI defenderAi = defender.GetComponent<CaricAI>();
 
@@ -71,16 +70,5 @@ public class Judgment : Singleton<Judgment> //판정 매니저
         }
     }
 
-    public void SendStat(Caric defender) 
-    {
-        if(defender.gameObject.layer == LayerMask.NameToLayer("Enemy")) 
-        {
-            REQ_RES_Stat req = new REQ_RES_Stat();
-
-            req.hp = defender.Hp;
-
-            K.StatUpdate(req);
-        }
-    }
 
 }

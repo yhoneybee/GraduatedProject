@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using MyPacket;
 
 public class Copy : State //복사 드가자~
 {
@@ -33,10 +33,11 @@ public abstract class State : MonoBehaviour //상태 베이스
             transform.Translate(Vector3.right * ai.moveDir * ai.caric.moveSpeed * Time.deltaTime);
     }
 
-    public void StateInit(string playeAnim, CARIC_STATE cs) //플레이어 정보 받아오기
+    public void StateInit(string playeAnim, CARIC_STATE cs, CharactorState charactorState) //플레이어 정보 받아오기
     {
         ai = GetComponent<CaricAI>();
         dir = (gameObject.transform.localScale.x > 0) ? 1 : -1;
+        ai.charactorState = charactorState;
 
         if (playeAnim == "") return;
 

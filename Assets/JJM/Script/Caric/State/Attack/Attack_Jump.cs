@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyPacket;
 
 public class Attack_Jump : Attack
 {
     public override void Enter()
     {
-        StateInit("Attack_Jump", CARIC_STATE.ATTACK);
+        StateInit("Attack_Jump", CARIC_STATE.ATTACK, CharactorState.ATTACK_JUMP);
     }
     public override void Tick()
     {

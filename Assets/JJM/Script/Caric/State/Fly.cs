@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyPacket;
 
 public class Fly : State
 {
     public override void Enter()
     {
-        StateInit("Fly", CARIC_STATE.HIT);
+        StateInit("Fly", CARIC_STATE.HIT, CharactorState.FLY);
     }
     public override void Tick()
     {

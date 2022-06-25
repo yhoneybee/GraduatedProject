@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyPacket;
 
 public class Run : State
 {
     float weight = 1.5f;
     public override void Enter()
     {
-        StateInit("Run", CARIC_STATE.STAND);
+        StateInit("Run", CARIC_STATE.STAND, CharactorState.RUN);
         ai.caric.moveSpeed *= weight;
     }
     public override void Tick()
