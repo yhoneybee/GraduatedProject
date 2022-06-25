@@ -158,9 +158,11 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
         var obj = packet.GetPacket<REQ_RES_Charactor>();
 
+        caric.Hp = obj.hp;
         moveDir = obj.dir;
         gameObject.transform.position = new Vector2(obj.posX, obj.posY);
-        UI.Instance.HpSliderValueChange(obj.hp, caric.caricNumber);
+
+        UI.Instance.HpSliderValueChange(caric.Hp, caric.caricNumber);
 
         CharactorState cs = obj.charactorState;
 
@@ -170,9 +172,11 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 ChangeState(gameObject.AddComponent<Idle>());
                 break;
             case CharactorState.WALK:
+                FlipSprite();
                 ChangeState(gameObject.AddComponent<Walk>());
                 break;
             case CharactorState.RUN:
+                FlipSprite();
                 ChangeState(gameObject.AddComponent<Run>());
                 break;
             case CharactorState.JUMP:
