@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SamDae_Command_Strong : State
+public class SamDae_Command_Strong : Attack
 {
     public override void Enter()
     {
@@ -17,5 +17,10 @@ public class SamDae_Command_Strong : State
     public override void Exit()
     {
         ai.caric.jumpForce /= 1.5f;
+    }
+
+    public override void OnAttack(Caric other)
+    {
+
     }
 }

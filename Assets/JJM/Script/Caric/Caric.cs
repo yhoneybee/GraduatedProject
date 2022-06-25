@@ -7,12 +7,35 @@ public abstract class Caric : MonoBehaviour
     [Header("=====Base Caric Class=====")]
     public string caricName;
     public int caricNumber;
+
+    public float maxHp = V.PLAYER_MAXHP;
+    public float Hp 
+    { 
+        get => hp;
+        set 
+        { 
+            hp = value;
+
+            if (hp < 0) hp = 0;
+            else if(hp > maxHp) hp = maxHp;
+        }
+    }
+    private float hp;
+    public float dmg;
     public float dir;
     public float moveSpeed;
     public float jumpForce;
 
+    [Header("AttackDmg")]
+    public float Weak_Attack_Dmg;
+    public float Strong_Attack_Dmg;
+    public float Crouch_Attack_Dmg;
+    public float Jump_Attack_Dmg;
+    public float Command_Weak_Dmg;
+    public float Command_Strong_Dmg;
+
     [Header("AttackCommands")]
-    public State attackState;
+    public Attack attackState;
     public State commandWeakState;
     public State commandStrongState;
 
@@ -37,6 +60,7 @@ public abstract class Caric : MonoBehaviour
     public void Caric_Setting(string name, float movespeed, float jumpforce) //캐릭터 기본 값 셋팅
     {
         caricName = name;
+        Hp = maxHp;
         moveSpeed = movespeed;
         jumpForce = jumpforce;
     }
@@ -52,11 +76,6 @@ public abstract class Caric : MonoBehaviour
     {
         bone = GetComponentInChildren<Bone>();
         attackBox = GetComponentInChildren<AttackBox>();
-    }
-
-    public void SetAttackBox() //현재 실행중인 스테이트를 가져와서 그 스테이트의 데미지 값 만큼 데미지를 셋팅해주면 됨.
-    {
-        
     }
 
     public void AddJumpingForce()

@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack_Crouch : Attack
+public class Hit : State
 {
     public override void Enter()
     {
-        StateInit("Attack_Crouch", CARIC_STATE.ATTACK);
+        StateInit("Hit", CARIC_STATE.HIT);
     }
     public override void Tick()
     {
 
     }
     public override void Exit()
-    {
-
-    }
-
-    public override void OnAttack(Caric other)
     {
 
     }

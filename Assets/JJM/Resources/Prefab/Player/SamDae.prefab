@@ -89,13 +89,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4860854271596420014}
   - component: {fileID: 2249879731604185356}
+  - component: {fileID: 2638019688743453872}
   m_Layer: 0
   m_Name: AttackBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4860854271596420014
 Transform:
   m_ObjectHideFlags: 0
@@ -136,6 +137,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2638019688743453872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6744203890304252444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec02980cdf014d409609e7854c2248f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 0
 --- !u!1 &7199625914437853390
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,8 +376,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caricName: 
   caricNumber: 0
+  maxHp: 100
+  dmg: 0
+  dir: 0
   moveSpeed: 0
   jumpForce: 0
+  Weak_Attack_Dmg: 10
+  Strong_Attack_Dmg: 10
+  Crouch_Attack_Dmg: 10
+  Jump_Attack_Dmg: 10
+  Command_Weak_Dmg: 10
+  Command_Strong_Dmg: 10
   attackState: {fileID: 0}
   commandWeakState: {fileID: 0}
   commandStrongState: {fileID: 0}
@@ -371,6 +394,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   rigid: {fileID: 0}
   bone: {fileID: 0}
+  attackBox: {fileID: 0}
 --- !u!114 &959649328
 MonoBehaviour:
   m_ObjectHideFlags: 0

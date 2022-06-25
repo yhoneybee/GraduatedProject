@@ -22,21 +22,27 @@ public class Kanzi_Main : Caric
         {
             case ATTACK_STATE.ATTACK_WEAK:
                 attackState = gameObject.AddComponent<Attack_Weak>();
+                dmg = Weak_Attack_Dmg;
                 break;
             case ATTACK_STATE.ATTACK_STRONG:
                 attackState = gameObject.AddComponent<Attack_Strong>();
+                dmg = Strong_Attack_Dmg;
                 break;
             case ATTACK_STATE.ATTACK_CROUCH:
                 attackState = gameObject.AddComponent<Attack_Crouch>();
+                dmg = Crouch_Attack_Dmg;
                 break;
             case ATTACK_STATE.ATTACK_JUMP:
                 attackState = gameObject.AddComponent<Attack_Jump>();
+                dmg = Jump_Attack_Dmg;
                 break;
             case ATTACK_STATE.ATTACK_COMMAND_WEAK:
-                attackState = gameObject.AddComponent<Jump>();
+                attackState = gameObject.AddComponent<SamDae_Command_Weak>();
+                dmg = Command_Weak_Dmg;
                 break;
             case ATTACK_STATE.ATTACK_COMMAND_STRONG:
-                attackState = gameObject.AddComponent<Jump>();
+                attackState = gameObject.AddComponent<SamDae_Command_Strong>();
+                dmg = Command_Strong_Dmg;
                 break;
         }
     }

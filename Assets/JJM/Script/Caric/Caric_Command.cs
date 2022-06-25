@@ -92,5 +92,6 @@ public class Caric_Command : MonoBehaviour
 
                 break;
         }
+
     }
 }

@@ -8,14 +8,14 @@ public class HpBarSlider : MonoBehaviour
     public Slider hpBar_Front;
     public Slider hpBar_Back;
 
-    public float maxHp = 100f;
-    public float currentHp = 100f;
+    public float maxHp = V.PLAYER_MAXHP;
+    public float currentHp;
     // Start is called before the first frame update
     void Start()
     {
         if(!hpBar_Front) hpBar_Front = transform.Find("HpSlider").GetComponent<Slider>();
         if(!hpBar_Back) hpBar_Back = transform.Find("BackHpSlider").GetComponent<Slider>();
-
+        currentHp = maxHp;
     }
 
     public void Update()
@@ -31,11 +31,11 @@ public class HpBarSlider : MonoBehaviour
         StopAllCoroutines();
 
         currentHp -= dmg;
-        StartCoroutine(AddDamage(hpBar_Front, dmg, 0f));
-        StartCoroutine(AddDamage(hpBar_Back, dmg, 0.3f));
+        StartCoroutine(AddDamage(hpBar_Front, 0f));
+        StartCoroutine(AddDamage(hpBar_Back, 0.3f));
     }
 
-    public IEnumerator AddDamage(Slider slider, float dmg, float time) //Slider value 설정
+    public IEnumerator AddDamage(Slider slider, float time) //Slider value 설정
     {
         yield return new WaitForSeconds(time);
 

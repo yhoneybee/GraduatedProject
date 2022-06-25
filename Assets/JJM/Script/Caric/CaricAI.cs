@@ -9,6 +9,7 @@ public enum CARIC_STATE
     FALL,
     CROUCH,
     ATTACK,
+    HIT,
 }
 
 public enum ATTACK_STATE 
@@ -38,8 +39,8 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (state == null) ChangeState(gameObject.AddComponent<Idle>());
 
 
-        //if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
-            //Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
     }   
 
     // Update is called once per frame
@@ -53,7 +54,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (state != null)
         {
             state.Tick();
-            //SendPacket(state);
+            SendPacket(state);
         }
     }
 
@@ -146,6 +147,8 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 }
 
                 break;
+            case CARIC_STATE.HIT:
+                break;
 
         }
     }
@@ -171,6 +174,46 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
             case CharactorState.RUN:
                 ChangeState(gameObject.AddComponent<Run>());
                 break;
+            case CharactorState.JUMP:
+                ChangeState(gameObject.AddComponent<Jump>());
+                break;
+            case CharactorState.FALL:
+                ChangeState(gameObject.AddComponent<Fall>());
+                break;
+            case CharactorState.CROUCH:
+                ChangeState(gameObject.AddComponent<Crouch>());
+                break;
+            case CharactorState.CROUCHING:
+                ChangeState(gameObject.AddComponent<Crouching>());
+                break;
+            case CharactorState.DEFENCE:
+                ChangeState(gameObject.AddComponent<Defense>());
+                break;
+            case CharactorState.ATTACK_WEAK:
+                ChangeState(gameObject.AddComponent<Attack_Weak>());
+                break;
+            case CharactorState.ATTACK_STRONG:
+                ChangeState(gameObject.AddComponent<Attack_Weak>());
+                break;
+            case CharactorState.ATTACK_CROUCH:
+                ChangeState(gameObject.AddComponent<Attack_Crouch>());
+                break;
+            case CharactorState.ATTACK_JUMP:
+                ChangeState(gameObject.AddComponent<Attack_Jump>());
+                break;
+            case CharactorState.HIT:
+                ChangeState(gameObject.AddComponent<Hit>());
+                break;
+            case CharactorState.CORUCH_HIT:
+                ChangeState(gameObject.AddComponent<Hit>());
+                break;
+            case CharactorState.FLY:
+                ChangeState(gameObject.AddComponent<Fly>());
+                break;
+            case CharactorState.DIE:
+                ChangeState(gameObject.AddComponent<Die>());
+                break;
+
         }
     }
 
@@ -209,6 +252,45 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 break;
             case "Run":
                 req.charactorState = CharactorState.RUN;
+                break;
+            case "Jump":
+                req.charactorState = CharactorState.JUMP;
+                break;
+            case "Fall":
+                req.charactorState = CharactorState.FALL;
+                break;
+            case "Crouch":
+                req.charactorState = CharactorState.CROUCH;
+                break;
+            case "Crouching":
+                req.charactorState = CharactorState.CROUCHING;
+                break;
+            case "Defense":
+                req.charactorState = CharactorState.DEFENCE;
+                break;
+            case "Attack_Weak":
+                req.charactorState = CharactorState.ATTACK_WEAK;
+                break;
+            case "Attack_Strong":
+                req.charactorState = CharactorState.ATTACK_STRONG;
+                break;
+            case "Attack_Jump":
+                req.charactorState = CharactorState.ATTACK_JUMP;
+                break;
+            case "Attack_Crouch":
+                req.charactorState = CharactorState.ATTACK_CROUCH;
+                break;
+            case "Hit":
+                req.charactorState = CharactorState.HIT;
+                break;
+            case "Crouch_Hit":
+                req.charactorState = CharactorState.CORUCH_HIT;
+                break;
+            case "Fly":
+                req.charactorState = CharactorState.FLY;
+                break;
+            case "Die":
+                req.charactorState = CharactorState.DIE;
                 break;
         }
 

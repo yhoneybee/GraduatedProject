@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SamDae_Command_Weak : State
+public class SamDae_Command_Weak : Attack
 {
     public override void Enter()
     {
@@ -13,6 +13,10 @@ public class SamDae_Command_Weak : State
 
     }
     public override void Exit()
+    {
+
+    }
+    public override void OnAttack(Caric other)
     {
 
     }

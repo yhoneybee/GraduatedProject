@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrouchAttackAnim : StateMachineBehaviour
+public class StandAnim : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -16,9 +16,9 @@ public class CrouchAttackAnim : StateMachineBehaviour
         if (stateInfo.normalizedTime >= 1f)
         {
             var charAi = animator.GetComponent<CaricAI>();
-            var crouchAnim = animator.gameObject.AddComponent<Crouch>();
+            var idleAnim = animator.gameObject.AddComponent<Idle>();
 
-            charAi.ChangeState(crouchAnim);
+            charAi.ChangeState(idleAnim);
         }
     }
 

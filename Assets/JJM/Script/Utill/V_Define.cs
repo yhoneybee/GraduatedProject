@@ -22,4 +22,6 @@ public partial class V : MonoBehaviour
 
     public static readonly float GROUND_MIN_Y = -4.5f;
     public static readonly float COMMAND_DELAY_TIME = 0.25f;
+
+    public static readonly float PLAYER_MAXHP = 100f;
 }

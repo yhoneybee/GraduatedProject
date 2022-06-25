@@ -15,6 +15,7 @@ public class Game : Singleton<Game>
         obj.gameObject.layer = (V.playerNumber == obj.caricNumber) ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
         obj.gameObject.transform.localScale = new Vector3(((obj.caricNumber == 0) ? 1 : -1), gameObject.transform.localScale.y, gameObject.transform.localScale.z);
 
+
         return obj;
     }
 }
