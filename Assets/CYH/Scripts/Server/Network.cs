@@ -119,7 +119,11 @@ public class Network : Singleton<Network>
     {
         if (socket.Connected && e.SocketError == SocketError.Success)
         {
+            StartReceive();
 
+            REQ req = new REQ();
+            req.what = "Connected";
+            K.Send(PacketType.REQ_CONNECTED, req);
         }
         else
         {

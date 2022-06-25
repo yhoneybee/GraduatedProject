@@ -58,11 +58,6 @@ public class LoadingManager : MonoBehaviour
             time += Time.deltaTime;
             if (Network.Instance.IsConnect)
             {
-                Network.Instance.StartReceive();
-
-                REQ req = new REQ();
-                req.what = "Connected";
-                K.Send(PacketType.REQ_CONNECTED, req);
                 yield break;
             }
             else
