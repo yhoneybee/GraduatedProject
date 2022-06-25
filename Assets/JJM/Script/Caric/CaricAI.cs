@@ -204,7 +204,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
             case CharactorState.HIT:
                 ChangeState(gameObject.AddComponent<Hit>());
                 break;
-            case CharactorState.CORUCH_HIT:
+            case CharactorState.CROUCH_HIT:
                 ChangeState(gameObject.AddComponent<Hit>());
                 break;
             case CharactorState.FLY:
@@ -284,7 +284,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 req.charactorState = CharactorState.HIT;
                 break;
             case "Crouch_Hit":
-                req.charactorState = CharactorState.CORUCH_HIT;
+                req.charactorState = CharactorState.CROUCH_HIT;
                 break;
             case "Fly":
                 req.charactorState = CharactorState.FLY;
