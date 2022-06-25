@@ -42,10 +42,6 @@ public class LoadingManager : MonoBehaviour
     private void TryConnect()
     {
         StopAllCoroutines();
-        REQ req = new REQ();
-        req.what = "Connected";
-
-        K.Send(PacketType.REQ_CONNECTED, req);
         StartCoroutine(ECheckTimeOut());
     }
 
@@ -60,6 +56,19 @@ public class LoadingManager : MonoBehaviour
         while (time <= 32)
         {
             time += Time.deltaTime;
+            if (Network.Instance.IsConnect)
+            {
+                Network.Instance.StartReceive();
+
+                REQ req = new REQ();
+                req.what = "Connected";
+                K.Send(PacketType.REQ_CONNECTED, req);
+                yield break;
+            }
+            else
+            {
+                Network.Instance.Connect();
+            }
             yield return null;
         }
 

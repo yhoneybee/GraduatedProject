@@ -20,5 +20,6 @@ public class MainLinker : MonoBehaviour
     public void Back()
     {
         SceneManager.LoadScene("Title");
+        K.Logout();
     }
 }

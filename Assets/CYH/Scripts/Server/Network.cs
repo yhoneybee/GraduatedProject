@@ -17,6 +17,8 @@ public class Network : Singleton<Network>
     byte[] receiveBuffer;
     object mutexReceivePacketList = new object();
 
+    public bool IsConnect => socket != null && socket.Connected;
+
     public Action onConnect;
 
     public override void Init()
@@ -33,8 +35,8 @@ public class Network : Singleton<Network>
         receiveEventArgs.UserToken = this;
         receiveEventArgs.SetBuffer(receiveBuffer, 0, 1024 * 4);
 
-        Connect();
-        StartReceive();
+        //Connect();
+        //StartReceive();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -127,7 +129,7 @@ public class Network : Singleton<Network>
 
     public void Send(Packet packet)
     {
-        if (socket == null || !socket.Connected) return;
+        if (!IsConnect) return;
 
         SocketAsyncEventArgs sendEventArgs = SocketAsyncEventArgsPool.Instance.Pop();
         sendEventArgs.Completed += OnSendCompleted;
