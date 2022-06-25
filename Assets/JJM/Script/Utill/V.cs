@@ -23,7 +23,6 @@ public partial class V : MonoBehaviour //공용 변수 클래스
     {
         Debug.Log("V Start!");
 
-        V.playerNumber = 0;
         Debug.Log("playerNumber : " + playerNumber);
     }
 

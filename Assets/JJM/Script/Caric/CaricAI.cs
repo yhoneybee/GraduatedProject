@@ -140,12 +140,6 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 break;
             case CARIC_STATE.ATTACK:
 
-                if (AttackStateCheck())
-                {
-                    ChangeState(gameObject.AddComponent<Idle>());
-                    return;
-                }
-
                 break;
             case CARIC_STATE.HIT:
                 break;
@@ -319,13 +313,6 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
             ChangeState(gameObject.AddComponent<Run>());
         }
-    }
-
-    public bool AttackStateCheck() 
-    {
-        var currentAnim = caric.anim.GetCurrentAnimatorStateInfo(0);
-
-        return currentAnim.IsName("Idle") || currentAnim.IsName("Fall");
     }
     
     public void FlipSprite() //좌우 반전

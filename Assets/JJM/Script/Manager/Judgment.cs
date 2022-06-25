@@ -45,7 +45,10 @@ public class Judgment : Singleton<Judgment> //판정 매니저
                 switch (sign.AttackType) 
                 {
                     case ATTACKTYPE.HIT:
-                        if (defenderAi.cs == CARIC_STATE.CROUCH)
+
+                        string denfenderStateName = defender.gameObject.GetComponent<State>().GetType().Name;
+
+                        if (denfenderStateName == "Crouch" || denfenderStateName == "Crouch_Attack")
                             defenderAi.ChangeState(defender.gameObject.AddComponent<Crouch_Hit>());
                         else
                             defenderAi.ChangeState(defender.gameObject.AddComponent<Hit>());
