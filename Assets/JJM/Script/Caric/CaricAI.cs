@@ -12,7 +12,7 @@ public enum CARIC_STATE
     HIT,
 }
 
-public enum ATTACK_STATE 
+public enum ATTACK_STATE
 {
     ATTACK_WEAK,
     ATTACK_STRONG,
@@ -39,22 +39,22 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (state == null) ChangeState(gameObject.AddComponent<Idle>());
 
 
-        if (gameObject.layer == LayerMask.NameToLayer("Enemy")) 
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
         }
-        else if(gameObject.layer == LayerMask.NameToLayer("Player")) 
+        else if (gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             Network.Instance.gamePackHandler.RES_Stat = PlayerStat;
         }
-    }   
+    }
 
     // Update is called once per frame
     void Update()
     {
         PlayerAI();
     }
- 
+
     private void FixedUpdate()
     {
         if (state != null)
@@ -70,7 +70,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         caric.Hp = stat.hp;
     }
 
-    public void PlayerAI() 
+    public void PlayerAI()
     {
         if (gameObject.layer != LayerMask.NameToLayer("Player")) return;
 
@@ -169,7 +169,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
         CharactorState cs = obj.charactorState;
 
-        switch (cs) 
+        switch (cs)
         {
             case CharactorState.IDLE:
                 ChangeState(gameObject.AddComponent<Idle>());
@@ -199,9 +199,11 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 break;
             case CharactorState.ATTACK_WEAK:
                 ChangeState(gameObject.AddComponent<Attack_Weak>());
+                caric.dmg = caric.Weak_Attack_Dmg;
                 break;
             case CharactorState.ATTACK_STRONG:
                 ChangeState(gameObject.AddComponent<Attack_Strong>());
+                caric.dmg = caric.Strong_Attack_Dmg;
                 break;
             case CharactorState.ATTACK_CROUCH:
                 ChangeState(gameObject.AddComponent<Attack_Crouch>());
@@ -230,18 +232,18 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     {
         //Debug.Log("스테이트 변경");
 
-        if(state != null)
+        if (state != null)
         {
             state.Exit(); //현재 상태 종료
             Destroy(state);
-        } 
-        
+        }
+
         state = newState;
         state.Enter(); //새로운 상태 시작
         //Debug.Log("Class Name :" + state.GetType().Name);
     }
-    
-    public void SendPacket(State currentState) 
+
+    public void SendPacket(State currentState)
     {
         if (LayerMask.LayerToName(gameObject.layer) != "Player") return;
 
@@ -250,7 +252,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         req.dir = moveDir;
         req.posX = gameObject.transform.position.x;
 
-        switch (currentState.GetType().Name) 
+        switch (currentState.GetType().Name)
         {
             case "Idle":
                 req.charactorState = CharactorState.IDLE;
@@ -314,18 +316,18 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
             ChangeState(gameObject.AddComponent<Walk>());
             backupDir = moveDir;
             delayTime = V.worldTime + V.COMMAND_DELAY_TIME;
-        } 
+        }
         else
         {
-            if(backupDir != moveDir) return; //방향 전환 달리기 제어
+            if (backupDir != moveDir) return; //방향 전환 달리기 제어
 
             ChangeState(gameObject.AddComponent<Run>());
         }
     }
-    
+
     public void FlipSprite() //좌우 반전
     {
-        gameObject.transform.localScale = 
+        gameObject.transform.localScale =
             new Vector3(Mathf.Abs(gameObject.transform.localScale.x) * moveDir, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
     }
 }
