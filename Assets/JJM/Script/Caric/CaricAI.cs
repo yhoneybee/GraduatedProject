@@ -39,8 +39,14 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (state == null) ChangeState(gameObject.AddComponent<Idle>());
 
 
-        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy")) 
+        {
             Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
+        }
+        else if(gameObject.layer == LayerMask.NameToLayer("Player")) 
+        {
+            Network.Instance.gamePackHandler.RES_Stat = PlayerStat;
+        }
     }   
 
     // Update is called once per frame
@@ -56,6 +62,12 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
             state.Tick();
             SendPacket(state);
         }
+    }
+
+    public void PlayerStat(Packet packet)
+    {
+        var stat = packet.GetPacket<REQ_RES_Stat>();
+        caric.Hp = stat.hp;
     }
 
     public void PlayerAI() 

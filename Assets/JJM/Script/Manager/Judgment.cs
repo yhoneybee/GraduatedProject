@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyPacket;
 
 public class JudgmentSign //판정 사인
 {
@@ -23,13 +24,13 @@ public class Judgment : Singleton<Judgment> //판정 매니저
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(signQueue.Count > 0) //사인 큐가 남아있을 때
+        if (signQueue.Count > 0) //사인 큐가 남아있을 때
         {
             JudgmentSign sign = signQueue.Dequeue();
             Caric attacker = sign.Attacker;
@@ -37,12 +38,13 @@ public class Judgment : Singleton<Judgment> //판정 매니저
 
             defender.Hp -= attacker.dmg;
             UI.Instance.HpSliderValueChange(defender.Hp, defender.caricNumber);
+            SendStat(defender);
 
             CaricAI defenderAi = defender.GetComponent<CaricAI>();
 
-            if(defender.Hp > 0) //피격
+            if (defender.Hp > 0) //피격
             {
-                switch (sign.AttackType) 
+                switch (sign.AttackType)
                 {
                     case ATTACKTYPE.HIT:
 
@@ -69,5 +71,16 @@ public class Judgment : Singleton<Judgment> //판정 매니저
         }
     }
 
+    public void SendStat(Caric defender) 
+    {
+        if(defender.gameObject.layer == LayerMask.NameToLayer("Enemy")) 
+        {
+            REQ_RES_Stat req = new REQ_RES_Stat();
+
+            req.hp = defender.Hp;
+
+            K.StatUpdate(req);
+        }
+    }
 
 }

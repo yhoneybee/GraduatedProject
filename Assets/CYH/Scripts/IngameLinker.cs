@@ -14,8 +14,6 @@ public class IngameLinker : MonoBehaviour
         Network.Instance.gamePackHandler.RES_Charactor = (packet) =>
         {
             var res = packet.GetPacket<REQ_RES_Charactor>();
-
-            goOther.transform.position = new Vector3(res.posX, res.posY, 0);
         };
     }
 
@@ -23,7 +21,6 @@ public class IngameLinker : MonoBehaviour
     {
         REQ_RES_Charactor req = new REQ_RES_Charactor();
         req.posX = goOwn.transform.position.x;
-        req.posY = goOwn.transform.position.y;
 
         K.PositionUpdate(req);
 
