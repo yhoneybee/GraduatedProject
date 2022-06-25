@@ -12,8 +12,10 @@ public enum ATTACKTYPE
 public class AttackBox : MonoBehaviour
 {
     public ATTACKTYPE attackType;
+    public Caric playerCaric;
     void Start()
     {
+        playerCaric = this.transform.parent.GetComponent<Caric>();
     }
 
     // Update is called once per frame
@@ -25,19 +27,21 @@ public class AttackBox : MonoBehaviour
     {
         if (other != null)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if (other.gameObject.tag == "Caric")
             {
-                Attack nowAttack = transform.parent.GetComponent<Attack>();
-                
-                if (nowAttack != null) 
+                Caric enemyCaric = other.GetComponent<Caric>();
+
+                if(enemyCaric != playerCaric) 
                 {
-                    Caric playerCaric = this.transform.parent.GetComponent<Caric>();
-                    Caric enemyCaric = other.GetComponent<Caric>();
+                    Attack nowAttack = transform.parent.GetComponent<Attack>();
 
-                    nowAttack.OnAttack(enemyCaric);
-                    new JudgmentSign(playerCaric, enemyCaric, attackType);
+                    if (nowAttack != null)
+                    {
+                        nowAttack.OnAttack(enemyCaric);
+                        new JudgmentSign(playerCaric, enemyCaric, attackType);
 
-                    Debug.Log("NowState : " + nowAttack.GetType().Name);
+                        Debug.Log("NowState : " + nowAttack.GetType().Name);
+                    }
                 }
             }
         }

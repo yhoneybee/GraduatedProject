@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackType: 0
+  playerCaric: {fileID: 0}
 --- !u!1 &7199625914437853390
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +229,7 @@ GameObject:
   - component: {fileID: -1742500512130125289}
   m_Layer: 0
   m_Name: SamDae
-  m_TagString: Untagged
+  m_TagString: Caric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

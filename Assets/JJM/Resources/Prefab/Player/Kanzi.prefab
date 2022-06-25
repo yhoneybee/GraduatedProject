@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: -1668703630957837593}
   m_Layer: 0
   m_Name: Kanzi
-  m_TagString: Untagged
+  m_TagString: Caric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,8 +318,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caricName: 
   caricNumber: 0
+  maxHp: 100
+  dmg: 0
+  dir: 0
   moveSpeed: 0
   jumpForce: 0
+  Weak_Attack_Dmg: 0
+  Strong_Attack_Dmg: 0
+  Crouch_Attack_Dmg: 0
+  Jump_Attack_Dmg: 0
+  Command_Weak_Dmg: 0
+  Command_Strong_Dmg: 0
   attackState: {fileID: 0}
   commandWeakState: {fileID: 0}
   commandStrongState: {fileID: 0}
@@ -327,6 +336,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   rigid: {fileID: 0}
   bone: {fileID: 0}
+  attackBox: {fileID: 0}
 --- !u!50 &-1668703630957837593
 Rigidbody2D:
   serializedVersion: 4
