@@ -152,11 +152,8 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
         var obj = packet.GetPacket<REQ_RES_Charactor>();
 
-        caric.Hp = obj.hp;
         moveDir = obj.dir;
-        gameObject.transform.position = new Vector2(obj.posX, obj.posY);
-
-        UI.Instance.HpSliderValueChange(caric.Hp, caric.caricNumber);
+        gameObject.transform.position = new Vector2(obj.posX, gameObject.transform.position.y);
 
         CharactorState cs = obj.charactorState;
 
@@ -237,10 +234,9 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (LayerMask.LayerToName(gameObject.layer) != "Player") return;
 
         REQ_RES_Charactor req = new REQ_RES_Charactor();
-        req.hp = caric.Hp;
+
         req.dir = moveDir;
         req.posX = gameObject.transform.position.x;
-        req.posY = gameObject.transform.position.y;
 
         switch (currentState.GetType().Name) 
         {
@@ -294,7 +290,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 break;
         }
 
-        K.Update(req);
+        K.PositionUpdate(req);
     }
 
     public void CaricMove()

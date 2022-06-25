@@ -25,7 +25,7 @@ public class IngameLinker : MonoBehaviour
         req.posX = goOwn.transform.position.x;
         req.posY = goOwn.transform.position.y;
 
-        K.Update(req);
+        K.PositionUpdate(req);
 
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");

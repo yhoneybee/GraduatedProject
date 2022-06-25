@@ -38,9 +38,14 @@ public static class K
         Send(PacketType.REQ_DISCONNECTED, req);
     }
 
-    public static void Update(REQ_RES_Charactor req)
+    public static void PositionUpdate(REQ_RES_Charactor req)
     {
         Send(PacketType.REQ_CHARACTOR_PACKET, req);
+    }
+
+    public static void StatUpdate(REQ_RES_Stat req)
+    {
+        Send(PacketType.REQ_STAT_PACKET, req);
     }
 
     public static void Send<T>(PacketType packetType, T req)
