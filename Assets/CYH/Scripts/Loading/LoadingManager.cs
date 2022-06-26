@@ -41,6 +41,7 @@ public class LoadingManager : MonoBehaviour
 
     private void TryConnect()
     {
+        if (Network.Instance.IsConnect) return;
         StopAllCoroutines();
         StartCoroutine(ECheckTimeOut());
     }
@@ -56,13 +57,10 @@ public class LoadingManager : MonoBehaviour
         while (time <= 32)
         {
             time += Time.deltaTime;
-            if (Network.Instance.IsConnect)
-            {
-                yield break;
-            }
-            else
+            if (!Network.Instance.IsConnect)
             {
                 Network.Instance.Connect();
+                yield break;
             }
             yield return null;
         }
