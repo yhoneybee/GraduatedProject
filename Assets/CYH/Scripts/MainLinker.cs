@@ -13,6 +13,8 @@ public class MainLinker : MonoBehaviour
             var res = packet.GetPacket<RES_EnterRoom>();
             if (!res.completed) return;
 
+            K.host = res.host;
+
             SceneManager.LoadScene("Room");
         };
     }

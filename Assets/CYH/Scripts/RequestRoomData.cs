@@ -10,7 +10,7 @@ public class RequestRoomData : MonoBehaviour
     public RoomViewer goRoomViewerOrigin;
     public Text txtLeftTime;
 
-    public int startIndex = 0;
+    public int page = 0;
 
     List<RoomViewer> roomViewers = new List<RoomViewer>();
 
@@ -62,7 +62,7 @@ public class RequestRoomData : MonoBehaviour
         leftTime = waitTime;
 
         REQ_Rooms req = new REQ_Rooms();
-        req.startIndex = startIndex;
+        req.page = page;
 
         K.Send(PacketType.REQ_ROOMS_PACKET, req);
 

@@ -9,6 +9,7 @@ public static class K
 {
     public static UserInfo userInfo;
     public static RoomInfo roomInfo;
+    public static bool host;
 
     public static string SHA256(string data)
     {
