@@ -10,6 +10,7 @@ public enum CARIC_STATE
     CROUCH,
     ATTACK,
     HIT,
+    DIE,
 }
 
 public enum ATTACK_STATE
