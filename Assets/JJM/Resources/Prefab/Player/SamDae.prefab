@@ -317,6 +317,7 @@ MonoBehaviour:
   caric: {fileID: 0}
   caric_Command: {fileID: 0}
   cs: 0
+  charactorState: 0
   moveDir: 0
 --- !u!61 &8905987217222004394
 BoxCollider2D:
@@ -382,7 +383,7 @@ MonoBehaviour:
   dir: 0
   moveSpeed: 0
   jumpForce: 0
-  Weak_Attack_Dmg: 10
+  Weak_Attack_Dmg: 100
   Strong_Attack_Dmg: 10
   Crouch_Attack_Dmg: 10
   Jump_Attack_Dmg: 10

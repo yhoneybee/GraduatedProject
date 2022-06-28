@@ -33,10 +33,10 @@ public class Judgment : Singleton<Judgment> //판정 매니저
         if (signQueue.Count > 0) //사인 큐가 남아있을 때
         {
             JudgmentSign sign = signQueue.Dequeue();
-            Caric attacker = sign.Attacker;
-            Caric defender = sign.Defender;
+            Caric attacker = sign.Attacker; //공격자
+            Caric defender = sign.Defender; //방어자
 
-            defender.Hp -= attacker.dmg;
+            defender.Hp -= attacker.dmg; //데미지 만큼 Hp 감소
             UI.Instance.HpSliderValueChange(defender.Hp, defender.caricNumber);
 
             CaricAI defenderAi = defender.GetComponent<CaricAI>();

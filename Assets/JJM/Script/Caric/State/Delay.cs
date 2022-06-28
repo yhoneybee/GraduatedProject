@@ -5,8 +5,6 @@ using MyPacket;
 
 public class Delay : State
 {
-
-    float delayTime = 0;
     public override void Enter()
     {
 
