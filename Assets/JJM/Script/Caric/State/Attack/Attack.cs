@@ -7,4 +7,5 @@ public abstract class Attack : State
 {
     public abstract void OnAttack(Caric other);
 
+    bool IsPowerCrash = false;
 }

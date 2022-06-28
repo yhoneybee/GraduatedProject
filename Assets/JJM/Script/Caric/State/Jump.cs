@@ -8,7 +8,7 @@ public class Jump : State
     public override void Enter()
     {
         StateInit("Jump", CARIC_STATE.JUMP, CharactorState.JUMP);
-        ai.caric.AddJumpingForce();
+        //ai.caric.AddJumpingForce();
         //ai.caric.jumpForce = 100f;
     }
     public override void Tick()
