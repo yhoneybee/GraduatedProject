@@ -288,7 +288,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1088707327
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: b75be72af19bb354ea715518d994479b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -383,12 +383,12 @@ MonoBehaviour:
   dir: 0
   moveSpeed: 0
   jumpForce: 0
-  Weak_Attack_Dmg: 100
+  Weak_Attack_Dmg: 5
   Strong_Attack_Dmg: 10
-  Crouch_Attack_Dmg: 10
-  Jump_Attack_Dmg: 10
-  Command_Weak_Dmg: 10
-  Command_Strong_Dmg: 10
+  Crouch_Attack_Dmg: 5
+  Jump_Attack_Dmg: 5
+  Command_Weak_Dmg: 5
+  Command_Strong_Dmg: 20
   attackState: {fileID: 0}
   commandWeakState: {fileID: 0}
   commandStrongState: {fileID: 0}
