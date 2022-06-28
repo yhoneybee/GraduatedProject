@@ -8,6 +8,8 @@ using MyPacket;
 public static class K
 {
     public static UserInfo userInfo;
+    public static UserInfo player1;
+    public static UserInfo player2;
     public static RoomInfo roomInfo;
     public static bool host;
 
@@ -59,9 +61,13 @@ public static class K
 
     public static void LeaveRoom()
     {
+        if (roomInfo.name == string.Empty) return;
+
+        roomInfo = new RoomInfo();
+
         REQ req = new REQ();
         req.what = "LeaveRoom";
 
-        K.Send(PacketType.REQ_LEAVE_ROOM_PACKET, req);
+        Send(PacketType.REQ_LEAVE_ROOM_PACKET, req);
     }
 }

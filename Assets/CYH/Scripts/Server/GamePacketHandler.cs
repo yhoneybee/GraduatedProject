@@ -44,8 +44,8 @@ public class GamePacketHandler
                 RES_Signin?.Invoke(packet);
                 break;
             case PacketType.RES_LOGIN_PACKET:
-                Login(packet);
                 RES_Login?.Invoke(packet);
+                Login(packet);
                 break;
             case PacketType.RES_CREATE_ROOM_PACKET:
                 CreateRoom(packet);
@@ -115,10 +115,10 @@ public class GamePacketHandler
 
     private void Ready(Packet packet)
     {
-        REQ req = new REQ();
-        req.what = "게임 시작 조건 검사";
+        //REQ req = new REQ();
+        //req.what = "게임 시작 조건 검사";
 
-        K.Send(PacketType.REQ_START_GAME_PACKET, req);
+        //K.Send(PacketType.REQ_START_GAME_PACKET, req);
     }
 
     private void StartGame(Packet packet)
@@ -139,6 +139,16 @@ public class GamePacketHandler
         if (res == null || !res.completed) return;
 
         K.roomInfo = res.roomInfo;
+        K.player1 = res.player1;
+        K.player2 = res.player2;
+
+        Debug.Log($"{K.roomInfo.name} / {K.roomInfo.player1}, {K.player1.id}/ {K.roomInfo.player2}, {K.player2.id}");
+
+        //REQ_User req = new REQ_User();
+        //req.id = K.roomInfo.player1;
+        //K.Send(PacketType.REQ_USER_PACKET, req);
+        //req.id = K.roomInfo.player2;
+        //K.Send(PacketType.REQ_USER_PACKET, req);
     }
 
     private void CreateRoom(Packet packet)

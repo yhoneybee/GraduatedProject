@@ -12,6 +12,8 @@ public class RoomLinker : MonoBehaviour
     public Button btnReady;
     public Button btnStart;
     public Text txtBtnReady;
+    public PlayerSlot player1Slot;
+    public PlayerSlot player2Slot;
 
     private void Start()
     {
@@ -19,6 +21,28 @@ public class RoomLinker : MonoBehaviour
         txtRoomName.text = $"room : {K.roomInfo.name}";
         btnReady.onClick.AddListener(ReadyGame);
         btnStart.onClick.AddListener(StartGame);
+
+        player1Slot.Set(K.player1);
+        player2Slot.Set(K.player2);
+
+        Network.Instance.gamePackHandler.RES_OtherUserEnterRoom = (packet) =>
+        {
+            RefreshPlayerSlot(packet);
+        };
+
+        Network.Instance.gamePackHandler.RES_OtherUserLeaveRoom = (packet) =>
+        {
+            RefreshPlayerSlot(packet);
+        };
+    }
+
+    private void RefreshPlayerSlot(Packet packet)
+    {
+        var res = packet.GetPacket<RES_OtherUser>();
+        if (res == null || !res.completed) return;
+
+        player1Slot.Set(res.player1);
+        player2Slot.Set(res.player2);
     }
 
     private void StartGame()
@@ -50,10 +74,5 @@ public class RoomLinker : MonoBehaviour
 
             SceneManager.LoadScene("Main");
         };
-    }
-
-    private void OnApplicationQuit()
-    {
-        LeaveRoom();
     }
 }
