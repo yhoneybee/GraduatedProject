@@ -7,6 +7,7 @@ public abstract class Caric : MonoBehaviour
     [Header("=====Base Caric Class=====")]
     public string caricName;
     public int caricNumber;
+    public CARIC_STATE currenState = CARIC_STATE.STAND;
 
     public float maxHp = V.PLAYER_MAXHP;
     public float Hp 
@@ -25,6 +26,7 @@ public abstract class Caric : MonoBehaviour
     public float dir;
     public float moveSpeed;
     public float jumpForce;
+
 
     [Header("AttackDmg")]
     public float Weak_Attack_Dmg;
