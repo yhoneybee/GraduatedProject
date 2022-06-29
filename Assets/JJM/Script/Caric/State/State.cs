@@ -32,6 +32,10 @@ public abstract class State : MonoBehaviour //상태 베이스
         if (!RayCastCheck())
             transform.Translate(Vector3.right * ai.moveDir * ai.caric.moveSpeed * Time.deltaTime);
     }
+    public void Gravity()
+    {
+        transform.Translate(Vector3.down * 1.5f * Time.deltaTime);
+    }
 
     public void StateInit(string playeAnim, CARIC_STATE cs, CharactorState charactorState) //플레이어 정보 받아오기
     {

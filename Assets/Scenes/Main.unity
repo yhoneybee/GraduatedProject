@@ -1542,6 +1542,7 @@ MonoBehaviour:
   rtrnContent: {fileID: 1270096062}
   goRoomViewerOrigin: {fileID: 4546047518910778659, guid: 7749f17203104174381258f4bffd3882, type: 3}
   txtLeftTime: {fileID: 573782777}
+  page: 0
   leftTime: 0
 --- !u!1 &1287455284
 GameObject:

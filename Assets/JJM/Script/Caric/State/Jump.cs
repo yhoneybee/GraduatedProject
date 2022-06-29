@@ -17,7 +17,6 @@ public class Jump : State
 
         if (ai.caric.rigid.velocity.y <= 0) ai.ChangeState(gameObject.AddComponent<Fall>());
 
-
         Debug.Log("JUMP !!");  
     }
     public override void Exit()
