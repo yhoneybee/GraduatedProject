@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyPacket;
 
 public abstract class Caric : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public abstract class Caric : MonoBehaviour
     public string caricName;
     public int caricNumber;
     public CARIC_STATE currenState = CARIC_STATE.STAND;
+    public CharactorType charactorType;
 
     public float maxHp = V.PLAYER_MAXHP;
     public float Hp 
