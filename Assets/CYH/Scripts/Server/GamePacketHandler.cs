@@ -23,6 +23,7 @@ public class GamePacketHandler
     public Action<Packet> RES_GameLose;
     public Action<Packet> RES_Chat;
     public Action<Packet> RES_Charactor;
+    public Action<Packet> RES_Select;
     public Action<Packet> RES_Stat;
     public Action<Packet> RES_Logout;
 
@@ -88,6 +89,9 @@ public class GamePacketHandler
                 break;
             case PacketType.RES_CHAT_PACKET:
                 RES_Chat?.Invoke(packet);
+                break;
+            case PacketType.RES_SELECTCHARACTOR:
+                RES_Select?.Invoke(packet);
                 break;
             case PacketType.RES_CHARACTOR_PACKET:
                 RES_Charactor?.Invoke(packet);

@@ -14,6 +14,7 @@ public class RoomLinker : MonoBehaviour
     public Text txtBtnReady;
     public PlayerSlot player1Slot;
     public PlayerSlot player2Slot;
+    public SelectLinker otherSelect;
 
     private void Start()
     {
@@ -24,6 +25,15 @@ public class RoomLinker : MonoBehaviour
 
         player1Slot.Set(K.player1);
         player2Slot.Set(K.player2);
+
+        Network.Instance.gamePackHandler.RES_Select = (packet) =>
+        {
+            var res = packet.GetPacket<REQ_RES_Select>();
+
+            K.otherType = res.charactorType;
+
+            otherSelect.ButtonColorChange(K.otherType);
+        };
 
         Network.Instance.gamePackHandler.RES_OtherUserEnterRoom = (packet) =>
         {
