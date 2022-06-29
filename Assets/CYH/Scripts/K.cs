@@ -11,6 +11,8 @@ public static class K
     public static UserInfo player1;
     public static UserInfo player2;
     public static RoomInfo roomInfo;
+    public static CharactorType ownType;
+    public static CharactorType otherType;
     public static bool host;
 
     public static string SHA256(string data)
@@ -44,11 +46,6 @@ public static class K
     public static void PositionUpdate(REQ_RES_Charactor req)
     {
         Send(PacketType.REQ_CHARACTOR_PACKET, req);
-    }
-
-    public static void StatUpdate(REQ_RES_Stat req)
-    {
-        Send(PacketType.REQ_STAT_PACKET, req);
     }
 
     public static void Send<T>(PacketType packetType, T req)
