@@ -599,7 +599,7 @@ MonoBehaviour:
   - {fileID: 1987986682}
   players:
   - {fileID: 3959474404348463254, guid: 0f57b0de43c61c44ea3730579bdb00d9, type: 3}
-  - {fileID: 3959474404348463254, guid: 0f57b0de43c61c44ea3730579bdb00d9, type: 3}
+  - {fileID: 3880550067471385281, guid: d20a7542dd349b54aabd1b4f825f67b1, type: 3}
 --- !u!114 &269541364
 MonoBehaviour:
   m_ObjectHideFlags: 0
