@@ -189,7 +189,6 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 ChangeState(gameObject.AddComponent<Jump>());
                 break;
             case CharactorState.FALL:
-                ChangeState(gameObject.AddComponent<Fall>());
                 break;
             case CharactorState.CROUCH:
                 ChangeState(gameObject.AddComponent<Crouch>());
