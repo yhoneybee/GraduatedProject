@@ -215,7 +215,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1088707327
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 3d7e71562e4b9714a863407f99ebf34d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -244,6 +244,7 @@ MonoBehaviour:
   caric: {fileID: 0}
   caric_Command: {fileID: 0}
   cs: 0
+  charactorState: 0
   moveDir: 0
 --- !u!61 &8905987217222004394
 BoxCollider2D:
@@ -318,6 +319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caricName: 
   caricNumber: 0
+  currenState: 0
+  charactorType: 1
   maxHp: 100
   dmg: 0
   dir: 0
