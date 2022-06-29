@@ -13,16 +13,32 @@ public class SelectLinker : MonoBehaviour
     {
         btnSamdae.onClick.AddListener(() => 
         {
-            K.ownType = CharactorType.Samdae;
-            ButtonColorChange(K.ownType);
+            if (K.roomInfo.player1 == K.userInfo.id)
+            {
+                K.player1Type = CharactorType.Samdae;
+                ButtonColorChange(K.player1Type);
+            }
+            else
+            {
+                K.player2Type = CharactorType.Samdae;
+                ButtonColorChange(K.player2Type);
+            }
 
             SelectCharactor();
         });
 
         btnKanzi.onClick.AddListener(() =>
         {
-            K.ownType = CharactorType.Kanzi;
-            ButtonColorChange(K.ownType);
+            if (K.roomInfo.player1 == K.userInfo.id)
+            {
+                K.player1Type = CharactorType.Kanzi;
+                ButtonColorChange(K.player1Type);
+            }
+            else
+            {
+                K.player2Type = CharactorType.Kanzi;
+                ButtonColorChange(K.player2Type);
+            }
 
             SelectCharactor();
         });
@@ -46,7 +62,7 @@ public class SelectLinker : MonoBehaviour
     private static void SelectCharactor()
     {
         REQ_RES_Select req = new REQ_RES_Select();
-        req.charactorType = K.ownType;
+        req.charactorType = K.roomInfo.player1 == K.userInfo.id ? K.player1Type : K.player2Type;
         //req.playerNum = K.player1.id == K.userInfo.id ? 0 : 1;
 
         K.Send(PacketType.REQ_SELECTCHARACTOR, req);

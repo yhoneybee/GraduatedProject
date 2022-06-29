@@ -11,8 +11,8 @@ public static class K
     public static UserInfo player1;
     public static UserInfo player2;
     public static RoomInfo roomInfo;
-    public static CharactorType ownType;
-    public static CharactorType otherType;
+    public static CharactorType player1Type;
+    public static CharactorType player2Type;
     public static bool host;
 
     public static string SHA256(string data)

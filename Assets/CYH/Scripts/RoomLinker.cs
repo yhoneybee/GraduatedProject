@@ -30,9 +30,16 @@ public class RoomLinker : MonoBehaviour
         {
             var res = packet.GetPacket<REQ_RES_Select>();
 
-            K.otherType = res.charactorType;
-
-            otherSelect.ButtonColorChange(K.otherType);
+            if (K.roomInfo.player1 == K.userInfo.id)
+            {
+                K.player2Type = res.charactorType;
+                otherSelect.ButtonColorChange(K.player2Type);
+            }
+            else
+            {
+                K.player1Type = res.charactorType;
+                otherSelect.ButtonColorChange(K.player1Type);
+            }
         };
 
         Network.Instance.gamePackHandler.RES_OtherUserEnterRoom = (packet) =>
