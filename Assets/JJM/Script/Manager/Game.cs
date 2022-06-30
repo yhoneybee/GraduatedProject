@@ -12,7 +12,9 @@ public class Game : Singleton<Game>
         obj.name = name;
         obj.caricName = name;
         obj.caricNumber = caricnumber;
-        obj.gameObject.layer = (V.playerNumber == obj.caricNumber) ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
+        int layer = (V.playerNumber == obj.caricNumber) ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
+        obj.gameObject.layer = layer;
+        obj.bone.gameObject.layer = layer;
         obj.gameObject.transform.localScale = new Vector3(((obj.caricNumber == 0) ? 1 : -1), gameObject.transform.localScale.y, gameObject.transform.localScale.z);
 
 
