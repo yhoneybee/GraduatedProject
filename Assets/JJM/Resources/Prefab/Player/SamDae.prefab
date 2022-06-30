@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4609927683957328650}
   - component: {fileID: 3375026425474901784}
+  - component: {fileID: 2178835738424836449}
   m_Layer: 0
   m_Name: Bone
-  m_TagString: Untagged
+  m_TagString: Caric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +50,32 @@ MonoBehaviour:
   head: {fileID: 0}
   body: {fileID: 0}
   foot: {fileID: 0}
+--- !u!61 &2178835738424836449
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198792352678850396}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 2}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.1}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.5}
+  m_EdgeRadius: 0
 --- !u!1 &6452114663939696279
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +249,6 @@ GameObject:
   - component: {fileID: 8905987217222004395}
   - component: {fileID: 8905987217222004397}
   - component: {fileID: 8905987217222004391}
-  - component: {fileID: 8905987217222004394}
   - component: {fileID: 8905987217222004390}
   - component: {fileID: 3959474404348463254}
   - component: {fileID: 959649328}
@@ -319,32 +345,6 @@ MonoBehaviour:
   cs: 0
   charactorState: 0
   moveDir: 0
---- !u!61 &8905987217222004394
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905987217222004398}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.1}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 3.5}
-  m_EdgeRadius: 0
 --- !u!95 &8905987217222004390
 Animator:
   serializedVersion: 3
@@ -378,6 +378,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caricName: 
   caricNumber: 0
+  currenState: 0
+  charactorType: 0
   maxHp: 100
   dmg: 0
   dir: 0

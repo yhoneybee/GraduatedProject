@@ -15,7 +15,7 @@ public class AttackBox : MonoBehaviour
     public Caric playerCaric;
     void Start()
     {
-        playerCaric = this.transform.parent.GetComponent<Caric>();
+        playerCaric = GetComponentInParent<Caric>();
     }
 
     // Update is called once per frame
@@ -27,22 +27,18 @@ public class AttackBox : MonoBehaviour
     {
         if (other != null)
         {
-            if (other.gameObject.tag == "Caric")
+            if (other.gameObject.tag == "Caric") 
             {
-                Caric enemyCaric = other.GetComponent<Caric>();
+                Caric enemyCaric = other.GetComponentInParent<Caric>();
+                Attack nowAttack = GetComponentInParent<Attack>();
 
-                if(enemyCaric != playerCaric) 
-                {
-                    Attack nowAttack = transform.parent.GetComponent<Attack>();
+                if (enemyCaric == playerCaric) return;
+                if (nowAttack == null) return;
 
-                    if (nowAttack != null)
-                    {
-                        nowAttack.OnAttack(enemyCaric);
-                        new JudgmentSign(playerCaric, enemyCaric, attackType);
+                nowAttack.OnAttack(enemyCaric);
+                new JudgmentSign(playerCaric, enemyCaric, attackType);
 
-                        Debug.Log("NowState : " + nowAttack.GetType().Name);
-                    }
-                }
+                Debug.Log("NowState : " + nowAttack.GetType().Name);
             }
         }
     }

@@ -26,9 +26,11 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
 
     public override void SceneStart()
     {
-        player1 = Game.Instance.CreateCaric(charactors[K.player1Type], charactors[K.player1Type].name, 0, spawnPoints[0].position);
-        player2 = Game.Instance.CreateCaric(charactors[K.player2Type], charactors[K.player2Type].name, 1, spawnPoints[1].position);
-        
+        Caric player1_Charactor = charactors[CharactorType.Samdae];
+        Caric player2_Charactor = charactors[CharactorType.Samdae];
+
+        player1 = Game.Instance.CreateCaric(player1_Charactor, player1_Charactor.name, 0, spawnPoints[0].position);
+        player2 = Game.Instance.CreateCaric(player2_Charactor, player2_Charactor.name, 1, spawnPoints[1].position);
     }
     public override void SceneEnter()
     {

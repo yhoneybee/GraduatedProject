@@ -96,7 +96,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: empty
+  m_Name: Samdae
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -601,7 +601,7 @@ AnimatorStateMachine:
     m_Position: {x: 180, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6162609741250496068}
-    m_Position: {x: 288.44684, y: 6.9664, z: 0}
+    m_Position: {x: 290, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4489472738258923382}
     m_Position: {x: 440, y: 90, z: 0}
