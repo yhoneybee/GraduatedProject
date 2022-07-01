@@ -22,7 +22,10 @@ public class CameraTargetGroup : MonoBehaviour //카메라 타겟 그룹 클래스
 
     void SetTargetObject(object sender, System.EventArgs e) //타켓 그룹 오브젝트 설정
     {
-        cinemachineTargetGroup.AddMember(Ingame.Instance.player1.transform, 1, 3);
-        cinemachineTargetGroup.AddMember(Ingame.Instance.player2.transform, 1, 3);
+        foreach(var player in Ingame.Instance.players) 
+        {
+            cinemachineTargetGroup.AddMember(player.transform, 1, 3);
+        }
+        
     }
 }

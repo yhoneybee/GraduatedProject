@@ -15,6 +15,5 @@ public class Die : State
     }
     public override void Exit()
     {
-
     }
 }

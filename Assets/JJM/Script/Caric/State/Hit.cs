@@ -15,6 +15,6 @@ public class Hit : State
     }
     public override void Exit()
     {
-
+        ai.caric.rigid.velocity = Vector2.zero;
     }
 }

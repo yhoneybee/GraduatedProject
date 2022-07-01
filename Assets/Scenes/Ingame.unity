@@ -728,8 +728,6 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 1215782302}
   - {fileID: 1987986682}
-  player1: {fileID: 0}
-  player2: {fileID: 0}
   players:
   - {fileID: 3959474404348463254, guid: 0f57b0de43c61c44ea3730579bdb00d9, type: 3}
   - {fileID: 3880550067471385281, guid: d20a7542dd349b54aabd1b4f825f67b1, type: 3}
@@ -1189,7 +1187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -270, y: -105}
+  m_AnchoredPosition: {x: -240, y: -105}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &564546737
@@ -1234,7 +1232,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 100
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -1380,7 +1378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: f8680f4d2a398c242a49c48470248036, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -2389,9 +2387,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbf1d181bfc554489dfa47242cc7f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBarSlider:
-  - {fileID: 2001222967}
-  - {fileID: 2087530071}
+  playerInfo:
+  - {fileID: 1502950088}
+  - {fileID: 671913355}
+  playerFace:
+  - {fileID: 21300000, guid: 9b6603f8621e2dc45a3ad0169ee6e964, type: 3}
+  - {fileID: 21300000, guid: 529283fead420794d9017b0c0bbe36a1, type: 3}
 --- !u!1 &1144834096
 GameObject:
   m_ObjectHideFlags: 0
@@ -3979,7 +3980,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 270, y: -105}
+  m_AnchoredPosition: {x: 240, y: -105}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2136307915
@@ -4009,7 +4010,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 100
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
