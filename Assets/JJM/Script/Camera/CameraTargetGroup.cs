@@ -7,7 +7,7 @@ public class CameraTargetGroup : MonoBehaviour //카메라 타겟 그룹 클래스
 {
     public CinemachineTargetGroup cinemachineTargetGroup; //시네머신 타켓 그룹
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         cinemachineTargetGroup = GetComponent<CinemachineTargetGroup>();
 

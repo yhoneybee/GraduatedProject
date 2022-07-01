@@ -178,11 +178,11 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
                 ChangeState(gameObject.AddComponent<Idle>());
                 break;
             case CharactorState.WALK:
-                FlipSprite();
+                caric.FlipSprite(moveDir);
                 ChangeState(gameObject.AddComponent<Walk>());
                 break;
             case CharactorState.RUN:
-                FlipSprite();
+                caric.FlipSprite(moveDir);
                 ChangeState(gameObject.AddComponent<Run>());
                 break;
             case CharactorState.JUMP:
@@ -265,7 +265,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
     public void CaricMove()
     {
-        FlipSprite();
+        caric.FlipSprite(moveDir);
 
         if (delayTime < V.worldTime)
         {
@@ -281,9 +281,4 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         }
     }
 
-    public void FlipSprite() //좌우 반전
-    {
-        gameObject.transform.localScale =
-            new Vector3(Mathf.Abs(gameObject.transform.localScale.x) * moveDir, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
-    }
 }

@@ -87,5 +87,11 @@ public abstract class Caric : MonoBehaviour
         rigid.AddForce(Vector2.one * new Vector2(dir * (moveSpeed), jumpForce), ForceMode2D.Impulse);
     }
 
+    public void FlipSprite(float dir) //좌우 반전
+    {
+        gameObject.transform.localScale =
+            new Vector3(Mathf.Abs(gameObject.transform.localScale.x) * dir, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+    }
+
 
 }

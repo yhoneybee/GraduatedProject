@@ -47,12 +47,19 @@ public class Judgment : Singleton<Judgment> //판정 매니저
                 {
                     case ATTACKTYPE.HIT:
 
-                        string denfenderStateName = defender.gameObject.GetComponent<State>().GetType().Name;
+                        switch (defender.currenState) //현재 상대 플레이어의 상태
+                        {
+                            case CARIC_STATE.STAND:
+                                defenderAi.ChangeState(defender.gameObject.AddComponent<Hit>());
+                                break;
+                            case CARIC_STATE.CROUCH:
+                                defenderAi.ChangeState(defender.gameObject.AddComponent<Crouch_Hit>());
+                                break;
+                            case CARIC_STATE.JUMP:
+                                defenderAi.ChangeState(defender.gameObject.AddComponent<Fly>());
+                                break;
+                        }
 
-                        if (denfenderStateName == "Crouch" || denfenderStateName == "Crouch_Attack")
-                            defenderAi.ChangeState(defender.gameObject.AddComponent<Crouch_Hit>());
-                        else
-                            defenderAi.ChangeState(defender.gameObject.AddComponent<Hit>());
                         break;
                     case ATTACKTYPE.FLY:
                         defenderAi.ChangeState(defender.gameObject.AddComponent<Fly>());

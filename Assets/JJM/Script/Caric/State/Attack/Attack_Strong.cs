@@ -8,16 +8,13 @@ public class Attack_Strong : Attack
     public override void Enter()
     {
         StateInit("Attack_Strong", CARIC_STATE.ATTACK, CharactorState.ATTACK_STRONG);
+        AttackInit(6f);
     }
     public override void Tick()
     {
 
     }
     public override void Exit()
-    {
-
-    }
-    public override void OnAttack(Caric other)
     {
 
     }

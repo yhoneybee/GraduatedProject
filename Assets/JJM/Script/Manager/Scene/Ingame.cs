@@ -18,23 +18,21 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
 
     public override void SceneAwake()
     {
-        foreach(var caric in players) 
-        {
-            charactors.Add(caric.charactorType, caric);
-        }
+        AddCharactors();
+
+        Caric player1_Charactor = charactors[CharactorType.Samdae];
+        Caric player2_Charactor = charactors[CharactorType.Samdae];
+
+        player1 = CreateCaric(player1_Charactor, player1_Charactor.name, 0, spawnPoints[0].position);
+        player2 = CreateCaric(player2_Charactor, player2_Charactor.name, 1, spawnPoints[1].position);
     }
 
     public override void SceneStart()
     {
-        Caric player1_Charactor = charactors[CharactorType.Samdae];
-        Caric player2_Charactor = charactors[CharactorType.Samdae];
-
-        player1 = Game.Instance.CreateCaric(player1_Charactor, player1_Charactor.name, 0, spawnPoints[0].position);
-        player2 = Game.Instance.CreateCaric(player2_Charactor, player2_Charactor.name, 1, spawnPoints[1].position);
+        onStart(this, EventArgs.Empty); //이벤트 호출
     }
     public override void SceneEnter()
     {
-        onStart(this, EventArgs.Empty); //이벤트 호출
     }
  
     public override void ScenePlaying()
@@ -44,5 +42,28 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     public override void SceneEnd()
     {
 
+    }
+
+    public void AddCharactors() 
+    {
+        foreach (var caric in players)
+        {
+            charactors.Add(caric.charactorType, caric);
+        }
+    }
+
+    public Caric CreateCaric(Caric caric, string name, int caricnumber, Vector3 pos)
+    {
+        var obj = Instantiate(caric, pos, Quaternion.identity);
+        obj.name = name;
+        obj.caricName = name;
+        obj.caricNumber = caricnumber;
+        int layer = (V.playerNumber == obj.caricNumber) ? LayerMask.NameToLayer("Player") : LayerMask.NameToLayer("Enemy");
+        obj.gameObject.layer = layer;
+        obj.bone.gameObject.layer = layer;
+        obj.gameObject.transform.localScale = new Vector3(((obj.caricNumber == 0) ? 1 : -1), gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+
+
+        return obj;
     }
 }
