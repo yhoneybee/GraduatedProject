@@ -6,8 +6,6 @@ public class Gravity : MonoBehaviour
 {
     [SerializeField]
     private float gravity = 0.1f;
-
-    bool IsFall = false;
     Caric caric;
 
 
@@ -16,7 +14,6 @@ public class Gravity : MonoBehaviour
     public void AddForce(float forceValue) 
     {
         caric.jumpForce = forceValue;
-        IsFall = false;
     }
 
     void Start()
@@ -28,8 +25,6 @@ public class Gravity : MonoBehaviour
     void Update()
     {
         caric.jumpForce -= gravity * Time.deltaTime;
-
-        if (caric.jumpForce <= 0) IsFall = true;
 
         if(caric.rigid.velocity.y != 0) gameObject.transform.Translate(Vector3.up * caric.jumpForce * Time.deltaTime);
     }
