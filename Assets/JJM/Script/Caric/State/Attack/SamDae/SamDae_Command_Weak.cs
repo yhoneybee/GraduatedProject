@@ -8,7 +8,7 @@ public class SamDae_Command_Weak : Attack
     public override void Enter()
     {
         StateInit("Command_Weak", CARIC_STATE.ATTACK, CharactorState.ATTACK_COMMAND_WEAK);
-        AttackInit(0);
+        AttackInit(-8f);
     }
     public override void Tick()
     {
@@ -22,7 +22,7 @@ public class SamDae_Command_Weak : Attack
     public override void OnAttack(Caric other)
     {
         base.OnAttack(other);
-        StartCoroutine(AttackBring(other, 20f));
+        //StartCoroutine(AttackBring(other, 20f));
     }
 
     IEnumerator AttackBring(Caric other, float power) 
