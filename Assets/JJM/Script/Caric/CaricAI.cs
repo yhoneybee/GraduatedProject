@@ -43,7 +43,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
         if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
+            //Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
         }
     }
 
@@ -58,7 +58,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (state != null)
         {
             state.Tick();
-            SendPacket(state);
+            //SendPacket(state);
         }
     }
 

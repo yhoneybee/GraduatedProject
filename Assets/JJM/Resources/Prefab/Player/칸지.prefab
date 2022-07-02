@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4609927683957328650}
   - component: {fileID: 3375026425474901784}
+  - component: {fileID: 2178835738424836449}
   m_Layer: 0
   m_Name: Bone
-  m_TagString: Untagged
+  m_TagString: Caric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +50,32 @@ MonoBehaviour:
   head: {fileID: 0}
   body: {fileID: 0}
   foot: {fileID: 0}
+--- !u!61 &2178835738424836449
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198792352678850396}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 2}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.1}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.5}
+  m_EdgeRadius: 0
 --- !u!1 &6452114663939696279
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,6 +106,78 @@ Transform:
   m_Father: {fileID: 4609927683957328650}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6744203890304252444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4860854271596420014}
+  - component: {fileID: 2249879731604185356}
+  - component: {fileID: 2638019688743453872}
+  m_Layer: 0
+  m_Name: AttackBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4860854271596420014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6744203890304252444}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8905987217222004395}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2249879731604185356
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6744203890304252444}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &2638019688743453872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6744203890304252444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec02980cdf014d409609e7854c2248f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 0
+  playerCaric: {fileID: 0}
 --- !u!1 &7199625914437853390
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,13 +249,12 @@ GameObject:
   - component: {fileID: 8905987217222004395}
   - component: {fileID: 8905987217222004397}
   - component: {fileID: 8905987217222004391}
-  - component: {fileID: 8905987217222004394}
   - component: {fileID: 8905987217222004390}
+  - component: {fileID: 5402259402009580708}
   - component: {fileID: 959649328}
-  - component: {fileID: 3880550067471385281}
-  - component: {fileID: -1668703630957837593}
+  - component: {fileID: -1742500512130125289}
   m_Layer: 0
-  m_Name: Kanzi
+  m_Name: "\uCE78\uC9C0"
   m_TagString: Caric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,6 +272,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4609927683957328650}
+  - {fileID: 4860854271596420014}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -246,32 +345,6 @@ MonoBehaviour:
   cs: 0
   charactorState: 0
   moveDir: 0
---- !u!61 &8905987217222004394
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905987217222004398}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.64, y: 0.07}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 3.5}
-  m_EdgeRadius: 0
 --- !u!95 &8905987217222004390
 Animator:
   serializedVersion: 3
@@ -291,21 +364,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &959649328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905987217222004398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fc7ba2ae429f3c4a9b5a48f6e97f0ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  caric: {fileID: 0}
-  resetTimer: 0
---- !u!114 &3880550067471385281
+--- !u!114 &5402259402009580708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -326,12 +385,13 @@ MonoBehaviour:
   dir: 0
   moveSpeed: 0
   jumpForce: 0
-  Weak_Attack_Dmg: 0
-  Strong_Attack_Dmg: 0
-  Crouch_Attack_Dmg: 0
-  Jump_Attack_Dmg: 0
-  Command_Weak_Dmg: 0
-  Command_Strong_Dmg: 0
+  hitEffectName: 
+  Weak_Attack_Dmg: 10
+  Strong_Attack_Dmg: 10
+  Crouch_Attack_Dmg: 10
+  Jump_Attack_Dmg: 10
+  Command_Weak_Dmg: 10
+  Command_Strong_Dmg: 10
   attackState: {fileID: 0}
   commandWeakState: {fileID: 0}
   commandStrongState: {fileID: 0}
@@ -340,7 +400,21 @@ MonoBehaviour:
   rigid: {fileID: 0}
   bone: {fileID: 0}
   attackBox: {fileID: 0}
---- !u!50 &-1668703630957837593
+--- !u!114 &959649328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905987217222004398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc7ba2ae429f3c4a9b5a48f6e97f0ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caric: {fileID: 0}
+  resetTimer: 0
+--- !u!50 &-1742500512130125289
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

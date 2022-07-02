@@ -8,7 +8,7 @@ public class SamDae_Main : Caric
     // Start is called before the first frame update
     public void Awake()
     {
-        C_Init("SamDae", 5f, 6f);
+        C_Init("SamDae", 5f, 6f, "Hit_SamDae");
     }
 
     void Update()

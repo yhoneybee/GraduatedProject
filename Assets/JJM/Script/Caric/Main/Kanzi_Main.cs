@@ -7,7 +7,7 @@ public class Kanzi_Main : Caric
     // Start is called before the first frame update
     void Awake()
     {
-        C_Init("Kanzi", 5f, 6f);
+        C_Init("Kanzi", 5f, 6f, "Hit_Kanzi");
     }
 
     // Update is called once per frame

@@ -9,6 +9,7 @@ public class Run : State
     public override void Enter()
     {
         StateInit("Run", CARIC_STATE.STAND, CharactorState.RUN);
+        ai.caric.CreateDustMoveEffect();
         ai.caric.moveSpeed *= weight;
     }
     public override void Tick()

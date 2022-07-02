@@ -730,7 +730,7 @@ MonoBehaviour:
   - {fileID: 1987986682}
   players:
   - {fileID: 3959474404348463254, guid: 0f57b0de43c61c44ea3730579bdb00d9, type: 3}
-  - {fileID: 3880550067471385281, guid: d20a7542dd349b54aabd1b4f825f67b1, type: 3}
+  - {fileID: 5402259402009580708, guid: 74500740437f17a46a13b6b01e079abf, type: 3}
 --- !u!114 &269541364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3717,6 +3717,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectList:
   - {fileID: 3727739051812721627, guid: 1795dcd5e3ff4314ab519c31799d583d, type: 3}
+  - {fileID: 3727739051812721627, guid: 6ea2c21eb9e922d47bc414786d08ac8f, type: 3}
+  - {fileID: 3727739051812721627, guid: ca14882329499fa4c8f0b14a0bc8d487, type: 3}
+  - {fileID: 3727739051812721627, guid: 49cb2856aeec0f2458523f8057a7517a, type: 3}
+  - {fileID: 3727739051812721627, guid: 78056acb2d374ce4693d7d1ccdbce81d, type: 3}
 --- !u!1 &1815541130
 GameObject:
   m_ObjectHideFlags: 0

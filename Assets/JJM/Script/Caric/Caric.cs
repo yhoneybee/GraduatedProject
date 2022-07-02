@@ -12,15 +12,15 @@ public abstract class Caric : MonoBehaviour
     public CharactorType charactorType;
 
     public float maxHp = V.PLAYER_MAXHP;
-    public float Hp 
-    { 
+    public float Hp
+    {
         get => hp;
-        set 
-        { 
+        set
+        {
             hp = value;
 
             if (hp < 0) hp = 0;
-            else if(hp > maxHp) hp = maxHp;
+            else if (hp > maxHp) hp = maxHp;
         }
     }
     private float hp;
@@ -29,6 +29,8 @@ public abstract class Caric : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
 
+    [Header("Effect")]
+    public string hitEffectName;
 
     [Header("AttackDmg")]
     public float Weak_Attack_Dmg;
@@ -54,19 +56,20 @@ public abstract class Caric : MonoBehaviour
 
 
     public abstract Attack SetCommandState(ATTACK_STATE command);
-    public void C_Init(string name, float movespeed, float jumpforce) //캐릭터 초기화
+    public void C_Init(string name, float movespeed, float jumpforce, string hiteffectname) //캐릭터 초기화
     {
-        Caric_Setting(name, movespeed, jumpforce);
+        Caric_Setting(name, movespeed, jumpforce, hiteffectname);
         Caric_GetComponent();
         Caric_GetClass();
     }
 
-    public void Caric_Setting(string name, float movespeed, float jumpforce) //캐릭터 기본 값 셋팅
+    public void Caric_Setting(string name, float movespeed, float jumpforce, string hiteffectname) //캐릭터 기본 값 셋팅
     {
         caricName = name;
         Hp = maxHp;
         moveSpeed = movespeed;
         jumpForce = jumpforce;
+        hitEffectName = hiteffectname;
     }
 
     public void Caric_GetComponent() // 컴포넌트 get
@@ -89,8 +92,18 @@ public abstract class Caric : MonoBehaviour
 
     public void FlipSprite(float dir) //좌우 반전
     {
-        gameObject.transform.localScale =
+        FlipSprite(dir, gameObject);
+    }
+    public void FlipSprite(float dir, GameObject obj) //좌우 반전
+    {
+        obj.transform.localScale =
             new Vector3(Mathf.Abs(gameObject.transform.localScale.x) * dir, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+    }
+
+    public void CreateDustMoveEffect() 
+    {
+        var effect = Effect.Instance.GetEffect("Dust_Walk", bone.foot.transform.position);
+        FlipSprite(dir, effect);
     }
 
 

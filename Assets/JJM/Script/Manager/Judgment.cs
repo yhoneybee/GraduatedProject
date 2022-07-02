@@ -8,12 +8,13 @@ public class JudgmentSign //판정 사인
     public Caric Attacker = null;
     public Caric Defender = null;
     public ATTACKTYPE AttackType = ATTACKTYPE.HIT;
-
-    public JudgmentSign(Caric attacker, Caric defender, ATTACKTYPE attackType)
+    public float HitPosX = 0;
+    public JudgmentSign(Caric attacker, Caric defender, ATTACKTYPE attackType, float hitPosX)
     {
         Attacker = attacker;
         Defender = defender;
         AttackType = attackType;
+        HitPosX = hitPosX;
         Judgment.Instance.signQueue.Enqueue(this);
     }
 }
@@ -37,6 +38,9 @@ public class Judgment : Singleton<Judgment> //판정 매니저
             Caric defender = sign.Defender; //방어자
 
             defender.Hp -= attacker.dmg; //데미지 만큼 Hp 감소
+
+            Effect.Instance.GetEffect(attacker.hitEffectName, new Vector2(sign.HitPosX, defender.bone.body.transform.position.y));
+            
             UI.Instance.HpSliderValueChange(defender.Hp, defender.caricNumber);
 
             CaricAI defenderAi = defender.GetComponent<CaricAI>();
