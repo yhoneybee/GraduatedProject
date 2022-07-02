@@ -19,12 +19,10 @@ public class GamePacketHandler
     public Action<Packet> RES_User;
     public Action<Packet> RES_ReadyGame;
     public Action<Packet> RES_StartGame;
-    public Action<Packet> RES_GameWin;
-    public Action<Packet> RES_GameLose;
+    public Action<Packet> RES_GameEnd;
     public Action<Packet> RES_Chat;
     public Action<Packet> RES_Charactor;
     public Action<Packet> RES_Select;
-    public Action<Packet> RES_Stat;
     public Action<Packet> RES_Logout;
 
     Network network;
@@ -81,11 +79,8 @@ public class GamePacketHandler
                 StartGame(packet);
                 RES_StartGame?.Invoke(packet);
                 break;
-            case PacketType.RES_GAME_WIN_PACKET:
-                RES_GameWin?.Invoke(packet);
-                break;
-            case PacketType.RES_GAME_LOSE_PACKET:
-                RES_GameLose?.Invoke(packet);
+            case PacketType.RES_GAME_END_PACKET:
+                RES_GameEnd?.Invoke(packet);
                 break;
             case PacketType.RES_CHAT_PACKET:
                 RES_Chat?.Invoke(packet);
@@ -95,9 +90,6 @@ public class GamePacketHandler
                 break;
             case PacketType.RES_CHARACTOR_PACKET:
                 RES_Charactor?.Invoke(packet);
-                break;
-            case PacketType.RES_STAT_PACKET:
-                RES_Stat?.Invoke(packet);
                 break;
             case PacketType.RES_LOGOUT_PACKET:
                 Logout(packet);
