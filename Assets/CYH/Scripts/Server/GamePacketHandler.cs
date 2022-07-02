@@ -22,6 +22,7 @@ public class GamePacketHandler
     public Action<Packet> RES_GameEnd;
     public Action<Packet> RES_Chat;
     public Action<Packet> RES_Charactor;
+    public Action<RES_GameTime> RES_GameTime;
     public Action<Packet> RES_Select;
     public Action<Packet> RES_Logout;
 
@@ -80,6 +81,7 @@ public class GamePacketHandler
                 RES_StartGame?.Invoke(packet);
                 break;
             case PacketType.RES_GAME_END_PACKET:
+                GameEnd(packet);
                 RES_GameEnd?.Invoke(packet);
                 break;
             case PacketType.RES_CHAT_PACKET:
@@ -91,6 +93,11 @@ public class GamePacketHandler
             case PacketType.RES_CHARACTOR_PACKET:
                 RES_Charactor?.Invoke(packet);
                 break;
+            case PacketType.RES_GAME_TIME_PACKET:
+                var res = packet.GetPacket<RES_GameTime>();
+                if (res == null || !res.completed) break;
+                RES_GameTime?.Invoke(res);
+                break;
             case PacketType.RES_LOGOUT_PACKET:
                 Logout(packet);
                 RES_Logout?.Invoke(packet);
@@ -101,6 +108,14 @@ public class GamePacketHandler
             case PacketType.END:
                 break;
         }
+    }
+
+    private void GameEnd(Packet packet)
+    {
+        var res = packet.GetPacket<RES>();
+        if (res == null || !res.completed) return;
+
+        SceneManager.LoadScene("Main");
     }
 
     private void Logout(Packet packet)
