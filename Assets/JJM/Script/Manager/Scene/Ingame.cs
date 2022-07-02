@@ -12,14 +12,14 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     public Dictionary<CharactorType, Caric> charactors = new Dictionary<CharactorType, Caric>();
     public Caric[] players;
 
-    public event EventHandler onStart;
+    public event EventHandler onStart; //스타트 이벤트
 
     public override void SceneAwake()
     {
         AddCharactors();
 
-        Caric player1_Charactor = charactors[CharactorType.Kanzi];
-        Caric player2_Charactor = charactors[CharactorType.Samdae];
+        Caric player1_Charactor = charactors[CharactorType.Samdae];
+        Caric player2_Charactor = charactors[CharactorType.Kanzi];
 
         players[0] = CreateCaric(player1_Charactor, player1_Charactor.name, 0, spawnPoints[0].position);
         players[1] = CreateCaric(player2_Charactor, player2_Charactor.name, 1, spawnPoints[1].position);

@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8098280570140682578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72dedbc07f49b244a9e6d4d83ad5336f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1102 &-6582589513066353898
 AnimatorState:
   serializedVersion: 6
@@ -64,7 +76,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -8098280570140682578}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -128,7 +141,7 @@ AnimatorStateMachine:
     m_Position: {x: 260, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3114699170112197610}
-    m_Position: {x: 490, y: 250, z: 0}
+    m_Position: {x: 490, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8072482161913633069}
     m_Position: {x: 260, y: 250, z: 0}
@@ -149,10 +162,10 @@ AnimatorStateMachine:
     m_Position: {x: 490, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6344415419160082641}
-    m_Position: {x: 525, y: 245, z: 0}
+    m_Position: {x: 260, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6388131184154794739}
-    m_Position: {x: 560, y: 310, z: 0}
+    m_Position: {x: 260, y: 540, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -381,6 +394,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88decb4cc1199c148a75f0cafc179948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6079203147669747903
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72dedbc07f49b244a9e6d4d83ad5336f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1102 &6388131184154794739
 AnimatorState:
   serializedVersion: 6
@@ -392,7 +417,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 6079203147669747903}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
