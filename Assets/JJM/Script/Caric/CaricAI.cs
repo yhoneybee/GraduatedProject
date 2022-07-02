@@ -45,10 +45,6 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         {
             Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
         }
-        //else if (gameObject.layer == LayerMask.NameToLayer("Player"))
-        //{
-        //    Network.Instance.gamePackHandler.RES_Stat = PlayerStat;
-        //}
     }
 
     // Update is called once per frame
