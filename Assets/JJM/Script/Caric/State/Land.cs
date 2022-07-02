@@ -7,7 +7,7 @@ public class Land : State //ÂøÁö
 {
     public override void Enter()
     {
-        StateInit("Land", CARIC_STATE.FALL, CharactorState.IDLE);
+        StateInit("Land", CARIC_STATE.FALL, CharactorState.LAND);
     }
     public override void Tick()
     {
