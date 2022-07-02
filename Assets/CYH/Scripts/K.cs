@@ -48,6 +48,20 @@ public static class K
         Send(PacketType.REQ_CHARACTOR_PACKET, req);
     }
 
+    public static void Win()
+    {
+        REQ req = new REQ();
+        req.what = "win";
+        Send(PacketType.REQ_GAME_WIN_PACKET, req);
+    }
+
+    public static void Lose()
+    {
+        REQ req = new REQ();
+        req.what = "lose";
+        Send(PacketType.REQ_GAME_LOSE_PACKET, req);
+    }
+
     public static void Send<T>(PacketType packetType, T req)
         where T : new()
     {
