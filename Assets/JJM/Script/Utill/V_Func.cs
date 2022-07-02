@@ -6,23 +6,25 @@ public partial class V : MonoBehaviour //공용 함수 클래스
 {
     public static float GetAxis(string key)
     {
+        if (V.IsStop) return 0;
         return Input.GetAxis(key);
     }
     public static float GetAxisRaw(string key)
     {
+        if (V.IsStop) return 0;
         return Input.GetAxisRaw(key);
     }
     public static bool GetKey(KeyCode key)
     {
-        return Input.GetKey(key);
+        return !V.IsStop & Input.GetKey(key);
     }
     public static bool GetKeyDown(KeyCode key)
     {
-        return Input.GetKeyDown(key);
+        return !V.IsStop & Input.GetKeyDown(key);
     }
     public static bool GetKeyUp(KeyCode key)
     {
-        return Input.GetKeyUp(key);
+        return !V.IsStop & Input.GetKeyUp(key);
     }
     
     public static bool MoveKeyDown()

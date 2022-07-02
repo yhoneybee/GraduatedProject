@@ -18,11 +18,13 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     {
         AddCharactors();
 
-        Caric player1_Charactor = charactors[K.player1Type];
+        Caric player1_Charactor = charactors[CharactorType.Kanzi];
         Caric player2_Charactor = charactors[K.player2Type];
 
         players[0] = CreateCaric(player1_Charactor, player1_Charactor.name, 0, spawnPoints[0].position);
         players[1] = CreateCaric(player2_Charactor, player2_Charactor.name, 1, spawnPoints[1].position);
+
+        V.IsStop = true;
     }
 
     public override void SceneStart()
@@ -31,6 +33,8 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     }
     public override void SceneEnter()
     {
+        UI.Instance.Start.SetActive(true);
+        UI.Instance.Ready.SetActive(true);
     }
  
     public override void ScenePlaying()
@@ -40,6 +44,11 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     public override void SceneEnd()
     {
 
+    }
+
+    public void OnGameStart() 
+    {
+        V.IsStop = false;
     }
 
     public void AddCharactors() 

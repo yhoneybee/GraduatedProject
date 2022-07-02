@@ -25,15 +25,15 @@ public class SamDae_Command_Weak : Attack
         //StartCoroutine(AttackBring(other, 20f));
     }
 
-    IEnumerator AttackBring(Caric other, float power) 
-    {
-        float pos_x = transform.position.x;
-        float other_pos_x = other.transform.position.x;
+    //IEnumerator AttackBring(Caric other, float power) 
+    //{
+    //    float pos_x = transform.position.x;
+    //    float other_pos_x = other.transform.position.x;
 
-        while(Mathf.Abs(pos_x - other_pos_x) > 1f) 
-        {
-            other.transform.Translate(relativeDir * power * Time.deltaTime);
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
+    //    while(Mathf.Abs(pos_x - other_pos_x) > 1f) 
+    //    {
+    //        other.transform.Translate(relativeDir * power * Time.deltaTime);
+    //        yield return new WaitForSeconds(0.01f);
+    //    }
+    //}
 }

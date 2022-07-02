@@ -8,13 +8,16 @@ public class UI : Singleton<UI>
     public GameObject[] playerInfo;
     public Sprite[] playerFace;
 
+    public GameObject Ready;
+    public GameObject Start;
+
     Dictionary<string, Sprite> playerFaceParis = new Dictionary<string, Sprite>();
     // Start is called before the first frame update
     private void Awake()
     {
         Ingame.Instance.onStart += new System.EventHandler(PlayerInfoInit);
-        playerFaceParis.Add("SamDae", playerFace[0]);
-        playerFaceParis.Add("Kanzi", playerFace[1]);
+        playerFaceParis.Add("»ï´ë", playerFace[0]);
+        playerFaceParis.Add("Ä­Áö", playerFace[1]);
     }
 
     // Update is called once per frame

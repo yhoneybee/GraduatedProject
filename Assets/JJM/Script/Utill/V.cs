@@ -11,6 +11,8 @@ public partial class V : MonoBehaviour //공용 변수 클래스
     public static bool IsKeySafe = false;
 
     public static int playerNumber;
+
+    public static bool IsStop = false;
     // Start is called before the first frame update
     public static void Awake()
     {
