@@ -13,11 +13,13 @@ public class AttackBox : MonoBehaviour
 {
     public ATTACKTYPE attackType;
     public Caric playerCaric;
+    public bool onHit;
 
     ContactPoint2D[] hitpoint = new ContactPoint2D[2];
     void Start()
     {
         playerCaric = GetComponentInParent<Caric>();
+        onHit = false;
     }
 
     // Update is called once per frame
@@ -25,20 +27,21 @@ public class AttackBox : MonoBehaviour
     {
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other != null)
+        if (other != null && !onHit)
         {
             if (other.gameObject.tag == "Caric") 
             {
                 Caric enemyCaric = other.GetComponentInParent<Caric>();
                 Attack nowAttack = GetComponentInParent<Attack>();
 
-                if (enemyCaric == playerCaric) return;
+                if (enemyCaric == playerCaric || enemyCaric.Hp == 0) return;
                 if (nowAttack == null) return;
 
                 nowAttack.OnAttack(enemyCaric);
                 other.GetContacts(hitpoint);
+                onHit = true;
                 new JudgmentSign(playerCaric, enemyCaric, attackType, hitpoint[0].point.x);
 
                 Debug.Log("NowState : " + nowAttack.GetType().Name);

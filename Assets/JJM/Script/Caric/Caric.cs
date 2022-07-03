@@ -28,6 +28,7 @@ public abstract class Caric : MonoBehaviour
     public float dir;
     public float moveSpeed;
     public float jumpForce;
+    public bool isGuard;
 
     [Header("Effect")]
     public string hitEffectName;
@@ -70,6 +71,7 @@ public abstract class Caric : MonoBehaviour
         moveSpeed = movespeed;
         jumpForce = jumpforce;
         hitEffectName = hiteffectname;
+        isGuard = false;
     }
 
     public void Caric_GetComponent() // 컴포넌트 get

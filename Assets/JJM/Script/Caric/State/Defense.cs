@@ -8,6 +8,7 @@ public class Defense : State
     public override void Enter()
     {
         StateInit("Defense", CARIC_STATE.STAND, CharactorState.DEFENCE);
+        ai.caric.isGuard = true;
     }
     public override void Tick()
     {
@@ -15,6 +16,6 @@ public class Defense : State
     }
     public override void Exit()
     {
-        
+        ai.caric.isGuard = false;
     }
 }

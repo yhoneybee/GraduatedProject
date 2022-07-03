@@ -37,10 +37,17 @@ public class Judgment : Singleton<Judgment> //판정 매니저
             Caric attacker = sign.Attacker; //공격자
             Caric defender = sign.Defender; //방어자
 
-            defender.Hp -= attacker.dmg; //데미지 만큼 Hp 감소
+            if (defender.isGuard) 
+            {
+                Effect.Instance.GetEffect("Guard", new Vector2(sign.HitPosX, defender.bone.body.transform.position.y));
+            }
+            else 
+            {
+                defender.Hp -= attacker.dmg; //데미지 만큼 Hp 감소
 
-            Effect.Instance.GetEffect(attacker.hitEffectName, new Vector2(sign.HitPosX, defender.bone.body.transform.position.y));
-            
+                Effect.Instance.GetEffect(attacker.hitEffectName, new Vector2(sign.HitPosX, defender.bone.body.transform.position.y));
+            }
+
             UI.Instance.HpSliderValueChange(defender.Hp, defender.caricNumber);
 
             CaricAI defenderAi = defender.GetComponent<CaricAI>();

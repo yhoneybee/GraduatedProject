@@ -21,6 +21,9 @@ public class SamDae_Command_Weak : Attack
 
     public override void OnAttack(Caric other)
     {
+        float distance = Vector2.Distance(gameObject.transform.position, other.transform.position);
+        if (distance <= 2f) AttackInit(0f);
+
         base.OnAttack(other);
         //StartCoroutine(AttackBring(other, 20f));
     }

@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 0
   playerCaric: {fileID: 0}
+  onHit: 0
 --- !u!1 &7199625914437853390
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +255,7 @@ GameObject:
   - component: {fileID: 959649328}
   - component: {fileID: -1742500512130125289}
   m_Layer: 0
-  m_Name: SamDae
+  m_Name: "\uC0BC\uB300"
   m_TagString: Caric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,6 +386,8 @@ MonoBehaviour:
   dir: 0
   moveSpeed: 0
   jumpForce: 0
+  isGuard: 0
+  hitEffectName: 
   Weak_Attack_Dmg: 5
   Strong_Attack_Dmg: 10
   Crouch_Attack_Dmg: 5

@@ -217,8 +217,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: 331025327586551381}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -353,8 +352,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: -7773384641588318681}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -592,7 +590,7 @@ AnimatorStateMachine:
     m_Position: {x: 440, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2010451268905660448}
-    m_Position: {x: 440, y: 490, z: 0}
+    m_Position: {x: 430, y: 490, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3868495208516813444}
     m_Position: {x: 440, y: 630, z: 0}

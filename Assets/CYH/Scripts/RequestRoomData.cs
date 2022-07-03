@@ -112,7 +112,7 @@ public class RequestRoomData : MonoBehaviour
             {
                 Refresh();
             }
-            txtLeftTime.text = $"refresh time : {((int)leftTime)}";
+            txtLeftTime.text = $"½Ã°£ : {((int)leftTime)}";
             yield return null;
         }
     }
