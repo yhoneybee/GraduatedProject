@@ -43,7 +43,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
         if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
+            //Network.Instance.gamePackHandler.RES_Charactor = EnemyAI;
         }
     }
 
@@ -58,7 +58,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         if (state != null)
         {
             state.Tick();
-            SendPacket(state);
+            //SendPacket(state);
         }
     }
 
@@ -149,6 +149,8 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
 
                 break;
             case CARIC_STATE.ATTACK:
+
+                Attack2OtherState();
 
                 break;
             case CARIC_STATE.HIT:
@@ -259,6 +261,29 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         K.PositionUpdate(req);
     }
 
+    public void Attack2OtherState()
+    {
+        var animPlayTime = caric.anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+        if (animPlayTime >= 1f)
+        {
+            switch (caric.currenState)
+            {
+                case CARIC_STATE.STAND:
+                    Debug.Log("STAND");
+                    ChangeState(gameObject.AddComponent<Idle>());
+                    break;
+                case CARIC_STATE.JUMP:
+                    Debug.Log("JUMP");
+                    ChangeState(gameObject.AddComponent<Fall>());
+                    break;
+                case CARIC_STATE.CROUCH:
+                    Debug.Log("CROUCH");
+                    ChangeState(gameObject.AddComponent<Crouch>());
+                    break;
+            }
+        }
+    }
     public void CaricMove()
     {
         caric.FlipSprite(moveDir);
