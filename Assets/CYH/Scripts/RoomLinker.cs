@@ -27,6 +27,14 @@ public class RoomLinker : MonoBehaviour
         player1Slot.Set(K.player1);
         player2Slot.Set(K.player2);
 
+        Network.Instance.gamePackHandler.RES_LeaveRoom = (packet) =>
+        {
+            var res = packet.GetPacket<RES>();
+            if (!res.completed) return;
+
+            SceneManager.LoadScene("Main");
+        };
+
         Network.Instance.gamePackHandler.RES_ReadyGame = (packet) =>
         {
             var res = packet.GetPacket<RES>();
@@ -95,13 +103,5 @@ public class RoomLinker : MonoBehaviour
     public void LeaveRoom()
     {
         K.LeaveRoom();
-
-        Network.Instance.gamePackHandler.RES_LeaveRoom = (packet) =>
-        {
-            var res = packet.GetPacket<RES>();
-            if (!res.completed) return;
-
-            SceneManager.LoadScene("Main");
-        };
     }
 }

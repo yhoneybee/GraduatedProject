@@ -115,7 +115,7 @@ public class GamePacketHandler
         var res = packet.GetPacket<RES>();
         if (res == null || !res.completed) return;
 
-        SceneManager.LoadScene("Main");
+        K.LeaveRoom();
     }
 
     private void Logout(Packet packet)
