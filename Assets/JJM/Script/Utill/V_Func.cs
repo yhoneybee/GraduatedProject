@@ -27,11 +27,11 @@ public partial class V : MonoBehaviour //공용 함수 클래스
         return !V.IsStop & Input.GetKeyUp(key);
     }
     
-    public static bool MoveKeyDown()
+    public static bool MoveKeyDown(bool iskeysafe)
     {
-        if (V.GetKeyDown(V.LEFT_MOVE_KEY) || V.GetKeyDown(V.RIGHT_MOVE_KEY) || V.IsKeySafe)
+        if (V.GetKeyDown(V.LEFT_MOVE_KEY) || V.GetKeyDown(V.RIGHT_MOVE_KEY) || iskeysafe)
         {
-            V.IsKeySafe = false;
+            iskeysafe = false;
             return true;
         }
         

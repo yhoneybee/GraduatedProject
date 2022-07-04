@@ -8,8 +8,6 @@ public partial class V : MonoBehaviour //공용 변수 클래스
 
     public static GameObject MainCanvas = null;
 
-    public static bool IsKeySafe = false;
-
     public static int playerNumber;
 
     public static bool IsStop = false;

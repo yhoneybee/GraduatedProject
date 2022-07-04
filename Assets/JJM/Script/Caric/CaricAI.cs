@@ -33,6 +33,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
     private float delayTime;
     private float backupDir;
     public float moveDir; //수평 값
+    public bool IsKeySafe = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +74,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         {
             case CARIC_STATE.STAND: //서 있는 상태
 
-                if (V.MoveKeyDown())
+                if (V.MoveKeyDown(IsKeySafe))
                 {
                     if (moveDir == 0)
                     {

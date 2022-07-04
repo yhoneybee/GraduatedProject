@@ -23,7 +23,7 @@ public class Fall : State
 
     public override void Exit()
     {
-        V.IsKeySafe = true;
+        ai.IsKeySafe = true;
         ai.caric.rigid.velocity = Vector2.zero;
     }
 
