@@ -60,6 +60,8 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     {
         yield return new WaitForSeconds(3f);
 
+        Debug.Log("GameEnd!!!!!!!!!!!!!!");
+
         foreach (var caric in players)
         {
             if(caric.caricNumber == V.playerNumber) 
@@ -68,9 +70,11 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
                 {
                     case 0:
                         K.Lose();
+                        Debug.Log("Lose");
                         break;
                     default:
                         K.Win();
+                        Debug.Log("WIn");
                         break;
                 }
             }

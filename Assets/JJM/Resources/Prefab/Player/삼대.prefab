@@ -346,6 +346,7 @@ MonoBehaviour:
   cs: 0
   charactorState: 0
   moveDir: 0
+  IsKeySafe: 0
 --- !u!95 &8905987217222004390
 Animator:
   serializedVersion: 3
@@ -389,7 +390,7 @@ MonoBehaviour:
   isGuard: 0
   hitEffectName: 
   Weak_Attack_Dmg: 5
-  Strong_Attack_Dmg: 10
+  Strong_Attack_Dmg: 100
   Crouch_Attack_Dmg: 5
   Jump_Attack_Dmg: 5
   Command_Weak_Dmg: 5
