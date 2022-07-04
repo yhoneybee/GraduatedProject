@@ -809,7 +809,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1846830949412175287, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_Text
-      value: Send
+      value: "\uBCF4\uB0B4\uAE30"
       objectReference: {fileID: 0}
     - target: {fileID: 1846830949412175287, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_FontData.m_Font
@@ -1098,6 +1098,10 @@ PrefabInstance:
     - target: {fileID: 8209180543207269901, guid: 5b496ad74a8ef8f48bda4c2c1666513c, type: 3}
       propertyPath: m_Name
       value: ChatInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209180543583577743, guid: 5b496ad74a8ef8f48bda4c2c1666513c, type: 3}
+      propertyPath: m_Text
+      value: "\uC785\uB825.."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b496ad74a8ef8f48bda4c2c1666513c, type: 3}
