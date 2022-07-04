@@ -163,65 +163,68 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         gameObject.transform.position = new Vector2(obj.posX, gameObject.transform.position.y);
 
         CharactorState cs = obj.charactorState;
-
-        switch (cs)
+        
+        if(charactorState != obj.charactorState)
         {
-            case CharactorState.IDLE:
-                ChangeState(gameObject.AddComponent<Idle>());
-                break;
-            case CharactorState.WALK:
-                caric.FlipSprite(moveDir);
-                ChangeState(gameObject.AddComponent<Walk>());
-                break;
-            case CharactorState.RUN:
-                caric.FlipSprite(moveDir);
-                ChangeState(gameObject.AddComponent<Run>());
-                break;
-            case CharactorState.JUMP:
-                ChangeState(gameObject.AddComponent<Jump>());
-                break;
-            case CharactorState.FALL:
-                break;
-            case CharactorState.CROUCH:
-                ChangeState(gameObject.AddComponent<Crouch>());
-                break;
-            case CharactorState.CROUCHING:
-                ChangeState(gameObject.AddComponent<Crouching>());
-                break;
-            case CharactorState.DEFENCE:
-                ChangeState(gameObject.AddComponent<Defense>());
-                break;
-            case CharactorState.ATTACK_WEAK:
-                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_WEAK));
-                break;
-            case CharactorState.ATTACK_STRONG:
-                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_STRONG));
-                break;
-            case CharactorState.ATTACK_CROUCH:
-                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_CROUCH));
-                break;
-            case CharactorState.ATTACK_JUMP:
-                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_JUMP));
-                break;
-            case CharactorState.ATTACK_COMMAND_WEAK:
-                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_COMMAND_WEAK));
-                break;
-            case CharactorState.ATTACK_COMMAND_STRONG:
-                ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_COMMAND_STRONG));
-                break;
-            case CharactorState.HIT:
-                ChangeState(gameObject.AddComponent<Hit>());
-                break;
-            case CharactorState.CROUCH_HIT:
-                ChangeState(gameObject.AddComponent<Hit>());
-                break;
-            case CharactorState.FLY:
-                ChangeState(gameObject.AddComponent<Fly>());
-                break;
-            case CharactorState.DIE:
-                ChangeState(gameObject.AddComponent<Die>());
-                break;
+            switch (cs)
+            {
+                case CharactorState.IDLE:
+                    ChangeState(gameObject.AddComponent<Idle>());
+                    break;
+                case CharactorState.WALK:
+                    caric.FlipSprite(moveDir);
+                    ChangeState(gameObject.AddComponent<Walk>());
+                    break;
+                case CharactorState.RUN:
+                    caric.FlipSprite(moveDir);
+                    ChangeState(gameObject.AddComponent<Run>());
+                    break;
+                case CharactorState.JUMP:
+                    ChangeState(gameObject.AddComponent<Jump>());
+                    break;
+                case CharactorState.FALL:
+                    break;
+                case CharactorState.CROUCH:
+                    ChangeState(gameObject.AddComponent<Crouch>());
+                    break;
+                case CharactorState.CROUCHING:
+                    ChangeState(gameObject.AddComponent<Crouching>());
+                    break;
+                case CharactorState.DEFENCE:
+                    ChangeState(gameObject.AddComponent<Defense>());
+                    break;
+                case CharactorState.ATTACK_WEAK:
+                    ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_WEAK));
+                    break;
+                case CharactorState.ATTACK_STRONG:
+                    ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_STRONG));
+                    break;
+                case CharactorState.ATTACK_CROUCH:
+                    ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_CROUCH));
+                    break;
+                case CharactorState.ATTACK_JUMP:
+                    ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_JUMP));
+                    break;
+                case CharactorState.ATTACK_COMMAND_WEAK:
+                    ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_COMMAND_WEAK));
+                    break;
+                case CharactorState.ATTACK_COMMAND_STRONG:
+                    ChangeState(caric.SetCommandState(ATTACK_STATE.ATTACK_COMMAND_STRONG));
+                    break;
+                case CharactorState.HIT:
+                    ChangeState(gameObject.AddComponent<Hit>());
+                    break;
+                case CharactorState.CROUCH_HIT:
+                    ChangeState(gameObject.AddComponent<Hit>());
+                    break;
+                case CharactorState.FLY:
+                    ChangeState(gameObject.AddComponent<Fly>());
+                    break;
+                case CharactorState.DIE:
+                    ChangeState(gameObject.AddComponent<Die>());
+                    break;
 
+            }
         }
     }
 
