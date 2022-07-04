@@ -13,7 +13,6 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     public Caric[] players;
 
     public event EventHandler onStartEvent; //스타트 이벤트
-    public event EventHandler onGameEndEvent;
 
     public override void SceneAwake()
     {
@@ -61,7 +60,21 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     {
         yield return new WaitForSeconds(3f);
 
-        onGameEndEvent(this, EventArgs.Empty);
+        foreach (var caric in players)
+        {
+            if(caric.caricNumber == V.playerNumber) 
+            {
+                switch (caric.Hp)
+                {
+                    case 0:
+                        K.Lose();
+                        break;
+                    default:
+                        K.Win();
+                        break;
+                }
+            }
+        }
     }
 
     public void AddCharactors() 

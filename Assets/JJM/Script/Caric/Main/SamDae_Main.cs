@@ -12,7 +12,6 @@ public class SamDae_Main : Caric
     }
     private void Start()
     {
-        Ingame.Instance.onGameEndEvent += new System.EventHandler(SendPacketWinAndLose);
     }
 
     void Update()

@@ -109,10 +109,4 @@ public abstract class Caric : MonoBehaviour
         FlipSprite(dir, effect);
     }
 
-    public void SendPacketWinAndLose(object sender, System.EventArgs e) 
-    {
-        if (Hp > 0) K.Win();
-        else K.Lose();
-    }
-
 }

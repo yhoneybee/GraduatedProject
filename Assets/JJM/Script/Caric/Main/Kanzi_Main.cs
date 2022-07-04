@@ -10,6 +10,10 @@ public class Kanzi_Main : Caric
         C_Init("Kanzi", 5f, 6f, "Hit_Kanzi");
     }
 
+    private void Start()
+    {
+    }
+
     // Update is called once per frame
     void Update()
     {
