@@ -14,7 +14,7 @@ public class RoomViewer : MonoBehaviour
         set
         {
             roomInfo = value;
-            txtName.text = $"room : {roomInfo.name}";
+            txtName.text = $"{roomInfo.name}";
             if (roomInfo.player1 == string.Empty)
             {
                 roomInfo.player1 = "...";
@@ -23,7 +23,7 @@ public class RoomViewer : MonoBehaviour
             {
                 roomInfo.player2 = "...";
             }
-            txtPlayers.text = $"players : {roomInfo.player1}, {roomInfo.player2}";
+            txtPlayers.text = $"{roomInfo.player1}, {roomInfo.player2}";
         }
     }
 
