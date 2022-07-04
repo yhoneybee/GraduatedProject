@@ -82,6 +82,8 @@ public class Judgment : Singleton<Judgment> //판정 매니저
                 else //사망
                 {
                     defenderAi.ChangeState(defender.gameObject.AddComponent<Die>());
+
+                    UI.Instance.OnGameEnd();
                 }
             }
 

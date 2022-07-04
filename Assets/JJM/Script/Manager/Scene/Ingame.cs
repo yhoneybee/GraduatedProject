@@ -51,6 +51,29 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
         V.IsStop = false;
     }
 
+    public void OnGameEnd() 
+    {
+        StartCoroutine(GameEndCoroutine());
+    }
+
+    public IEnumerator GameEndCoroutine() 
+    {
+        yield return new WaitForSeconds(3f);
+
+        foreach (var caric in players)
+        {
+            switch (caric.Hp)
+            {
+                case 0:
+                    K.Lose();
+                    break;
+                default:
+                    K.Win();
+                    break;
+            }
+        }
+    }
+
     public void AddCharactors() 
     {
         foreach (var caric in players)

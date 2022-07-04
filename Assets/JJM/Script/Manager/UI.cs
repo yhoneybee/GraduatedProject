@@ -10,6 +10,7 @@ public class UI : Singleton<UI>
 
     public GameObject Ready;
     public GameObject Start;
+    public GameObject GameEnd;
 
     Dictionary<string, Sprite> playerFaceParis = new Dictionary<string, Sprite>();
     // Start is called before the first frame update
@@ -45,5 +46,10 @@ public class UI : Singleton<UI>
     {
         HpBarSlider hpBarSlider = playerInfo[number].transform.Find("HpBar").GetComponent<HpBarSlider>();
         hpBarSlider.OnDamage(value);
+    }
+
+    public void OnGameEnd() 
+    {
+        GameEnd.SetActive(true);
     }
 }

@@ -17,5 +17,6 @@ public class Defense : State
     public override void Exit()
     {
         ai.caric.isGuard = false;
+        ai.caric.rigid.velocity = Vector2.zero;
     }
 }
