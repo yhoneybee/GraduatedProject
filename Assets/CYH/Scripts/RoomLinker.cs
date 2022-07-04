@@ -87,7 +87,7 @@ public class RoomLinker : MonoBehaviour
         REQ req = new REQ();
         req.what = "Ready";
 
-        txtBtnReady.text = txtBtnReady.text == "Ready" ? "취소" : "준비";
+        txtBtnReady.text = txtBtnReady.text == "준비" ? "취소" : "준비";
 
         K.Send(PacketType.REQ_READY_GAME_PACKET, req);
     }
