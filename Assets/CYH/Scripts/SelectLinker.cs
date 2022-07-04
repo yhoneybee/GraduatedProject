@@ -47,8 +47,10 @@ public class SelectLinker : MonoBehaviour
 
     private void Update()
     {
-        btnKanzi.targetGraphic.raycastTarget = btnSamdae.targetGraphic.raycastTarget = playerNum == 0 && K.userInfo.id == K.roomInfo.player1;
-        btnKanzi.targetGraphic.raycastTarget = btnSamdae.targetGraphic.raycastTarget = playerNum == 1 && K.userInfo.id == K.roomInfo.player2;
+        if (playerNum == 0)
+            btnKanzi.targetGraphic.raycastTarget = btnSamdae.targetGraphic.raycastTarget = K.userInfo.id == K.roomInfo.player1;
+        else if (playerNum == 1)
+            btnKanzi.targetGraphic.raycastTarget = btnSamdae.targetGraphic.raycastTarget = K.userInfo.id == K.roomInfo.player2;
     }
 
     public void ButtonColorChange(CharactorType type)
