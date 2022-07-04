@@ -20,12 +20,23 @@ public class RoomLinker : MonoBehaviour
     private void Start()
     {
         btnStart.gameObject.SetActive(K.host);
-        txtRoomName.text = $"room : {K.roomInfo.name}";
+        txtRoomName.text = $"방 : {K.roomInfo.name}";
         btnReady.onClick.AddListener(ReadyGame);
         btnStart.onClick.AddListener(StartGame);
 
         player1Slot.Set(K.player1);
         player2Slot.Set(K.player2);
+
+        Network.Instance.gamePackHandler.RES_ReadyGame = (packet) =>
+        {
+            var res = packet.GetPacket<RES>();
+            if (res == null || !res.completed) return;
+
+            var split = res.reason.Split(',');
+
+            player1Slot.txtReady.text = split[0] == "True" ? "준비 중" : "대기 중";
+            player2Slot.txtReady.text = split[1] == "True" ? "준비 중" : "대기 중";
+        };
 
         Network.Instance.gamePackHandler.RES_Select = (packet) =>
         {
@@ -76,7 +87,7 @@ public class RoomLinker : MonoBehaviour
         REQ req = new REQ();
         req.what = "Ready";
 
-        txtBtnReady.text = txtBtnReady.text == "Ready" ? "Cancel" : "Ready";
+        txtBtnReady.text = txtBtnReady.text == "Ready" ? "취소" : "준비";
 
         K.Send(PacketType.REQ_READY_GAME_PACKET, req);
     }
