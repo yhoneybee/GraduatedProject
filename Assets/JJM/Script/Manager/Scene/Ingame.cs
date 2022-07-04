@@ -12,7 +12,8 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     public Dictionary<CharactorType, Caric> charactors = new Dictionary<CharactorType, Caric>();
     public Caric[] players;
 
-    public event EventHandler onStart; //스타트 이벤트
+    public event EventHandler onStartEvent; //스타트 이벤트
+    public event EventHandler onGameEndEvent;
 
     public override void SceneAwake()
     {
@@ -29,7 +30,7 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
 
     public override void SceneStart()
     {
-        onStart(this, EventArgs.Empty); //이벤트 호출
+        onStartEvent(this, EventArgs.Empty); //이벤트 호출
     }
     public override void SceneEnter()
     {
@@ -60,18 +61,7 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     {
         yield return new WaitForSeconds(3f);
 
-        foreach (var caric in players)
-        {
-            switch (caric.Hp)
-            {
-                case 0:
-                    K.Lose();
-                    break;
-                default:
-                    K.Win();
-                    break;
-            }
-        }
+        onGameEndEvent(this, EventArgs.Empty);
     }
 
     public void AddCharactors() 

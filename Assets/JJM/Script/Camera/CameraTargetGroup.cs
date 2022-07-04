@@ -11,7 +11,7 @@ public class CameraTargetGroup : MonoBehaviour //카메라 타겟 그룹 클래스
     {
         cinemachineTargetGroup = GetComponent<CinemachineTargetGroup>();
 
-        Ingame.Instance.onStart += new System.EventHandler(SetTargetObject);
+        Ingame.Instance.onStartEvent += new System.EventHandler(SetTargetObject);
     }
 
     // Update is called once per frame

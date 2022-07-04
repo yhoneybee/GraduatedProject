@@ -16,7 +16,7 @@ public class UI : Singleton<UI>
     // Start is called before the first frame update
     private void Awake()
     {
-        Ingame.Instance.onStart += new System.EventHandler(PlayerInfoInit);
+        Ingame.Instance.onStartEvent += new System.EventHandler(PlayerInfoInit);
         playerFaceParis.Add("»ï´ë", playerFace[0]);
         playerFaceParis.Add("Ä­Áö", playerFace[1]);
     }
