@@ -14,7 +14,8 @@ public class RoomLinker : MonoBehaviour
     public Text txtBtnReady;
     public PlayerSlot player1Slot;
     public PlayerSlot player2Slot;
-    public SelectLinker otherSelect;
+    public SelectLinker select0;
+    public SelectLinker select1;
 
     private void Start()
     {
@@ -33,12 +34,12 @@ public class RoomLinker : MonoBehaviour
             if (K.roomInfo.player1 == K.userInfo.id)
             {
                 K.player2Type = res.charactorType;
-                otherSelect.ButtonColorChange(K.player2Type);
+                select1.ButtonColorChange(K.player2Type);
             }
             else
             {
                 K.player1Type = res.charactorType;
-                otherSelect.ButtonColorChange(K.player1Type);
+                select0.ButtonColorChange(K.player1Type);
             }
         };
 

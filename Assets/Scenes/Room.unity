@@ -1025,7 +1025,8 @@ MonoBehaviour:
   txtBtnReady: {fileID: 689289246}
   player1Slot: {fileID: 9087797459290481545}
   player2Slot: {fileID: 1309264749}
-  otherSelect: {fileID: 1809964602}
+  select0: {fileID: 1809964602}
+  select1: {fileID: 1485044848}
 --- !u!1001 &1485044847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1175,6 +1176,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0258042591fb65d4badcb4c2b25c6556, type: 3}
+--- !u!114 &1485044848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5631829663709463498, guid: 0258042591fb65d4badcb4c2b25c6556, type: 3}
+  m_PrefabInstance: {fileID: 1485044847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a96460f02f1d7348987119a88a9a3eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1694658777
 GameObject:
   m_ObjectHideFlags: 0
