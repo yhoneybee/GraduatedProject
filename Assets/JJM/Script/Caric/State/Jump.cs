@@ -9,6 +9,8 @@ public class Jump : State
     {
         StateInit("Jump", CARIC_STATE.JUMP, CharactorState.JUMP); 
         ai.caric.currenState = CARIC_STATE.JUMP;
+
+        ai.caric.rigid.velocity = Vector2.zero;
     }
     public override void Tick()
     {
