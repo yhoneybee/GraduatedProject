@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using MyPacket;
 
 public class JudgmentSign //판정 사인
@@ -53,6 +54,8 @@ public class Judgment : Singleton<Judgment> //판정 매니저
 
                 if (defender.Hp > 0) //피격
                 {
+                    defender.OnHit();
+
                     switch (sign.AttackType)
                     {
                         case ATTACKTYPE.HIT:

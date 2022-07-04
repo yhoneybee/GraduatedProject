@@ -390,7 +390,7 @@ MonoBehaviour:
   isGuard: 0
   hitEffectName: 
   Weak_Attack_Dmg: 5
-  Strong_Attack_Dmg: 100
+  Strong_Attack_Dmg: 8
   Crouch_Attack_Dmg: 5
   Jump_Attack_Dmg: 5
   Command_Weak_Dmg: 5

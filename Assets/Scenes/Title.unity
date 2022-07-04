@@ -2940,7 +2940,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1846830949412175287, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_Text
-      value: "\uC885\uB8CC"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1846830949412175287, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_FontData.m_MaxSize
@@ -2964,7 +2964,7 @@ PrefabInstance:
       objectReference: {fileID: 2163036573998151787, guid: 43017d0cf95a84647bab1da1d271a709, type: 3}
     - target: {fileID: 1846830950814285276, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1846830950814285276, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_Pivot.y
@@ -2976,7 +2976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1846830950814285276, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1846830950814285276, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2984,7 +2984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1846830950814285276, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1846830950814285276, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_AnchorMin.y
@@ -3028,11 +3028,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1846830950814285276, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -46.599854
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1846830950814285276, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -63.400024
+      value: -57
       objectReference: {fileID: 0}
     - target: {fileID: 1846830950814285276, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

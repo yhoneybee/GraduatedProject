@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MyPacket;
+using System;
 
 public abstract class Caric : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public abstract class Caric : MonoBehaviour
     public Bone bone;
     public AttackBox attackBox;
 
-
+    public event EventHandler onHitEvent;
     public abstract Attack SetCommandState(ATTACK_STATE command);
     public void C_Init(string name, float movespeed, float jumpforce, string hiteffectname) //캐릭터 초기화
     {
@@ -107,6 +108,18 @@ public abstract class Caric : MonoBehaviour
     {
         var effect = Effect.Instance.GetEffect("Dust_Walk", bone.foot.transform.position);
         FlipSprite(dir, effect);
+    }
+
+    public void OnHitFalse() 
+    {
+        attackBox.onHit = false;
+    }
+
+    public void OnHit() //히트 이벤트 호출
+    {
+        if (onHitEvent == null) return;
+
+        onHitEvent(this, EventArgs.Empty);
     }
 
 }

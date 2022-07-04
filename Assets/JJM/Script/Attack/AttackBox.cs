@@ -18,7 +18,7 @@ public class AttackBox : MonoBehaviour
     ContactPoint2D[] hitpoint = new ContactPoint2D[2];
     void Start()
     {
-        playerCaric = GetComponentInParent<Caric>();
+        if (!playerCaric) playerCaric = GetComponentInParent<Caric>();
         onHit = false;
     }
 

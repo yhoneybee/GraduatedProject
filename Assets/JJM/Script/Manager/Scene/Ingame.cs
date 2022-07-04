@@ -18,7 +18,7 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     {
         AddCharactors();
 
-        Caric player1_Charactor = charactors[K.player1Type];
+        Caric player1_Charactor = charactors[CharactorType.Kanzi];
         Caric player2_Charactor = charactors[K.player2Type];
 
         players[0] = CreateCaric(player1_Charactor, player1_Charactor.name, 0, spawnPoints[0].position);
