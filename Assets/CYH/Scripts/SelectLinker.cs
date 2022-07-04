@@ -8,10 +8,20 @@ public class SelectLinker : MonoBehaviour
 {
     public Button btnSamdae;
     public Button btnKanzi;
+    public int playerNum;
 
     private void Start()
     {
-        btnSamdae.onClick.AddListener(() => 
+        if (playerNum == 0)
+        {
+            btnKanzi.targetGraphic.raycastTarget = btnSamdae.targetGraphic.raycastTarget = K.userInfo.id == K.roomInfo.player1;
+        }
+        else
+        {
+            btnKanzi.targetGraphic.raycastTarget = btnSamdae.targetGraphic.raycastTarget = K.userInfo.id == K.roomInfo.player2;
+        }
+
+        btnSamdae.onClick.AddListener(() =>
         {
             if (K.roomInfo.player1 == K.userInfo.id)
             {
