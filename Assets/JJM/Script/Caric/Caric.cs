@@ -63,7 +63,6 @@ public abstract class Caric : MonoBehaviour
         Caric_GetComponent();
         Caric_GetClass();
 
-        Ingame.Instance.onGameEndEvent += new System.EventHandler(SendPacketWinAndLose);
     }
 
     public void Caric_Setting(string name, float movespeed, float jumpforce, string hiteffectname) //캐릭터 기본 값 셋팅

@@ -10,6 +10,10 @@ public class SamDae_Main : Caric
     {
         C_Init("SamDae", 5f, 6f, "Hit_SamDae");
     }
+    private void Start()
+    {
+        Ingame.Instance.onGameEndEvent += new System.EventHandler(SendPacketWinAndLose);
+    }
 
     void Update()
     {
