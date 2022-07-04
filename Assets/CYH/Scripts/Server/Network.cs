@@ -97,7 +97,7 @@ public class Network : Singleton<Network>
     }
 
     //public void Connect() => Connect("119.196.245.41", 6475);
-    public void Connect() => Connect("3.36.125.83", 6475);
+    public void Connect() => Connect("43.200.84.179", 6475);
 
     private void Connect(string address, int port)
     {
