@@ -62,12 +62,6 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         }
     }
 
-    public void PlayerStat(Packet packet)
-    {
-        //var stat = packet.GetPacket<REQ_RES_Stat>();
-        //caric.Hp = stat.hp;
-    }
-
     public void PlayerAI()
     {
         if (gameObject.layer != LayerMask.NameToLayer("Player")) return;
