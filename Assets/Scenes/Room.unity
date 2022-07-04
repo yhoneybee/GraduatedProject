@@ -633,9 +633,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2080320137, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
+      propertyPath: m_Text
+      value: "\uC900\uBE44 \uC911"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080320137, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: 2abe3a02e74f17440a5df10c93bd7981, type: 3}
+    - target: {fileID: 2080320137, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 9087797458074977029, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_Name
       value: PlayerSlot
@@ -746,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087797459895719928, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_FontData.m_Alignment
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9087797459925331893, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_SizeDelta.x
@@ -831,8 +839,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 142.74002, y: -57}
-  m_SizeDelta: {x: -366.13, y: 150}
+  m_AnchoredPosition: {x: -20.16249, y: -70}
+  m_SizeDelta: {x: -40.32498, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1423797770
 MonoBehaviour:
@@ -856,18 +864,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2abe3a02e74f17440a5df10c93bd7981, type: 3}
-    m_FontSize: 70
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 1
     m_MaxSize: 216
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\uBC29 \uC774\uB984"
 --- !u!222 &1423797771
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1426,12 +1434,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2080320137, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_Text
-      value: 
+      value: "\uC900\uBE44 \uC911 "
       objectReference: {fileID: 0}
     - target: {fileID: 2080320137, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 2abe3a02e74f17440a5df10c93bd7981, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 9087797458074977029, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_Name
       value: PlayerSlot
@@ -1519,70 +1527,6 @@ PrefabInstance:
     - target: {fileID: 9087797458074977030, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797458074977031, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797458074977031, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: fc2228ab4f813a84a880286933796e1f, type: 3}
-    - target: {fileID: 9087797458205396765, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459895719928, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 2abe3a02e74f17440a5df10c93bd7981, type: 3}
-    - target: {fileID: 9087797459895719928, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459895719928, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459925331893, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459925331893, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459925331893, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459925331893, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459925331894, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_Text
-      value: "\uD50C\uB808\uC774\uC5B41"
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459925331894, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 2abe3a02e74f17440a5df10c93bd7981, type: 3}
-    - target: {fileID: 9087797459925331894, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_FontData.m_MaxSize
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459925331894, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459925331894, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087797459925331894, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
