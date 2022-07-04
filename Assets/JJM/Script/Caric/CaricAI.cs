@@ -74,7 +74,7 @@ public class CaricAI : MonoBehaviour //캐릭터 상태 관리 클래스
         {
             case CARIC_STATE.STAND: //서 있는 상태
 
-                if (V.MoveKeyDown(IsKeySafe))
+                if (V.MoveKeyDown(ref IsKeySafe))
                 {
                     if (moveDir == 0)
                     {
