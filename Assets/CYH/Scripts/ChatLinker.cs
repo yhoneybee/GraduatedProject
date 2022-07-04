@@ -24,7 +24,7 @@ public class ChatLinker : MonoBehaviour
 
             var obj = Instantiate(txtChatOrigin, rtrnContent);
 
-            if (res.to == "ALL") obj.color = Color.magenta;
+            if (res.to == "ALL") obj.color = Color.black;
             else obj.color = Color.gray;
 
             obj.text = $"{res.id} : {res.chat}";
