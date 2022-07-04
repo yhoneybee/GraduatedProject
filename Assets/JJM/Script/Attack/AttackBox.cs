@@ -42,6 +42,9 @@ public class AttackBox : MonoBehaviour
                 nowAttack.OnAttack(enemyCaric);
                 other.GetContacts(hitpoint);
                 onHit = true;
+
+                Debug.Log("OnHit : " + onHit);
+
                 new JudgmentSign(playerCaric, enemyCaric, attackType, hitpoint[0].point.x);
 
                 Debug.Log("NowState : " + nowAttack.GetType().Name);

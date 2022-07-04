@@ -11,7 +11,6 @@ public abstract class Attack : State
     public void AttackInit(float hitbackvalue) 
     {
         hitBackValue = hitbackvalue;
-        ai.caric.attackBox.onHit = false;
     }
     public virtual void OnAttack(Caric other) 
     {

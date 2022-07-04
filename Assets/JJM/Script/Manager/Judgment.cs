@@ -37,52 +37,52 @@ public class Judgment : Singleton<Judgment> //판정 매니저
             Caric attacker = sign.Attacker; //공격자
             Caric defender = sign.Defender; //방어자
 
-            if (defender.isGuard) 
+            if (defender.isGuard) //가드 상태
             {
                 Effect.Instance.GetEffect("Guard", new Vector2(sign.HitPosX, defender.bone.body.transform.position.y));
             }
-            else 
+            else //피격 상태
             {
                 defender.Hp -= attacker.dmg; //데미지 만큼 Hp 감소
 
                 Effect.Instance.GetEffect(attacker.hitEffectName, new Vector2(sign.HitPosX, defender.bone.body.transform.position.y));
-            }
 
-            UI.Instance.HpSliderValueChange(defender.Hp, defender.caricNumber);
+                UI.Instance.HpSliderValueChange(defender.Hp, defender.caricNumber);
 
-            CaricAI defenderAi = defender.GetComponent<CaricAI>();
+                CaricAI defenderAi = defender.GetComponent<CaricAI>();
 
-            if (defender.Hp > 0) //피격
-            {
-                switch (sign.AttackType)
+                if (defender.Hp > 0) //피격
                 {
-                    case ATTACKTYPE.HIT:
+                    switch (sign.AttackType)
+                    {
+                        case ATTACKTYPE.HIT:
 
-                        switch (defender.currenState) //현재 상대 플레이어의 상태
-                        {
-                            case CARIC_STATE.STAND:
-                                defenderAi.ChangeState(defender.gameObject.AddComponent<Hit>());
-                                break;
-                            case CARIC_STATE.CROUCH:
-                                defenderAi.ChangeState(defender.gameObject.AddComponent<Crouch_Hit>());
-                                break;
-                            case CARIC_STATE.JUMP:
-                                defenderAi.ChangeState(defender.gameObject.AddComponent<Fly>());
-                                break;
-                        }
+                            switch (defender.currenState) //현재 상대 플레이어의 상태
+                            {
+                                case CARIC_STATE.STAND:
+                                    defenderAi.ChangeState(defender.gameObject.AddComponent<Hit>());
+                                    break;
+                                case CARIC_STATE.CROUCH:
+                                    defenderAi.ChangeState(defender.gameObject.AddComponent<Crouch_Hit>());
+                                    break;
+                                case CARIC_STATE.JUMP:
+                                    defenderAi.ChangeState(defender.gameObject.AddComponent<Fly>());
+                                    break;
+                            }
 
-                        break;
-                    case ATTACKTYPE.FLY:
-                        defenderAi.ChangeState(defender.gameObject.AddComponent<Fly>());
-                        break;
-                    case ATTACKTYPE.STUN:
-                        defenderAi.ChangeState(defender.gameObject.AddComponent<Hit>());
-                        break;
+                            break;
+                        case ATTACKTYPE.FLY:
+                            defenderAi.ChangeState(defender.gameObject.AddComponent<Fly>());
+                            break;
+                        case ATTACKTYPE.STUN:
+                            defenderAi.ChangeState(defender.gameObject.AddComponent<Hit>());
+                            break;
+                    }
                 }
-            }
-            else //사망
-            {
-                defenderAi.ChangeState(defender.gameObject.AddComponent<Die>());
+                else //사망
+                {
+                    defenderAi.ChangeState(defender.gameObject.AddComponent<Die>());
+                }
             }
 
         }

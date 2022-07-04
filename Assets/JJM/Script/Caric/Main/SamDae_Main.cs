@@ -52,6 +52,8 @@ public class SamDae_Main : Caric
                 break;
         }
 
+        attackBox.onHit = false;
+
         return attackState;
     }
 }

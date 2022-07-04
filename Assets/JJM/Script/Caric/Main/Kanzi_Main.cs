@@ -46,6 +46,8 @@ public class Kanzi_Main : Caric
                 break;
         }
 
+        attackBox.onHit = false;
+
         return attackState;
     }
 
