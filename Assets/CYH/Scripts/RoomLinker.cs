@@ -20,7 +20,7 @@ public class RoomLinker : MonoBehaviour
     private void Start()
     {
         btnStart.gameObject.SetActive(K.host);
-        txtRoomName.text = $"¹æ : {K.roomInfo.name}";
+        txtRoomName.text = $"{K.roomInfo.name}";
         btnReady.onClick.AddListener(ReadyGame);
         btnStart.onClick.AddListener(StartGame);
 
