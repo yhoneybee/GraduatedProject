@@ -16,14 +16,14 @@ public class MainLinker : MonoBehaviour
             K.host = res.host;
 
             //SceneManager.LoadScene("Room");
-            Title.Instance.ChangeScene("Room");
+            Main.Instance.ChangeScene("Room");
         };
     }
 
     public void Back()
     {
         //SceneManager.LoadScene("Title");
-        Title.Instance.ChangeScene("Title");
+        Main.Instance.ChangeScene("Title");
         K.Logout();
     }
 }
