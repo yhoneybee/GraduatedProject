@@ -10,7 +10,6 @@ public class PlayerSlot : MonoBehaviour
     {
         txtPlayer.text = userInfo.id;
         txtInfo.text = txtInfo.text = $"½Â¸® : {userInfo.win:D5}\nÆÐ¹è : {userInfo.lose:D5}";
-        txtReady.text = string.Empty;
     }
 
     public Text txtPlayer;

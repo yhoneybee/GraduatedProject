@@ -38,6 +38,10 @@ public class UI : Singleton<UI>
             Image faceImage = Info.transform.Find("Face").transform.Find("Face_Img").GetComponent<Image>();
             faceImage.sprite = playerFaceParis[Ingame.Instance.players[count].name];
 
+            Text userName = Info.transform.Find("UserName").transform.Find("Text").GetComponent<Text>();
+            userName.text = (count == 0) ? K.player1.id : K.player2.id;
+
+
             count++;
         }
     }

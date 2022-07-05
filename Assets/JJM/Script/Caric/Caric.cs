@@ -30,6 +30,7 @@ public abstract class Caric : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public bool isGuard;
+    public bool isMoojuck = false;
 
     [Header("Effect")]
     public string hitEffectName;
@@ -121,5 +122,4 @@ public abstract class Caric : MonoBehaviour
 
         onHitEvent(this, EventArgs.Empty);
     }
-
 }

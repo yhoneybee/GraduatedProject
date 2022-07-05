@@ -36,7 +36,7 @@ public class AttackBox : MonoBehaviour
                 Caric enemyCaric = other.GetComponentInParent<Caric>();
                 Attack nowAttack = GetComponentInParent<Attack>();
 
-                if (enemyCaric == playerCaric || enemyCaric.Hp == 0) return;
+                if (enemyCaric == playerCaric || enemyCaric.Hp == 0 || enemyCaric.isMoojuck) return;
                 if (nowAttack == null) return;
 
                 nowAttack.OnAttack(enemyCaric);

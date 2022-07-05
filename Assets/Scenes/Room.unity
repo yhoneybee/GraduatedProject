@@ -634,7 +634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2080320137, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_Text
-      value: "\uC900\uBE44 \uC911"
+      value: "\uB300\uAE30 \uC911"
       objectReference: {fileID: 0}
     - target: {fileID: 2080320137, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_FontData.m_Font
@@ -839,7 +839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20.16249, y: -70}
+  m_AnchoredPosition: {x: -20.162476, y: -70}
   m_SizeDelta: {x: -40.32498, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1423797770
@@ -1434,7 +1434,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2080320137, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_Text
-      value: "\uC900\uBE44 \uC911 "
+      value: "\uB300\uAE30 \uC911"
       objectReference: {fileID: 0}
     - target: {fileID: 2080320137, guid: f60130131eba59640ac5efea509c5e7d, type: 3}
       propertyPath: m_FontData.m_FontSize
