@@ -127,7 +127,8 @@ public class SoundManager : Singleton<SoundManager>
             _ => null,
         };
 
-        select.PlayOneShot(sound);
+        if (select != null)
+            select.PlayOneShot(sound);
     }
 
     public void PlayLoading() => PlayBgm(loading);
