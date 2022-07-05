@@ -115,6 +115,7 @@ public class GamePacketHandler
         var res = packet.GetPacket<RES>();
         if (res == null || !res.completed) return;
 
+
         K.LeaveRoom();
     }
 
@@ -136,7 +137,8 @@ public class GamePacketHandler
     {
         Debug.Log("START GAME");
         V.playerNumber = packet.GetPacket<RES_StartGame>().playerNum;
-        SceneManager.LoadScene("Ingame");
+        //SceneManager.LoadScene("Ingame");
+        Title.Instance.ChangeScene("Ingame");
     }
 
     private void OtherUserEnterRoom(Packet packet)

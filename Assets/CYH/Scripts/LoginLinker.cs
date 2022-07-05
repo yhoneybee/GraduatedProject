@@ -97,7 +97,9 @@ public class LoginLinker : MonoBehaviour
 
             K.userInfo.id = inputID.text;
 
-            SceneManager.LoadScene("Main");
+            //SceneManager.LoadScene("Main");
+
+            Title.Instance.ChangeScene("Main");
         };
     }
 }
