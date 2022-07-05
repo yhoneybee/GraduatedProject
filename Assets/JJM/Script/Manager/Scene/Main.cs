@@ -6,12 +6,11 @@ public class Main : SceneBase<Main>
 {
     public override void SceneAwake()
     {
-        SoundManager.Instance.PlayMain();
     }
 
     public override void SceneStart()
     {
-
+        SoundManager.Instance.PlayMain();
     }
     public override void SceneEnter()
     {

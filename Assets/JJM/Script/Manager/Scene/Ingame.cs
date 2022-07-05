@@ -28,14 +28,14 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
 
         V.IsStop = true;
 
-        SoundManager.Instance.PlayIngame();
-
         cameraTarget.OnCamera(cameraTarget.playerCamera[2].gameObject);
     }
 
     public override void SceneStart()
     {
         onStartEvent(this, EventArgs.Empty); //이벤트 호출
+
+        SoundManager.Instance.PlayIngame();
     }
     public override void SceneEnter()
     {
@@ -49,23 +49,6 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     public override void SceneEnd()
     {
 
-    }
-
-    bool waiting = false;
-    public void TimeStop(float duration) 
-    {
-        if(waiting) return;
-
-        Time.timeScale = 0.0f;
-        StartCoroutine(Wait(duration));
-    }
-
-    IEnumerator Wait(float duration)
-    {
-        waiting = true;
-        yield return new WaitForSecondsRealtime(duration);
-        Time.timeScale = 1.0f;
-        waiting = false;
     }
 
     public IEnumerator StartProduction() 

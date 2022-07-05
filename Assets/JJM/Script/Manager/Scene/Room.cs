@@ -6,12 +6,11 @@ public class Room : SceneBase<Room>
 {
     public override void SceneAwake()
     {
-        SoundManager.Instance.PlayRoom();
     }
 
     public override void SceneStart()
     {
-
+        SoundManager.Instance.PlayRoom();
     }
     public override void SceneEnter()
     {
