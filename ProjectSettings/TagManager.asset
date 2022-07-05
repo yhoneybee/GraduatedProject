@@ -8,6 +8,7 @@ TagManager:
   - Block
   - Caric
   - Die
+  - Slash
   layers:
   - Default
   - TransparentFX

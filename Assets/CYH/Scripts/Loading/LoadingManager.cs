@@ -37,6 +37,7 @@ public class LoadingManager : MonoBehaviour
         btnConnect.onClick.AddListener(TryConnect);
 
         txtResult.text = string.Empty;
+        SoundManager.Instance.PlayLoading();
     }
 
     private void TryConnect()

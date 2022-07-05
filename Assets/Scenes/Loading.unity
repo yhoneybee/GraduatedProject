@@ -375,6 +375,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1846830950814285277, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846830950814285277, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846830950814285277, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1760022173}
+    - target: {fileID: 1846830950814285277, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846830950814285277, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846830950814285277, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoundManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846830950814285277, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1846830950814285279, guid: ca6cab87faac7a44c8cead9d092a4d59, type: 3}
       propertyPath: m_Name
       value: Button
@@ -668,7 +696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1334146441
 RectTransform:
   m_ObjectHideFlags: 0
@@ -888,6 +916,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2638828905566332640, guid: 53f28bf3cbf9a5c4290d8164a38d7661, type: 3}
   m_PrefabInstance: {fileID: 1459875727}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1760022173 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7305862078768696011, guid: c6936a5c077e81e43ab9310e6c88e7ef, type: 3}
+  m_PrefabInstance: {fileID: 7305862078649161816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8e5e14d7bad4f49a741eb34ef1e209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7305862078649161816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -944,16 +983,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7305862078768696011, guid: c6936a5c077e81e43ab9310e6c88e7ef, type: 3}
-      propertyPath: title
+      propertyPath: gong
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 449496f79ae1bb448875506ff5eeae94, type: 3}
     - target: {fileID: 7305862078768696011, guid: c6936a5c077e81e43ab9310e6c88e7ef, type: 3}
-      propertyPath: loading
+      propertyPath: button
       value: 
-      objectReference: {fileID: 8300000, guid: 3eb75809fa2852543846d1b712db1a38, type: 3}
-    - target: {fileID: 7305862078768696011, guid: c6936a5c077e81e43ab9310e6c88e7ef, type: 3}
-      propertyPath: samdae.attackSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: d255ad9ef6f4dca4d92dad7748388588, type: 3}
+      objectReference: {fileID: 8300000, guid: 5e42a2e264497634e9b4180e438c1a07, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6936a5c077e81e43ab9310e6c88e7ef, type: 3}

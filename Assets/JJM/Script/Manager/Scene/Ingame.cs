@@ -25,6 +25,8 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
         players[1] = CreateCaric(player2_Charactor, player2_Charactor.name, 1, spawnPoints[1].position);
 
         V.IsStop = true;
+
+        SoundManager.Instance.PlayIngame();
     }
 
     public override void SceneStart()
@@ -102,5 +104,10 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
 
 
         return obj;
+    }
+
+    public void OnPlayGong() 
+    {
+        SoundManager.Instance.PlayGong();
     }
 }

@@ -37,6 +37,9 @@ public class SoundManager : Singleton<SoundManager>
     public AudioClip room;
     public AudioClip ingame;
 
+    public AudioClip button;
+    public AudioClip gong;
+
     public CharactorSounds samdae;
     public CharactorSounds kanzi;
 
@@ -147,9 +150,21 @@ public class SoundManager : Singleton<SoundManager>
     public void PlayMain() => PlayBgm(main);
     public void PlayRoom() => PlayBgm(room);
     public void PlayIngame() => PlayBgm(ingame);
+    public void PlayButton() => PlaySFX(button);
+    public void PlayGong() => PlaySFX(gong);
     void PlayBgm(AudioClip bgm)
     {
         audioBgm.clip = bgm;
         audioBgm.Play();
+    }
+
+    void PlaySFX(AudioClip sfx) 
+    {
+        var obj = new GameObject(sfx.name + "Sound");
+        AudioSource audio = obj.AddComponent<AudioSource>();
+        audio.clip = sfx;
+        audio.Play();
+
+        Destroy(obj, sfx.length);
     }
 }

@@ -87,6 +87,11 @@ public abstract class SceneBase<T> : Singleton<T> where T : class //베이스 �
         sceneStep = SCENE_STEP.END_BEFORE;
     }
 
+    public void PlayButtonSound() 
+    {
+        SoundManager.Instance.PlayButton();    
+    }
+
     public abstract void SceneAwake();
     public abstract void SceneStart();
     public abstract void SceneEnter();

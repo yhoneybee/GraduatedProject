@@ -7,6 +7,7 @@ public class Title : SceneBase<Title> //타이틀 씬 클래스
 {
     public override void SceneAwake()
     {
+        SoundManager.Instance.PlayTitle();
     }
 
     public override void SceneStart()

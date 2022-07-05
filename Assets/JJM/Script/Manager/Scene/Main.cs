@@ -6,6 +6,7 @@ public class Main : SceneBase<Main>
 {
     public override void SceneAwake()
     {
+        SoundManager.Instance.PlayMain();
     }
 
     public override void SceneStart()

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5949083852208963919}
   m_Layer: 9
   m_Name: KanziSlash
-  m_TagString: Untagged
+  m_TagString: Slash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   autoPlay: 1
   useTargetAsV3: 0
   endValueFloat: 0.8
-  endValueV3: {x: 0, y: 0, z: 0}
+  endValueV3: {x: 1, y: 0.8, z: 1}
   endValueV2: {x: 0, y: 0}
   endValueColor: {r: 1, g: 1, b: 1, a: 1}
   endValueString: 
@@ -186,7 +186,7 @@ MonoBehaviour:
     width: 0
     height: 0
   endValueTransform: {fileID: 0}
-  optionalBool0: 1
+  optionalBool0: 0
   optionalBool1: 0
   optionalFloat0: 0
   optionalInt0: 0

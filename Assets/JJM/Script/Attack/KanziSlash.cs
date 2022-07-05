@@ -19,7 +19,7 @@ public class KanziSlash : MonoBehaviour
         transform.Translate(dir * speed * Time.deltaTime);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other != null)
         {
@@ -33,6 +33,10 @@ public class KanziSlash : MonoBehaviour
 
                 new JudgmentSign(playerCaric, enemyCaric, ATTACKTYPE.HIT, hitPointX);
 
+                Destroy(gameObject);
+            }
+            else if(other.gameObject.tag == "Slash") 
+            {
                 Destroy(gameObject);
             }
         }
