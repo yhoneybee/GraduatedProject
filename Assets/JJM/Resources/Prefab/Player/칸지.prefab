@@ -388,13 +388,14 @@ MonoBehaviour:
   moveSpeed: 0
   jumpForce: 0
   isGuard: 0
+  isMoojuck: 0
   hitEffectName: 
-  Weak_Attack_Dmg: 5
-  Strong_Attack_Dmg: 10
-  Crouch_Attack_Dmg: 5
-  Jump_Attack_Dmg: 5
-  Command_Weak_Dmg: 10
-  Command_Strong_Dmg: 10
+  Weak_Attack_Dmg: 2.5
+  Strong_Attack_Dmg: 5
+  Crouch_Attack_Dmg: 2.5
+  Jump_Attack_Dmg: 2.5
+  Command_Weak_Dmg: 2.5
+  Command_Strong_Dmg: 0
   attackState: {fileID: 0}
   commandWeakState: {fileID: 0}
   commandStrongState: {fileID: 0}
