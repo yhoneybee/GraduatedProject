@@ -15,7 +15,6 @@ public class AttackBox : MonoBehaviour
     public Caric playerCaric;
     public bool onHit;
 
-    ContactPoint2D[] hitpoint = new ContactPoint2D[2];
     void Start()
     {
         if (!playerCaric) playerCaric = GetComponentInParent<Caric>();
@@ -40,12 +39,13 @@ public class AttackBox : MonoBehaviour
                 if (nowAttack == null) return;
 
                 nowAttack.OnAttack(enemyCaric);
-                other.GetContacts(hitpoint);
-                onHit = true;
 
+                float hitPointX = other.transform.position.x + Random.Range(-0.5f, 0.5f); 
+
+                onHit = true;
                 Debug.Log("OnHit : " + onHit);
 
-                new JudgmentSign(playerCaric, enemyCaric, attackType, hitpoint[0].point.x);
+                new JudgmentSign(playerCaric, enemyCaric, attackType, hitPointX);
 
                 Debug.Log("NowState : " + nowAttack.GetType().Name);
             }

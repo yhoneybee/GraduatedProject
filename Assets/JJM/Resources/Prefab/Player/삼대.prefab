@@ -388,6 +388,7 @@ MonoBehaviour:
   moveSpeed: 0
   jumpForce: 0
   isGuard: 0
+  isMoojuck: 0
   hitEffectName: 
   Weak_Attack_Dmg: 5
   Strong_Attack_Dmg: 8

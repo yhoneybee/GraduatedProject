@@ -54,6 +54,11 @@ public class UI : Singleton<UI>
 
     public void OnGameEnd() 
     {
+        var gameEndText = GameEnd.GetComponent<Text>();
+        float player1Hp = Ingame.Instance.players[0].Hp;
+
+        gameEndText.text = "시합 종료!\n승자 " + ((player1Hp != 0) ? K.player1.id : K.player2.id);
+
         GameEnd.SetActive(true);
     }
 }
