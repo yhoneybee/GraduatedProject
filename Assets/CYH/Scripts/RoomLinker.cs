@@ -33,9 +33,9 @@ public class RoomLinker : MonoBehaviour
             if (!res.completed) return;
 
             //SceneManager.LoadScene("Main");
-            if (Title.Instance != null)
+            if (Room.Instance != null)
             {
-                Title.Instance.ChangeScene("Main");
+                Room.Instance.ChangeScene("Main");
             }
             else if (Ingame.Instance != null)
             {

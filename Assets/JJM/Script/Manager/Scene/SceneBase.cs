@@ -74,7 +74,7 @@ public abstract class SceneBase<T> : Singleton<T> where T : class //베이스 �
                 break;
             case SCENE_STEP.END_AFTER:
 
-                SceneManager.LoadSceneAsync(changeSceneName);
+                SceneManager.LoadScene(changeSceneName);
 
                 break;
         }
