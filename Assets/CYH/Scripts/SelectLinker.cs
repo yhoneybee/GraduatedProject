@@ -24,8 +24,6 @@ public class SelectLinker : MonoBehaviour
                 K.player2Type = CharactorType.Samdae;
                 ButtonColorChange(K.player2Type);
             }
-
-            SelectCharactor();
         });
 
         btnKanzi.onClick.AddListener(() =>
@@ -40,8 +38,6 @@ public class SelectLinker : MonoBehaviour
                 K.player2Type = CharactorType.Kanzi;
                 ButtonColorChange(K.player2Type);
             }
-
-            SelectCharactor();
         });
     }
 
@@ -51,6 +47,7 @@ public class SelectLinker : MonoBehaviour
             btnKanzi.targetGraphic.raycastTarget = btnSamdae.targetGraphic.raycastTarget = K.userInfo.id == K.roomInfo.player1;
         else if (playerNum == 1)
             btnKanzi.targetGraphic.raycastTarget = btnSamdae.targetGraphic.raycastTarget = K.userInfo.id == K.roomInfo.player2;
+        SelectCharactor();
     }
 
     public void ButtonColorChange(CharactorType type)
