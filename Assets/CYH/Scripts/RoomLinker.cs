@@ -32,7 +32,15 @@ public class RoomLinker : MonoBehaviour
             var res = packet.GetPacket<RES>();
             if (!res.completed) return;
 
-            SceneManager.LoadScene("Main");
+            //SceneManager.LoadScene("Main");
+            if (Title.Instance != null)
+            {
+                Title.Instance.ChangeScene("Main");
+            }
+            else if (Ingame.Instance != null)
+            {
+                Ingame.Instance.ChangeScene("Main");
+            }
         };
 
         Network.Instance.gamePackHandler.RES_ReadyGame = (packet) =>
