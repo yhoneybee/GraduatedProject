@@ -16,7 +16,7 @@ public class Fall : State
     {
         //if (RayCastCheck()) ai.caric.rigid.velocity = new Vector2(0, ai.caric.rigid.velocity.y);
 
-        if (IsGround) ai.ChangeState(gameObject.AddComponent<Idle>());
+        if (IsGround || ai.caric.rigid.velocity.y == 0) ai.ChangeState(gameObject.AddComponent<Idle>());
 
         Debug.Log("FALL !!");
     }
