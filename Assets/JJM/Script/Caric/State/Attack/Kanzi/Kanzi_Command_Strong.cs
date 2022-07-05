@@ -26,6 +26,7 @@ public class Kanzi_Command_Strong : Attack
 
     private void Caric_onHitEvent(object sender, System.EventArgs e)
     {
+        Debug.Log("Change AttackStrong!!!!");
         ai.ChangeState(gameObject.AddComponent<Attack_Strong>());
     }
 }

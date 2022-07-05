@@ -38,7 +38,6 @@ public class Judgment : Singleton<Judgment> //판정 매니저
             Caric attacker = sign.Attacker; //공격자
             Caric defender = sign.Defender; //방어자
 
-            defender.OnHit();
 
             if (defender.isGuard) //가드 상태
             {
@@ -91,6 +90,7 @@ public class Judgment : Singleton<Judgment> //판정 매니저
                 }
             }
 
+            defender.OnHit();
         }
     }
 
