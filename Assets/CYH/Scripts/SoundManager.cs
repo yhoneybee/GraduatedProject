@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyPacket;
 
+[System.Serializable]
 public struct CharactorSounds
 {
     public AudioClip start;
@@ -12,15 +13,112 @@ public struct CharactorSounds
     public AudioClip die;
 }
 
+public enum eCHARACTOR_SOUND_TYPE
+{
+    Start,
+    Hit,
+    Attack,
+    Command,
+    Die,
+}
+
 public class SoundManager : Singleton<SoundManager>
 {
     public AudioSource audioBgm;
-    public AudioSource[] audioSfx = new AudioSource[4];
+    public AudioSource[] audioSfx = new AudioSource[10];
+
+    public AudioClip loading;
+    public AudioClip title;
+    public AudioClip main;
+    public AudioClip room;
+    public AudioClip ingame;
 
     public CharactorSounds samdae;
     public CharactorSounds kanzi;
 
-    public CharactorSounds CurrentSound => (K.player1.id == K.userInfo.id ? (K.player1Type == CharactorType.Samdae ? samdae : kanzi) : (K.player2Type == CharactorType.Samdae ? samdae : kanzi));
+    public CharactorSounds Player1 => K.player1Type == CharactorType.Samdae ? samdae : kanzi;
+    public CharactorSounds Player2 => K.player2Type == CharactorType.Samdae ? samdae : kanzi;
 
+    public float BgmVolume
+    {
+        set
+        {
+            if (value < 0 || 1 < value) return;
+            audioBgm.volume = value;
+        }
+    }
 
+    public bool BgmMute
+    {
+        set
+        {
+            audioBgm.mute = value;
+        }
+    }
+
+    public float SfxVolume
+    {
+        set
+        {
+            if (value < 0 || 1 < value) return;
+
+            foreach (var item in audioSfx)
+                item.volume = value;
+        }
+    }
+
+    public bool SfxMute
+    {
+        set
+        {
+            foreach (var item in audioSfx)
+                item.mute = value;
+        }
+    }
+
+    public override void Init()
+    {
+        audioBgm.loop = true;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void PlayPlayer1Sound(eCHARACTOR_SOUND_TYPE type) => PlayCharactorSound(type, Player1);
+    public void PlayPlayer2Sound(eCHARACTOR_SOUND_TYPE type) => PlayCharactorSound(type, Player2);
+    public void PlaySamdaeSound(eCHARACTOR_SOUND_TYPE type) => PlayCharactorSound(type, samdae);
+    public void PlayKanziSound(eCHARACTOR_SOUND_TYPE type) => PlayCharactorSound(type, kanzi);
+    void PlayCharactorSound(eCHARACTOR_SOUND_TYPE type, CharactorSounds charactorSounds)
+    {
+        AudioSource select = null;
+
+        for (int i = 0; i < audioSfx.Length; i++)
+        {
+            var obj = audioSfx[i];
+            if (obj.isPlaying) continue;
+            select = obj;
+        }
+
+        var sound = type switch
+        {
+            eCHARACTOR_SOUND_TYPE.Start => charactorSounds.start,
+            eCHARACTOR_SOUND_TYPE.Hit => charactorSounds.hit,
+            eCHARACTOR_SOUND_TYPE.Attack => charactorSounds.attack,
+            eCHARACTOR_SOUND_TYPE.Command => charactorSounds.command,
+            eCHARACTOR_SOUND_TYPE.Die => charactorSounds.die,
+            _ => null,
+        };
+
+        select.PlayOneShot(sound);
+    }
+
+    public void PlayLoading() => PlayBgm(loading);
+    public void PlayTitle() => PlayBgm(title);
+    public void PlayMain() => PlayBgm(main);
+    public void PlayRoom() => PlayBgm(room);
+    public void PlayIngame() => PlayBgm(ingame);
+    void PlayBgm(AudioClip bgm)
+    {
+        audioBgm.clip = bgm;
+        audioBgm.Play();
+    }
 }
