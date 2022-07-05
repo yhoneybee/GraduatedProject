@@ -138,7 +138,7 @@ public class GamePacketHandler
         Debug.Log("START GAME");
         V.playerNumber = packet.GetPacket<RES_StartGame>().playerNum;
         //SceneManager.LoadScene("Ingame");
-        Title.Instance.ChangeScene("Ingame");
+        Room.Instance.ChangeScene("Ingame");
     }
 
     private void OtherUserEnterRoom(Packet packet)
