@@ -8,7 +8,6 @@ public class KanziSlash : MonoBehaviour
     public float speed;
     public Caric playerCaric;
     public Vector3 dir;
-    ContactPoint2D[] hitpoint = new ContactPoint2D[2];
     void Start()
     {
         
@@ -30,9 +29,9 @@ public class KanziSlash : MonoBehaviour
 
                 if (enemyCaric == playerCaric || enemyCaric.Hp == 0) return;
 
-                other.GetContacts(hitpoint);
+                float hitPointX = other.transform.position.x + Random.Range(-0.5f, 0.5f);
 
-                new JudgmentSign(playerCaric, enemyCaric, ATTACKTYPE.HIT, hitpoint[0].point.x);
+                new JudgmentSign(playerCaric, enemyCaric, ATTACKTYPE.HIT, hitPointX);
 
                 Destroy(gameObject);
             }

@@ -395,7 +395,7 @@ MonoBehaviour:
   Crouch_Attack_Dmg: 2.5
   Jump_Attack_Dmg: 2.5
   Command_Weak_Dmg: 2.5
-  Command_Strong_Dmg: 0
+  Command_Strong_Dmg: 5
   attackState: {fileID: 0}
   commandWeakState: {fileID: 0}
   commandStrongState: {fileID: 0}
