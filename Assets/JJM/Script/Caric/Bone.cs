@@ -7,6 +7,7 @@ public class Bone : MonoBehaviour
     public Transform head;
     public Transform body;
     public Transform foot;
+    
     // Start is called before the first frame update
     void Start()
     {
