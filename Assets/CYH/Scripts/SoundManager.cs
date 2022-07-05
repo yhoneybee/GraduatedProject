@@ -39,8 +39,10 @@ public class SoundManager : Singleton<SoundManager>
     public CharactorSounds Player1 => K.player1Type == CharactorType.Samdae ? samdae : kanzi;
     public CharactorSounds Player2 => K.player2Type == CharactorType.Samdae ? samdae : kanzi;
 
+    float bgmVolume;
     public float BgmVolume
     {
+        get => bgmVolume;
         set
         {
             if (value < 0 || 1 < value) return;
@@ -56,8 +58,10 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
+    float sfxVolume;
     public float SfxVolume
     {
+        get => sfxVolume;
         set
         {
             if (value < 0 || 1 < value) return;
@@ -80,7 +84,22 @@ public class SoundManager : Singleton<SoundManager>
     {
         audioBgm.loop = true;
 
+        if (PlayerPrefs.HasKey("SfxVolume"))
+        {
+            SfxVolume = PlayerPrefs.GetFloat("SfxVolume");
+        }
+        if (PlayerPrefs.HasKey("BgmVolume"))
+        {
+            BgmVolume = PlayerPrefs.GetFloat("BgmVolume");
+        }
+
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetFloat("BgmVolume", BgmVolume);
+        PlayerPrefs.SetFloat("SfxVolume", SfxVolume);
     }
 
     public void PlayPlayer1Sound(eCHARACTOR_SOUND_TYPE type) => PlayCharactorSound(type, Player1);
