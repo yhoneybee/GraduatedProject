@@ -42,6 +42,7 @@ public class Judgment : Singleton<Judgment> //판정 매니저
             if (defender.isGuard) //가드 상태
             {
                 Effect.Instance.GetEffect("Guard", new Vector2(sign.HitPosX, defender.bone.body.transform.position.y));
+                defender.PlaySound(eCHARACTOR_SOUND_TYPE.Defence);
             }
             else //피격 상태
             {
@@ -52,6 +53,8 @@ public class Judgment : Singleton<Judgment> //판정 매니저
                 UI.Instance.HpSliderValueChange(defender.Hp, defender.caricNumber);
 
                 CaricAI defenderAi = defender.GetComponent<CaricAI>();
+
+                attacker.PlaySound(eCHARACTOR_SOUND_TYPE.AttackSfx);
 
                 if (defender.Hp > 0) //피격
                 {
@@ -81,10 +84,14 @@ public class Judgment : Singleton<Judgment> //판정 매니저
                             defenderAi.ChangeState(defender.gameObject.AddComponent<Hit>());
                             break;
                     }
+
+                    defender.PlaySound(eCHARACTOR_SOUND_TYPE.Hit);
                 }
                 else //사망
                 {
                     defenderAi.ChangeState(defender.gameObject.AddComponent<Die>());
+
+                    defender.PlaySound(eCHARACTOR_SOUND_TYPE.Die);
 
                     UI.Instance.OnGameEnd();
                 }

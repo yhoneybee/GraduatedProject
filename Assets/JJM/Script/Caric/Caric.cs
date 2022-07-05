@@ -122,4 +122,6 @@ public abstract class Caric : MonoBehaviour
 
         onHitEvent(this, EventArgs.Empty);
     }
+
+    public abstract void PlaySound(eCHARACTOR_SOUND_TYPE sound);
 }

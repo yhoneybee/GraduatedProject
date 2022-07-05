@@ -28,6 +28,11 @@ public class Kanzi_Main : Caric
         slash.GetComponent<SpriteRenderer>().flipX = (gameObject.transform.localScale.x > 0);
     }
 
+    public override void PlaySound(eCHARACTOR_SOUND_TYPE sound)
+    {
+        SoundManager.Instance.PlayKanziSound(sound);
+    }
+
     public override Attack SetCommandState(ATTACK_STATE command)
     {
         switch (command)
@@ -36,31 +41,37 @@ public class Kanzi_Main : Caric
                 attackState = gameObject.AddComponent<Attack_Weak>();
                 attackBox.attackType = ATTACKTYPE.HIT;
                 dmg = Weak_Attack_Dmg;
+                PlaySound(eCHARACTOR_SOUND_TYPE.Attack);
                 break;
             case ATTACK_STATE.ATTACK_STRONG:
                 attackState = gameObject.AddComponent<Attack_Strong>();
                 attackBox.attackType = ATTACKTYPE.FLY;
                 dmg = Strong_Attack_Dmg;
+                PlaySound(eCHARACTOR_SOUND_TYPE.Attack);
                 break;
             case ATTACK_STATE.ATTACK_CROUCH:
                 attackState = gameObject.AddComponent<Attack_Crouch>();
                 attackBox.attackType = ATTACKTYPE.HIT;
                 dmg = Crouch_Attack_Dmg;
+                PlaySound(eCHARACTOR_SOUND_TYPE.Attack);
                 break;
             case ATTACK_STATE.ATTACK_JUMP:
                 attackState = gameObject.AddComponent<Attack_Jump>();
                 attackBox.attackType = ATTACKTYPE.HIT;
                 dmg = Jump_Attack_Dmg;
+                PlaySound(eCHARACTOR_SOUND_TYPE.Attack);
                 break;
             case ATTACK_STATE.ATTACK_COMMAND_WEAK:
                 attackState = gameObject.AddComponent<Kanzi_Command_Weak>();
                 attackBox.attackType = ATTACKTYPE.HIT;
                 dmg = Command_Weak_Dmg;
+                PlaySound(eCHARACTOR_SOUND_TYPE.Command);
                 break;
             case ATTACK_STATE.ATTACK_COMMAND_STRONG:
                 attackState = gameObject.AddComponent<Kanzi_Command_Strong>();
                 attackBox.attackType = ATTACKTYPE.HIT;
                 dmg = Command_Strong_Dmg;
+                PlaySound(eCHARACTOR_SOUND_TYPE.Attack);
                 break;
         }
 
