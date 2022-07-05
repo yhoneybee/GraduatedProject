@@ -56,13 +56,14 @@ public class GamePacketHandler
                 RES_EnterRoom?.Invoke(packet);
                 break;
             case PacketType.RES_OTHER_USER_ENTER_ROOM_PACKET:
-                OtherUserEnterRoom(packet);
+                OtherUserRoom(packet);
                 RES_OtherUserEnterRoom?.Invoke(packet);
                 break;
             case PacketType.RES_LEAVE_ROOM_PACKET:
                 RES_LeaveRoom?.Invoke(packet);
                 break;
             case PacketType.RES_OTHER_USER_LEAVE_ROOM_PACKET:
+                OtherUserRoom(packet);
                 RES_OtherUserLeaveRoom?.Invoke(packet);
                 break;
             case PacketType.RES_ROOMS_PACKET:
@@ -141,9 +142,14 @@ public class GamePacketHandler
         Room.Instance.ChangeScene("Ingame");
     }
 
-    private void OtherUserEnterRoom(Packet packet)
+    private void OtherUserRoom(Packet packet)
     {
+        var res = packet.GetPacket<RES_OtherUser>();
+        if (res == null || !res.completed) return;
 
+        K.roomInfo = res.roomInfo;
+        K.player1 = res.player1;
+        K.player2 = res.player2;
     }
 
     private void EnterRoom(Packet packet)
