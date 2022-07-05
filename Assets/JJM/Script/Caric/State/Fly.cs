@@ -12,7 +12,6 @@ public class Fly : State
     }
     public override void Tick()
     {
-
     }
     public override void Exit()
     {
