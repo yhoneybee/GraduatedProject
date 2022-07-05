@@ -955,8 +955,8 @@ MonoBehaviour:
   - {fileID: 7305862078423946705}
   - {fileID: 7305862078128570877}
   - {fileID: 7305862079020928034}
-  loading: {fileID: 0}
-  title: {fileID: 8300000, guid: 3eb75809fa2852543846d1b712db1a38, type: 3}
+  loading: {fileID: 8300000, guid: 3eb75809fa2852543846d1b712db1a38, type: 3}
+  title: {fileID: 0}
   main: {fileID: 0}
   room: {fileID: 0}
   ingame: {fileID: 8300000, guid: 66c97c7266f63504191df9fb7e3fbf35, type: 3}
@@ -964,7 +964,7 @@ MonoBehaviour:
     start: {fileID: 8300000, guid: 4ca7f0102f9632941aff9b0c6783f437, type: 3}
     hit: {fileID: 8300000, guid: cefae2670c110e74690c00289abec763, type: 3}
     attack: {fileID: 8300000, guid: c2499655a3ef6224499922b34cb0c376, type: 3}
-    attackSfx: {fileID: 0}
+    attackSfx: {fileID: 8300000, guid: d255ad9ef6f4dca4d92dad7748388588, type: 3}
     defence: {fileID: 8300000, guid: c5955b1ca51d47245ae5e5e10395d910, type: 3}
     command: {fileID: 8300000, guid: 78f049e50dfe63840920a909e358e7c6, type: 3}
     die: {fileID: 8300000, guid: 7407fd92658d6474ead8fcca77a00485, type: 3}

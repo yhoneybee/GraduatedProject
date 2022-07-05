@@ -951,5 +951,9 @@ PrefabInstance:
       propertyPath: loading
       value: 
       objectReference: {fileID: 8300000, guid: 3eb75809fa2852543846d1b712db1a38, type: 3}
+    - target: {fileID: 7305862078768696011, guid: c6936a5c077e81e43ab9310e6c88e7ef, type: 3}
+      propertyPath: samdae.attackSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: d255ad9ef6f4dca4d92dad7748388588, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6936a5c077e81e43ab9310e6c88e7ef, type: 3}
