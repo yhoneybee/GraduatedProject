@@ -96,6 +96,11 @@ public class SoundManager : Singleton<SoundManager>
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        BgmVolume = SfxVolume = 0.5f;
+    }
+
     private void OnApplicationQuit()
     {
         PlayerPrefs.SetFloat("BgmVolume", BgmVolume);
