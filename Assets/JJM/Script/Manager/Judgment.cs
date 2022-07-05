@@ -38,6 +38,8 @@ public class Judgment : Singleton<Judgment> //판정 매니저
             Caric attacker = sign.Attacker; //공격자
             Caric defender = sign.Defender; //방어자
 
+            defender.OnHit();
+
             if (defender.isGuard) //가드 상태
             {
                 Effect.Instance.GetEffect("Guard", new Vector2(sign.HitPosX, defender.bone.body.transform.position.y));
@@ -54,7 +56,6 @@ public class Judgment : Singleton<Judgment> //판정 매니저
 
                 if (defender.Hp > 0) //피격
                 {
-                    defender.OnHit();
 
                     switch (sign.AttackType)
                     {
