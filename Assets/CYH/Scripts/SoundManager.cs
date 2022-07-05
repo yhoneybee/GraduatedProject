@@ -9,6 +9,8 @@ public struct CharactorSounds
     public AudioClip start;
     public AudioClip hit;
     public AudioClip attack;
+    public AudioClip attackSfx;
+    public AudioClip defence;
     public AudioClip command;
     public AudioClip die;
 }
@@ -18,6 +20,8 @@ public enum eCHARACTOR_SOUND_TYPE
     Start,
     Hit,
     Attack,
+    AttackSfx,
+    Defence,
     Command,
     Die,
 }
@@ -127,6 +131,8 @@ public class SoundManager : Singleton<SoundManager>
             eCHARACTOR_SOUND_TYPE.Start => charactorSounds.start,
             eCHARACTOR_SOUND_TYPE.Hit => charactorSounds.hit,
             eCHARACTOR_SOUND_TYPE.Attack => charactorSounds.attack,
+            eCHARACTOR_SOUND_TYPE.AttackSfx => charactorSounds.attackSfx,
+            eCHARACTOR_SOUND_TYPE.Defence => charactorSounds.defence,
             eCHARACTOR_SOUND_TYPE.Command => charactorSounds.command,
             eCHARACTOR_SOUND_TYPE.Die => charactorSounds.die,
             _ => null,

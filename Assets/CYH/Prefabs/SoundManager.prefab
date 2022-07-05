@@ -964,12 +964,16 @@ MonoBehaviour:
     start: {fileID: 8300000, guid: 4ca7f0102f9632941aff9b0c6783f437, type: 3}
     hit: {fileID: 8300000, guid: cefae2670c110e74690c00289abec763, type: 3}
     attack: {fileID: 8300000, guid: c2499655a3ef6224499922b34cb0c376, type: 3}
+    attackSfx: {fileID: 0}
+    defence: {fileID: 8300000, guid: c5955b1ca51d47245ae5e5e10395d910, type: 3}
     command: {fileID: 8300000, guid: 78f049e50dfe63840920a909e358e7c6, type: 3}
     die: {fileID: 8300000, guid: 7407fd92658d6474ead8fcca77a00485, type: 3}
   kanzi:
     start: {fileID: 8300000, guid: 0be8c0af0f2dcfa4d8f47424eeeefa71, type: 3}
     hit: {fileID: 8300000, guid: cb91a33d39d87634691c3ae8b20ddd84, type: 3}
     attack: {fileID: 8300000, guid: 373ae4bc2603aa64783048ead647df8f, type: 3}
+    attackSfx: {fileID: 8300000, guid: 2829a5212f9da134e88443a1f91d0e48, type: 3}
+    defence: {fileID: 8300000, guid: c5955b1ca51d47245ae5e5e10395d910, type: 3}
     command: {fileID: 8300000, guid: 9477aa7bb33d94a449cb0a0fc8edc030, type: 3}
     die: {fileID: 8300000, guid: ef9d7b667df0a8d45bab3352f781ca6d, type: 3}
 --- !u!82 &7305862078768696012
