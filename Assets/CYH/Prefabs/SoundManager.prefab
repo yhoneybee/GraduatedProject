@@ -956,10 +956,10 @@ MonoBehaviour:
   - {fileID: 7305862078128570877}
   - {fileID: 7305862079020928034}
   loading: {fileID: 0}
-  title: {fileID: 0}
+  title: {fileID: 8300000, guid: 3eb75809fa2852543846d1b712db1a38, type: 3}
   main: {fileID: 0}
   room: {fileID: 0}
-  ingame: {fileID: 0}
+  ingame: {fileID: 8300000, guid: 66c97c7266f63504191df9fb7e3fbf35, type: 3}
   samdae:
     start: {fileID: 8300000, guid: 4ca7f0102f9632941aff9b0c6783f437, type: 3}
     hit: {fileID: 8300000, guid: cefae2670c110e74690c00289abec763, type: 3}
