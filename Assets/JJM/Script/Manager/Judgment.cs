@@ -78,6 +78,7 @@ public class Judgment : Singleton<Judgment> //판정 매니저
 
                             break;
                         case ATTACKTYPE.FLY:
+                            Ingame.Instance.TimeStop(0.15f);
                             defenderAi.ChangeState(defender.gameObject.AddComponent<Fly>());
                             break;
                         case ATTACKTYPE.STUN:
@@ -92,6 +93,8 @@ public class Judgment : Singleton<Judgment> //판정 매니저
                     defenderAi.ChangeState(defender.gameObject.AddComponent<Die>());
 
                     defender.PlaySound(eCHARACTOR_SOUND_TYPE.Die);
+
+                    Ingame.Instance.TimeStop(0.3f);
 
                     UI.Instance.OnGameEnd();
                 }

@@ -12,6 +12,8 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     public Dictionary<CharactorType, Caric> charactors = new Dictionary<CharactorType, Caric>();
     public Caric[] players;
 
+    public CameraTargetGroup cameraTarget;
+
     public event EventHandler onStartEvent; //스타트 이벤트
 
     public override void SceneAwake()
@@ -27,6 +29,8 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
         V.IsStop = true;
 
         SoundManager.Instance.PlayIngame();
+
+        cameraTarget.OnCamera(cameraTarget.playerCamera[2].gameObject);
     }
 
     public override void SceneStart()
@@ -35,8 +39,7 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     }
     public override void SceneEnter()
     {
-        UI.Instance.Start.SetActive(true);
-        UI.Instance.Ready.SetActive(true);
+        StartCoroutine(StartProduction());
     }
  
     public override void ScenePlaying()
@@ -46,6 +49,49 @@ public class Ingame : SceneBase<Ingame> //인게임 씬
     public override void SceneEnd()
     {
 
+    }
+
+    bool waiting = false;
+    public void TimeStop(float duration) 
+    {
+        if(waiting) return;
+
+        Time.timeScale = 0.0f;
+        StartCoroutine(Wait(duration));
+    }
+
+    IEnumerator Wait(float duration)
+    {
+        waiting = true;
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1.0f;
+        waiting = false;
+    }
+
+    public IEnumerator StartProduction() 
+    {
+        cameraTarget.OnCamera(cameraTarget.playerCamera[0].gameObject);
+
+        yield return new WaitForSeconds(2f);
+
+        players[0].PlaySound(eCHARACTOR_SOUND_TYPE.Start);
+
+        yield return new WaitForSeconds(3.5f);
+
+        cameraTarget.OnCamera(cameraTarget.playerCamera[1].gameObject);
+
+        yield return new WaitForSeconds(2f);
+
+        players[1].PlaySound(eCHARACTOR_SOUND_TYPE.Start);
+
+        yield return new WaitForSeconds(3.5f);
+
+        cameraTarget.OnCamera(cameraTarget.playerCamera[2].gameObject);
+
+        yield return new WaitForSeconds(2f);
+
+        UI.Instance.Start.SetActive(true);
+        UI.Instance.Ready.SetActive(true);
     }
 
     public void OnGameStart() 

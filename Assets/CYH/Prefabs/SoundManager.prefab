@@ -960,6 +960,8 @@ MonoBehaviour:
   main: {fileID: 8300000, guid: f39a443dc93c294428b19549f64d0c1c, type: 3}
   room: {fileID: 8300000, guid: f39a443dc93c294428b19549f64d0c1c, type: 3}
   ingame: {fileID: 8300000, guid: 66c97c7266f63504191df9fb7e3fbf35, type: 3}
+  button: {fileID: 8300000, guid: 5e42a2e264497634e9b4180e438c1a07, type: 3}
+  gong: {fileID: 8300000, guid: 449496f79ae1bb448875506ff5eeae94, type: 3}
   samdae:
     start: {fileID: 8300000, guid: 4ca7f0102f9632941aff9b0c6783f437, type: 3}
     hit: {fileID: 8300000, guid: cefae2670c110e74690c00289abec763, type: 3}
