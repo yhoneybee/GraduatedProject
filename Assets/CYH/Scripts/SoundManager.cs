@@ -106,7 +106,7 @@ public class SoundManager : Singleton<SoundManager>
     private void Start()
     {
         SfxVolume = 0.5f;
-        BgmVolume = 0.25f;
+        BgmVolume = 0.15f;
     }
 
     private void OnApplicationQuit()
